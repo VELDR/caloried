@@ -1,0 +1,31 @@
+@import '@styles/base';
+
+.container {
+  @include box(9rem);
+  .content {
+    @include flex-center-column;
+
+    .icon {
+      @include box(2rem);
+    }
+
+    .hovered {
+      font-weight: 500;
+      font-size: $font-size-medium;
+    }
+    .title {
+      cursor: pointer;
+      font-size: $font-size-larger;
+      font-weight: 500;
+      span {
+        font-size: $font-size-small;
+        font-weight: 300;
+      }
+    }
+    .subtitle {
+      text-transform: uppercase;
+      font-size: $font-size-small;
+      font-weight: 300;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+@mixin directionY {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin directionX {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin directionY {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin directionX {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex-column($gap: 0em) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flex-row($gap: 0em) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+}
+
+@mixin flex-center($gap: 0em) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+}
+
+@mixin flex-center-column($gap: 0em) {
+  @include flex-center;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flex-items-center($gap: 0em) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flex-justify-center($gap: 0em) {
+  display: flex;
+  justify-content: center;
+  gap: $gap;
+}
+
+@mixin primary-button {
+  cursor: pointer;
+  font-family: 'Poppins', 'sans-serif';
+  padding: 0.25rem 0.75rem;
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: none;
+  &:hover {
+    color: var(--color-bg-primary);
+    opacity: 75%;
+  }
+}
+
+@mixin secondary-button {
+  cursor: pointer;
+  font-family: 'Poppins', 'sans-serif';
+  padding: 0.25rem 0.75rem;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-text-primary);
+  &:hover {
+    color: var(--color-bg-primary);
+    background-color: var(--color-text-primary);
+    opacity: 75%;
+  }
+}
+
+@mixin input {
+  font-family: Poppins, 'sans-serif';
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-text-primary);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  &:focus {
+    outline: 3px solid var(--color-primary);
+  }
+}
+
+@mixin translucent-background($color, $alpha) {
+  background-color: rgba(red($color), green($color), blue($color), $alpha);
+}

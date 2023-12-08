@@ -1,0 +1,78 @@
+@import '@styles/base';
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  @include flex-column(0.5rem);
+  z-index: 100;
+  @include apply-at-sm-size {
+    display: none;
+  }
+  .searchBar {
+    padding: 0 0.5rem;
+  }
+  .navbar {
+    @include flex-items-center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 4rem;
+    background-color: var(--color-bg-primary);
+    border-top: 1px solid var(--color-text-secondary);
+    &__item {
+      @include flex-center-column;
+      font-size: $font-size-small;
+      width: 100%;
+      color: var(--color-text-primary);
+      padding: 0 1rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition:
+        width 200ms,
+        padding 200ms;
+      transition-timing-function: ease-in-out;
+      &:hover {
+        background-position: 0 50%;
+        padding: 1rem;
+        svg {
+          font-size: $font-size-larger;
+        }
+        .label {
+          opacity: 1;
+        }
+      }
+      svg {
+        font-size: $font-size-huge;
+        position: relative;
+        z-index: 2;
+        transition: font-size 250ms;
+        transition-timing-function: ease-out;
+      }
+      .label {
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        opacity: 0;
+        position: relative;
+        z-index: 2;
+        font-size: $font-size-smaller;
+        transition: opacity 400ms;
+        transition-delay: 130ms;
+        transition-timing-function: ease-out;
+      }
+    }
+    .active {
+      svg {
+        color: var(--color-primary);
+      }
+      .label {
+        color: var(--color-primary);
+        opacity: 1;
+      }
+    }
+  }
+}

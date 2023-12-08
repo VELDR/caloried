@@ -1,0 +1,39 @@
+@import '@styles/base';
+
+.progressBarContainer {
+  width: 100%;
+  .wrapper {
+    position: relative;
+    .micronutrient {
+      text-transform: capitalize;
+      font-size: $font-size-small;
+      color: var(--color-text-secondary);
+    }
+    .progress {
+      height: 0.5rem;
+      background-color: var(--color-text-secondary);
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+      .progressBar {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        &.protein {
+          background-color: $color-protein;
+        }
+        &.carbs {
+          background-color: $color-carbs;
+        }
+        &.fat {
+          background-color: $color-fat;
+        }
+      }
+    }
+  }
+  .percentage {
+    font-weight: medium;
+    text-align: right;
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,74 @@
+@import '@styles/base';
+
+.container {
+  @include flex-center;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: none;
+
+  @include apply-at-sm-size {
+    display: flex;
+  }
+  .sidebar {
+    @include flex-center-column(2rem);
+    width: fit-content;
+    transition: width 0.3s ease;
+    background-color: var(--color-bg-primary);
+    border: 2px solid var(--color-text-primary);
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-left: none;
+
+    &__item {
+      @include flex-column;
+      align-items: center;
+      font-size: $font-size-small;
+      color: var(--color-text-primary);
+
+      overflow: hidden;
+      cursor: pointer;
+
+      @include apply-at-md-size {
+        @include flex-items-center(0.25rem);
+        flex-direction: row;
+        width: 100%;
+        transition:
+          width 200ms,
+          padding 200ms;
+        transition-timing-function: ease-in-out;
+      }
+      &:hover {
+        svg {
+          font-size: $font-size-huge;
+        }
+      }
+      svg {
+        font-size: $font-size-larger;
+        position: relative;
+        z-index: 2;
+        transition:
+          font-size 250ms,
+          padding 250ms;
+        transition-timing-function: ease-out;
+        padding: 0.5rem;
+      }
+    }
+    .active {
+      svg {
+        color: var(--color-primary);
+      }
+    }
+  }
+  .chevron {
+    cursor: pointer;
+    @include flex-center;
+    padding: 0.5rem 0;
+    border-top-right-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    color: var(--color-bg-primary);
+    background-color: var(--color-text-primary);
+  }
+}

@@ -1,0 +1,123 @@
+@import '@styles/base';
+
+.container {
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-text-secondary);
+  padding: 0.5rem 0.25rem;
+  @include flex-items-center(3rem);
+  justify-content: space-between;
+  &:hover {
+    opacity: 75%;
+  }
+  &:hover .chevronRight {
+    color: var(--color-primary);
+  }
+  .food {
+    @include flex-items-center(0.5rem);
+    .imageWrap {
+      @include box(4rem);
+      @include flex-center;
+      position: relative;
+
+      .image {
+        max-width: 4rem;
+        max-height: 4rem;
+        border-radius: 0.5rem;
+        object-fit: cover;
+      }
+      .type {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        text-transform: capitalize;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        font-size: $font-size-tiny;
+        color: var(--color-bg-primary);
+      }
+      .common {
+        background-color: var(--color-primary);
+      }
+      .branded {
+        background-color: var(--color-accent);
+      }
+    }
+    &__content {
+      @include flex-column;
+
+      .name {
+        text-transform: capitalize;
+        font-weight: 700;
+        @include truncate(13rem);
+
+        @include apply-at-sm-size {
+          @include truncate(23rem);
+        }
+
+        @include apply-at-md-size {
+          @include truncate(11rem);
+        }
+      }
+      .serving {
+        @include flex-row(0.25rem);
+        font-size: $font-size-regular;
+        color: var(--color-text-secondary);
+
+        &__unit {
+          @include truncate(6rem);
+          @include apply-at-sm-size {
+            @include truncate(12rem);
+          }
+          @include apply-at-md-size {
+            @include truncate(7rem);
+          }
+        }
+      }
+    }
+    .nutrient {
+      @include flex-items-center(0.5rem);
+      @include apply-at-md-size {
+        display: none;
+      }
+      &__item {
+        @include flex-items-center(0.25rem);
+        font-size: $font-size-smaller;
+      }
+      .icon {
+        @include box(0.75rem);
+      }
+    }
+  }
+
+  .right {
+    @include flex-items-center(2rem);
+    .nutrientBig {
+      display: none;
+      @include apply-at-md-size {
+        display: block;
+        @include flex-items-center(1rem);
+        font-size: $font-size-small;
+      }
+      &__item {
+        @include flex-items-center(0.25rem);
+        .icon {
+          @include box(1.5rem);
+        }
+      }
+    }
+  }
+  .leftMost {
+    @include flex-items-center;
+    .calories {
+      font-size: $font-size-small;
+      display: none;
+      @include apply-at-md-size {
+        display: block;
+      }
+      &__value {
+        font-size: $font-size-large;
+      }
+    }
+  }
+}

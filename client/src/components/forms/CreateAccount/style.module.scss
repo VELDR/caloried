@@ -1,0 +1,29 @@
+@import '@styles/base';
+
+.container {
+  @include flex-column(0.75rem);
+  height: 100%;
+  @include apply-at-md-size {
+    justify-content: space-between;
+  }
+  .form {
+    @include flex-center-column(1rem);
+    @include apply-at-md-size {
+      @include flex-row(1rem);
+      margin: 0 auto;
+      flex-wrap: wrap;
+      max-width: 90%;
+    }
+    &__info {
+      @include flex-center(0.25rem);
+      font-size: $font-size-tiny;
+      width: 75%;
+      padding: 0.25rem 0.5rem;
+      box-sizing: border-box;
+
+      svg {
+        @include box(1rem);
+      }
+    }
+  }
+}

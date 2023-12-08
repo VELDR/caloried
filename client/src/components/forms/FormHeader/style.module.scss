@@ -1,0 +1,15 @@
+@import '@styles/base';
+
+.header {
+  @include flex-center-column;
+  text-align: center;
+  &__title {
+    font-size: $font-size-larger;
+    font-weight: 700;
+  }
+  &__description {
+    font-size: $font-size-regular;
+    width: 100%;
+    color: var(--color-text-secondary);
+  }
+}

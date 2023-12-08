@@ -1,0 +1,59 @@
+@import '@styles/base';
+
+.form {
+  @include flex-center-column(2rem);
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+
+  .goal {
+    @include flex-center(1rem);
+    flex-wrap: wrap;
+
+    &__item {
+      cursor: pointer;
+      @include flex-center-column(1rem);
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 3px solid var(--color-text-secondary);
+      @include box(8rem, 10rem);
+      overflow: hidden;
+
+      &:hover {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+      &:hover .label {
+        font-weight: 700;
+        color: var(--color-text-primary);
+      }
+      &:hover .image {
+        transform: scale(1.25);
+      }
+      .image {
+        @include box(8rem);
+        transition: all 0.5s ease-in-out;
+      }
+      .label {
+        text-align: center;
+        color: var(--color-text-secondary);
+        font-size: $font-size-regular;
+      }
+    }
+    .active {
+      background-color: var(--color-primary);
+      border-color: var(--color-text-primary);
+      .label {
+        font-weight: 700;
+        color: var(--color-text-primary);
+      }
+      .image {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .footer {
+    width: 100%;
+  }
+}

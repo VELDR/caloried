@@ -1,0 +1,55 @@
+@import '@styles/base';
+
+.container {
+  text-align: center;
+  .header {
+    border-bottom: 5px solid var(--color-text-secondary);
+    font-family: Poppins, 'sans-serif';
+    &__title {
+      font-size: $font-size-larger !important;
+      font-weight: 700;
+    }
+    &__subtitle {
+      font-size: $font-size-medium !important;
+    }
+  }
+
+  .content {
+    margin-top: 1rem;
+    @include flex-center-column(1.5rem);
+    .message {
+      &__content {
+        span {
+          font-weight: 700;
+        }
+      }
+      .calories {
+        // background-color: var(--color-primary);
+        // border-radius: 4rem;
+        padding: 0 1rem;
+        font-weight: 700;
+        font-size: $font-size-huger;
+      }
+      &__kcal {
+        font-weight: 300;
+      }
+    }
+    .message2 {
+      font-size: $font-size-large;
+      font-weight: 500;
+    }
+    .macronutrient {
+      @include flex-items-center(1rem);
+      &__item {
+        @include flex-items-center(0.5rem);
+        img {
+          @include box(2rem);
+        }
+      }
+    }
+    .button {
+      @include primary-button;
+      width: 100%;
+    }
+  }
+}

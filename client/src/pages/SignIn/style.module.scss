@@ -1,0 +1,134 @@
+@import '@styles/base';
+
+.container {
+  @include flex-center;
+
+  // background-color: var(--color-bg-secondary);
+  background-color: hsla(var(--hue), var(--saturation), var(--lightness), 0.65);
+  border-radius: 2rem;
+  border: 1px solid var(--color-text-secondary);
+  box-sizing: border-box;
+  @include box(20rem, 70vh);
+  position: relative;
+  text-align: center;
+  @include apply-at-md-size {
+    @include box(80vw, 70vh);
+    overflow: hidden;
+  }
+
+  .hero {
+    display: none;
+    @include apply-at-md-size {
+      @include flex-center-column;
+      @include box(60%, 100%);
+      background-color: var(--color-secondary);
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    &__title {
+      font-size: $font-size-larger;
+      font-weight: 700;
+    }
+    &__description {
+      font-size: $font-size-small;
+    }
+    img {
+      @include box(75%);
+    }
+  }
+  .admin {
+    background-color: var(--color-text-secondary);
+  }
+
+  .signIn {
+    @include flex-center-column(1rem);
+    @include apply-at-md-size {
+      width: 40%;
+    }
+
+    &__title {
+      font-size: $font-size-larger;
+      font-weight: 700;
+    }
+    .form {
+      @include flex-column(1rem);
+      &__forgot {
+        cursor: pointer;
+        font-size: $font-size-smaller;
+        text-align: right;
+        &:hover {
+          color: var(--color-text-secondary);
+          text-decoration: underline;
+        }
+      }
+      &__button {
+        @include primary-button;
+      }
+      .admin {
+        background-color: var(--color-text-secondary);
+      }
+
+      &__signUp {
+        font-size: $font-size-smaller;
+        a {
+          color: var(--color-accent);
+        }
+      }
+    }
+  }
+}
+
+.option {
+  @include flex-center;
+  background-color: var(--color-bg-secondary);
+  border-radius: 5px;
+  gap: 2rem;
+  padding: 0.25rem;
+  color: var(--color-text-secondary);
+  @include apply-at-lg-size {
+    font-size: 1rem;
+  }
+  &__toggle {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+  }
+  &__checkbox {
+    opacity: 0;
+    @include box(0);
+
+    &:checked + .option__slider::before {
+      transform: translateX(14px);
+    }
+  }
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-secondary);
+    transition: 0.4s cubic-bezier(0, 1, 0.5, 1);
+    border-radius: 34px;
+    &::before {
+      position: absolute;
+      content: '';
+      @include box(12px);
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s cubic-bezier(0, 1, 0.5, 1);
+      border-radius: 50%;
+    }
+  }
+  &__text {
+    font-size: $font-size-small;
+  }
+  &__selected {
+    color: var(--color-text-primary);
+    font-weight: 700;
+  }
+}

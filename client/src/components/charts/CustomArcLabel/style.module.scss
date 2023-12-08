@@ -1,0 +1,9 @@
+@import '@styles/base';
+
+.text {
+  font-size: $font-size-regular;
+  font-weight: 700;
+  @include apply-at-xl-size {
+    font-size: $font-size-medium;
+  }
+}

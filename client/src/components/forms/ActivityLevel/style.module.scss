@@ -1,0 +1,96 @@
+@import '@styles/base';
+
+.form {
+  @include flex-column;
+
+  height: 100%;
+  @include apply-at-md-size {
+    justify-content: space-between;
+  }
+  .activity {
+    @include flex-center-column(1rem);
+
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      @include box(3rem);
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+    .left {
+      top: 9rem;
+      left: 0;
+      @include apply-at-md-size {
+        top: 30%;
+        left: 10%;
+      }
+    }
+    .right {
+      top: 9rem;
+      right: 0;
+
+      @include apply-at-md-size {
+        top: 30%;
+        right: 10%;
+      }
+    }
+    &__image {
+      @include box(15rem);
+      position: absolute;
+      top: 5%;
+      transition: transform 0.5s ease;
+      @include apply-at-md-size {
+        top: 0;
+      }
+    }
+    .options {
+      box-sizing: border-box;
+      margin-top: 10rem;
+      width: 100%;
+      border-radius: 1rem;
+      @include flex-items-center;
+      position: relative;
+      overflow: hidden;
+
+      &__fill {
+        position: absolute;
+        height: 100%;
+        width: 0;
+        background-color: var(--color-primary);
+
+        transition: width 0.5s ease-out;
+        z-index: 1;
+      }
+      &__item {
+        height: 1.5rem;
+        width: 20%;
+        float: left;
+        background-color: transparent;
+        transition: background-color 0.5s ease-out;
+        z-index: 2;
+        border: 1px solid var(--color-primary);
+
+        &:last-child {
+          border-top-right-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+          border: 1px solid var(--color-primary);
+        }
+      }
+      .active {
+        background-color: var(--color-primary);
+        background-color: hsla(var(--hue), var(--saturation), var(--lightness), 0.2);
+      }
+    }
+    .label {
+      @include flex-center-column;
+      &__title {
+        font-weight: 500;
+      }
+      &__description {
+        font-weight: 300;
+        font-size: $font-size-small;
+      }
+    }
+  }
+}

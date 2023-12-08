@@ -1,0 +1,26 @@
+@import '@styles/base';
+.search {
+  position: relative;
+  width: 100%;
+  &__input {
+    @include input;
+    background-color: hsla(var(--hue), var(--saturation), var(--lightness), 0.85);
+    border-radius: 2rem;
+    padding-left: 2rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .icon {
+    cursor: pointer;
+    &:hover svg {
+      color: var(--color-primary);
+    }
+    svg {
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      @include box(1.25rem);
+    }
+  }
+}

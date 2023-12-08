@@ -1,0 +1,36 @@
+@import '@styles/base';
+
+.form {
+  @include flex-column;
+  &__label {
+    font-size: $font-size-regular;
+    text-align: left;
+    font-weight: 500;
+  }
+  &__input {
+    position: relative;
+
+    input {
+      @include input;
+      box-sizing: border-box;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      outline: none;
+    }
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      transform: translateY(-50%);
+      @include box(1rem);
+    }
+    .eyeIcon {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      @include box(1rem);
+    }
+  }
+}

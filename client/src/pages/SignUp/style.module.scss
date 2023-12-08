@@ -1,0 +1,56 @@
+@import '@styles/base';
+
+.register {
+  position: relative;
+  width: 100%;
+  max-width: 50rem;
+  @include flex-column(1rem);
+  align-items: center;
+  .progressContainer {
+    @include flex-items-center;
+    justify-content: space-around;
+    width: 90%;
+    .progress {
+      @include flex-center-column(0.25rem);
+      &__item {
+        @include box(2rem);
+        @include flex-center;
+        padding: 0.25rem;
+        border-radius: 50%;
+        border: 1px solid var(--color-primary);
+        @include apply-at-md-size {
+          @include box(1rem);
+        }
+        svg {
+          color: var(--color-primary);
+          @include apply-at-md-size {
+            @include box(1rem);
+          }
+        }
+      }
+      &__label {
+        font-size: $font-size-small;
+        color: var(--color-text-secondary);
+        letter-spacing: 1px;
+        display: none;
+        @include apply-at-sm-size {
+          display: block;
+        }
+      }
+    }
+    .active {
+      .progress__item {
+        background-color: var(--color-primary);
+        svg {
+          color: var(--color-bg-primary);
+          transform: scale(1.15);
+          transition: all 0.5s ease-in-out;
+        }
+      }
+      .progress__label {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+    }
+  }
+}

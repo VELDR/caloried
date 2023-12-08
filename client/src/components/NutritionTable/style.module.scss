@@ -1,0 +1,137 @@
+@import '@styles/base';
+
+.performanceFacts {
+  border: 1px solid var(--color-text-primary);
+  float: left;
+  max-width: 20rem;
+  padding: 0.5rem;
+  font-size: $font-size-small;
+  line-height: 1;
+  overflow: hidden;
+  letter-spacing: -0.05em;
+  table {
+    border-collapse: collapse;
+  }
+
+  .performanceFactsHeader {
+    border-bottom: 10px solid var(--color-text-primary);
+    padding: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+    .performanceFactsTitle {
+      font-weight: 900;
+      font-size: 2rem;
+      margin: 0 0 0.25rem 0;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--color-text-primary);
+    }
+    .servingSizeTitle {
+      font-size: $font-size-regular;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .servingSize {
+      @include flex-row(1rem);
+      justify-content: space-between;
+      .servingCountInput {
+        font-family: Poppins, 'sans-serif';
+
+        width: 1.5rem;
+        border: 1px solid var(--color-text-secondary);
+      }
+      span {
+        font-size: $font-size-medium;
+        font-weight: 700;
+        @include truncate(12rem);
+      }
+    }
+  }
+}
+
+.performanceFactsTable {
+  width: 100%;
+  thead tr {
+    th,
+    td {
+      border: 0;
+      font-size: $font-size-regular;
+      font-weight: 700;
+      padding: 0;
+    }
+  }
+  .calories {
+    &__label {
+      padding: 0;
+      font-size: $font-size-larger;
+      font-weight: 900;
+
+      border: none;
+    }
+    &__value {
+      font-size: $font-size-huge;
+      font-weight: 900;
+      padding: 0;
+      border: none;
+    }
+  }
+  th,
+  td {
+    font-weight: normal;
+    text-align: left;
+    padding: 0.25rem 0;
+    border-top: 1px solid var(--color-text-primary);
+    white-space: nowrap;
+  }
+  td {
+    &:last-child {
+      text-align: right;
+    }
+  }
+  .blankCell {
+    width: 1rem;
+    border-top: 0;
+  }
+  .thickRow {
+    th,
+    td {
+      border-top-width: 5px;
+    }
+  }
+  tbody {
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.footnote {
+  font-size: 0.6rem;
+}
+
+.performanceFactsTableGrid {
+  @extend .performanceFactsTable;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 5px solid var(--color-text-primary);
+  td {
+    @include flex-row;
+    justify-content: space-between;
+    &:last-child {
+      text-align: left;
+    }
+  }
+}
+
+.smallInfo {
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--color-text-primary);
+  @include flex-column(0.25rem);
+  padding-top: 0.25rem;
+}
+
+.macros {
+  text-align: center;
+  font-weight: 500;
+}
+
+.thickEnd {
+  border-bottom: 10px solid var(--color-text-primary);
+}

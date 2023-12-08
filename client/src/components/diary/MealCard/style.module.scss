@@ -1,0 +1,74 @@
+@import '@styles/base';
+
+.container {
+  width: 100%;
+  .header {
+    @include flex-items-center;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-text-secondary);
+    background-color: var(--color-bg-primary);
+    &:hover {
+      background-color: var(--color-bg-secondary);
+    }
+    .left {
+      @include flex-items-center(1rem);
+      svg {
+        @include flex-items-center(1rem);
+        padding: 0.25rem;
+        color: var(--color-primary);
+        cursor: pointer;
+        &:hover {
+          @include translucent-background($color-primary, 0.25);
+        }
+      }
+      .title {
+        font-weight: 500;
+      }
+    }
+    .right {
+      cursor: pointer;
+      width: 100%;
+      @include flex-items-center;
+      justify-content: end;
+    }
+  }
+  .body {
+    overflow: hidden;
+    .noFood {
+      padding: 1rem;
+      text-align: center;
+      @include flex-center;
+      .searchIcon {
+        cursor: pointer;
+        animation: shake 3s ease infinite;
+        &:hover {
+          animation: shake 0.5s linear infinite;
+          opacity: 75%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(5deg);
+  }
+
+  25% {
+    transform: rotate(-6deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  75% {
+    transform: rotate(-6deg);
+  }
+
+  100% {
+    transform: rotate(5deg);
+  }
+}

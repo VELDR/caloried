@@ -1,0 +1,104 @@
+@import '@styles/base';
+
+.page {
+  @include flex-center-column;
+  padding: 1rem 1rem 0;
+  .container {
+    max-width: 50rem;
+    border: 1px solid var(--color-text-secondary);
+    @include apply-at-md-size {
+      width: 40rem;
+    }
+    .header {
+      @include flex-column;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid var(--color-text-secondary);
+      &__title {
+        font-size: $font-size-large;
+        font-weight: 500;
+      }
+      .category {
+        @include flex-items-center(1rem);
+
+        .categoryWrapper {
+          display: table-cell;
+          position: relative;
+        }
+        &__item {
+          cursor: pointer;
+          &:after {
+            content: '';
+            background-color: var(--color-primary);
+            width: 0;
+            height: 2px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transition:
+              width 0.3s ease 0s,
+              left 0.3s ease 0s;
+          }
+          &:hover {
+            color: var(--color-primary);
+          }
+          &:hover:after {
+            width: 100%;
+            left: 0;
+          }
+        }
+        .active {
+          color: var(--color-primary);
+          font-weight: 700;
+          &:after {
+            content: '';
+            background-color: var(--color-primary);
+            width: 100%;
+            left: 0;
+            height: 2px;
+            position: absolute;
+            bottom: 0;
+            transition:
+              width 0.3s ease 0s,
+              left 0.3s ease 0s;
+          }
+        }
+      }
+    }
+    .noResults {
+      @include flex-center-column;
+      padding: 2rem;
+      text-align: center;
+      font-size: $font-size-regular;
+      @include apply-at-md-size {
+        font-size: $font-size-medium;
+      }
+      img {
+        @include box(75%);
+        @include apply-at-md-size {
+          @include box(20rem);
+        }
+      }
+    }
+  }
+  .pagination {
+    @include flex-center;
+    padding: 1rem;
+    ul {
+      li {
+        button {
+          font-family: Poppins, 'sans-serif' !important;
+          color: var(--color-text-primary);
+          &:focus {
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            font-weight: 700;
+          }
+          &:hover {
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+}

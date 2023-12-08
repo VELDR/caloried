@@ -1,0 +1,26 @@
+@import '@styles/base';
+
+.contentWrapper {
+  @include flex-column(1rem);
+  padding: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 3.5rem);
+
+  .image {
+    @include box(clamp(20rem, 40vw, 50%), auto);
+  }
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    max-width: 30rem;
+    text-align: center;
+  }
+
+  .button {
+    @include primary-button;
+  }
+}
