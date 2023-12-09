@@ -3,9 +3,11 @@
 .page {
   @include flex-center-column(2rem);
   padding: 1rem 1rem;
+  padding-bottom: 8rem;
   @include apply-at-lg-size {
     @include flex-row(1rem);
     align-items: start;
+    padding-bottom: 1rem;
   }
   .container {
     width: 100%;

@@ -23,9 +23,7 @@ const Diary = ({ firstLogin, token, user, meals }) => {
   const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
   const [currentDate, setCurrentDate] = useState(new Date());
   const [showNutritionPopup, setShowNutritionPopup] = useState(false);
-
   const { totalCalories, totalProtein, totalCarbs, totalFat } = calculateTotalNutrients(meals);
-  const dailyCalorieGoal = user?.bmr;
 
   useEffect(() => {
     if (firstLogin) {
@@ -58,7 +56,7 @@ const Diary = ({ firstLogin, token, user, meals }) => {
       <div className={classes.container}>
         <DiaryDate currentDate={currentDate} setCurrentDate={setCurrentDate} />
         <div className={classes.nutrients}>
-          <CalorieCounter caloriesConsumed={totalCalories} dailyCalorieGoal={dailyCalorieGoal} />
+          <CalorieCounter caloriesConsumed={totalCalories} dailyCalorieGoal={user?.bmr} />
           <div className={classes.nutrients__macro}>
             <MacronutrientBar type="protein" value={totalProtein} dailyGoal={user?.proteinIntake} />
             <MacronutrientBar type="carbs" value={totalCarbs} dailyGoal={user?.carbsIntake} />
