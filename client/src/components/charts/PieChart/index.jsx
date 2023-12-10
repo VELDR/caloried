@@ -13,6 +13,7 @@ const COLORS = {
 
 const PieChart = ({ data }) => {
   const percentFormat = (value) => `${Number(value).toLocaleString('en-EN', { minimumFractionDigits: 0 })} %`;
+
   return (
     <div className={classes.container}>
       <ResponsivePie
@@ -20,13 +21,9 @@ const PieChart = ({ data }) => {
         data={data}
         valueFormat={percentFormat}
         colors={(datum) => COLORS[datum.id]}
-        margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
         activeOuterRadiusOffset={8}
         enableArcLinkLabels={false}
-        arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor={{ from: 'color' }}
-        arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: 'color' }}
         arcLabelsSkipAngle={10}
         arcLabelsTextColor="var(--color-text-primary)"
         arcLabelsComponent={({ datum, label, style }) => <CustomArcLabel datum={datum} label={label} style={style} />}

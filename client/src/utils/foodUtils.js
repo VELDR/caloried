@@ -3,12 +3,19 @@ export const calculateAdjustedNutrients = (foodDetails, selectedServingSize, ser
   if (!foodDetails || !foodDetails.nutrients) {
     return {};
   }
-  const defaultServingWeight = foodDetails?.servingWeight;
-  const selectedServingWeight =
-    foodDetails?.altMeasures?.find((measure) => measure.serving_weight.toString() === selectedServingSize)
-      ?.serving_weight || defaultServingWeight;
 
-  const multiplier = (selectedServingWeight * servingCount) / defaultServingWeight;
+  const defaultServingWeight = foodDetails?.servingWeight;
+  let multiplier;
+
+  if (defaultServingWeight) {
+    const selectedServingWeight =
+      foodDetails?.altMeasures?.find((measure) => measure.serving_weight.toString() === selectedServingSize)
+        ?.serving_weight || defaultServingWeight;
+
+    multiplier = (selectedServingWeight * servingCount) / defaultServingWeight;
+  } else {
+    multiplier = servingCount;
+  }
 
   const adjustedNutrients = {};
   Object.keys(foodDetails?.nutrients).forEach((nutrientKey) => {
@@ -28,13 +35,20 @@ export const calculateTotalNutrients = (meals) => {
   let totalCarbs = 0;
   let totalFat = 0;
 
-  meals?.forEach((meal) => {
-    meal.foodLogs.forEach((foodLog) => {
-      totalCalories += foodLog.food.calories * foodLog.quantity;
-      totalProtein += foodLog.food.protein * foodLog.quantity;
-      totalCarbs += foodLog.food.carbs * foodLog.quantity;
-      totalFat += foodLog.food.fat * foodLog.quantity;
+  if (Array.isArray(meals)) {
+    meals.forEach((meal) => {
+      meal.foodLogs.forEach((foodLog) => {
+        totalCalories += foodLog.food.calories * foodLog.quantity;
+        totalProtein += foodLog.food.protein * foodLog.quantity;
+        totalCarbs += foodLog.food.carbs * foodLog.quantity;
+        totalFat += foodLog.food.fat * foodLog.quantity;
+      });
     });
-  });
+  }
   return { totalCalories, totalProtein, totalCarbs, totalFat };
+};
+
+export const calculateNutrientPercentage = (nutrientValue, calories, multiplier) => {
+  if (!calories || !nutrientValue) return 0;
+  return Math.round(((nutrientValue * multiplier) / calories) * 100);
 };

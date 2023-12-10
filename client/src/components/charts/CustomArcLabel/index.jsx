@@ -12,7 +12,7 @@ const CustomArcLabel = ({ datum, label, style }) => {
 
   const centroid = arcGenerator.centroid();
 
-  const [x, y] = centroid;
+  const [x, y] = centroid.map((coord) => coord * 1.4);
 
   return (
     <text fill={style.textColor} className={classes.text} textAnchor="middle" dominantBaseline="central" x={x} y={y}>

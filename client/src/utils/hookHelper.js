@@ -27,12 +27,10 @@ export const useServingForm = (foodDetails, defaultServingCount = 1) => {
   }, [foodDetails]);
 
   const handleServingSizeChange = (event) => {
-    const newServingSize = event.target.value;
+    const newServingSize = parseFloat(event.target.value);
     setSelectedServingSize(newServingSize);
 
-    const selectedMeasure = foodDetails?.altMeasures?.find(
-      (measure) => measure.serving_weight.toString() === newServingSize
-    );
+    const selectedMeasure = foodDetails?.altMeasures?.find((measure) => measure.serving_weight === newServingSize);
     setSelectedServingUnit(selectedMeasure?.measure || foodDetails?.servingUnit);
     setSelectedServingQty(selectedMeasure?.qty || foodDetails?.servingQty);
   };

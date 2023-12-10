@@ -9,7 +9,7 @@ const SecondaryButton = ({ children, onClick, className }) => (
 );
 
 SecondaryButton.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.any.isRequired,
   onClick: PropTypes.func,
   className: PropTypes.string,
 };

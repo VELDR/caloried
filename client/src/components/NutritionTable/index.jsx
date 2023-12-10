@@ -26,10 +26,14 @@ const NutritionTable = ({
     }
   };
 
-  const nutrientFactor = (selectedServingSize / servingWeight) * servingCount;
+  let nutrientFactor;
+  if (servingWeight) {
+    nutrientFactor = (selectedServingSize / servingWeight) * servingCount;
+  } else {
+    nutrientFactor = servingCount;
+  }
 
   const getNutrientValue = (nutrient) => (nutrient?.value ? roundValue(nutrient.value * nutrientFactor) : 0);
-
   const getNutrientDV = (nutrient) => (nutrient?.dv ? roundValue(nutrient.dv * nutrientFactor) : 0);
 
   return (
@@ -51,8 +55,7 @@ const NutritionTable = ({
             max="10"
           />
           <span>
-            {servingCount} × {selectedServingSize}g ({selectedServingQty}
-            {selectedServingUnit})
+            {servingCount} × {selectedServingSize}g ({selectedServingQty} {selectedServingUnit})
           </span>
         </div>
       </header>
@@ -162,8 +165,7 @@ const NutritionTable = ({
           <tr>
             <td className={classes.blankCell}> </td>
             <th>
-              <FormattedMessage id="app_dietary_fiber" />
-              {getNutrientValue(nutrients?.fiber)}g
+              <FormattedMessage id="app_dietary_fiber" /> {getNutrientValue(nutrients?.fiber)}g
             </th>
             <td>
               <span>{getNutrientDV(nutrients?.fiber)}%</span>

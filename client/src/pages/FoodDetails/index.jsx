@@ -11,7 +11,7 @@ import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
 
-import { calculateAdjustedNutrients } from '@utils/foodUtils';
+import { calculateAdjustedNutrients, calculateNutrientPercentage } from '@utils/foodUtils';
 import { useServingForm } from '@utils/hookHelper';
 import { formatDate } from '@utils/formatUtils';
 import NutritionTable from '@components/NutritionTable';
@@ -57,9 +57,9 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
   useEffect(() => {
     if (foodDetails) {
       const totalCalories = adjustedNutrients?.calories?.value;
-      const carbsPercentage = Math.round(((adjustedNutrients.carbs.value * 4) / totalCalories) * 100);
-      const proteinPercentage = Math.round(((adjustedNutrients.protein.value * 4) / totalCalories) * 100);
-      const fatPercentage = Math.round(((adjustedNutrients.fat.value * 9) / totalCalories) * 100);
+      const carbsPercentage = calculateNutrientPercentage(adjustedNutrients.carbs.value, totalCalories, 4);
+      const proteinPercentage = calculateNutrientPercentage(adjustedNutrients.protein.value, totalCalories, 4);
+      const fatPercentage = calculateNutrientPercentage(adjustedNutrients.fat.value, totalCalories, 9);
 
       setMacronutrientData([
         { id: 'Fat', label: 'Fat', value: fatPercentage, grams: adjustedNutrients?.fat?.value },
@@ -76,18 +76,18 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
     adjustedNutrients?.protein?.value,
     adjustedNutrients?.fat?.value,
   ]);
+
   const onSubmit = (data) => {
     const foodData = {
       ...data,
       name: foodDetails?.foodName,
       image: foodDetails?.image,
-      calories: adjustedNutrients?.calories?.value,
-      fat: adjustedNutrients?.fat?.value,
-      protein: adjustedNutrients?.protein?.value,
-      carbs: adjustedNutrients?.carbs?.value,
+      calories: foodDetails?.nutrients?.calories?.value,
+      fat: foodDetails?.nutrients?.fat?.value,
+      protein: foodDetails?.nutrients?.protein?.value,
+      carbs: foodDetails?.nutrients?.carbs?.value,
       servingUnit: selectedServingUnit,
     };
-    console.log(foodData);
     dispatch(addFoodToDiary(foodData, token));
   };
 
@@ -129,7 +129,6 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
                       type="number"
                       className={`${classes.input} ${classes.quantity}`}
                       {...register('quantity', { required: true, min: 1, max: 1000 })}
-                      defaultValue={1}
                       value={servingCount}
                       onChange={handleServingCountChange}
                     />
@@ -142,9 +141,10 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
                     <select
                       id="servingSize"
                       className={classes.input}
-                      {...register('servingSize')}
+                      {...register('servingSize', { required: true })}
                       onChange={handleServingSizeChange}
                       value={selectedServingSize}
+                      // TODO: Fix this weird bug
                     >
                       {isCommonFood ? (
                         altMeasures.map((measure, index) => (
@@ -182,12 +182,12 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
                       id="mealType"
                       className={classes.input}
                       {...register('mealType', { required: true })}
-                      defaultValue={selectedMealType?.toLowerCase() || 'breakfast'}
+                      defaultValue={selectedMealType || 'Breakfast'}
                     >
-                      <option value="breakfast">Breakfast</option>
-                      <option value="lunch">Lunch</option>
-                      <option value="dinner">Dinner</option>
-                      <option value="snack">Snack</option>
+                      <option value="Breakfast">Breakfast</option>
+                      <option value="Lunch">Lunch</option>
+                      <option value="Dinner">Dinner</option>
+                      <option value="Snack">Snack</option>
                     </select>
                   </label>
                   {errors.mealType && <span className={classes.error}>Meal type is required</span>}
@@ -224,11 +224,14 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
             </div>
           </div>
           <div className={classes.pieChart}>
-            <div className={classes.pieChart__title}>Nutrition Breakdown</div>
+            <div className={classes.pieChart__title}>Nutrition Distribution</div>
             <div className={classes.pieChart__description}>
-              This pie chart shows the percentage breakdown of macronutrients of <span>{foodDetails?.foodName}</span>.
+              This pie chart shows the percentage distribution of macronutrients of <span>{foodDetails?.foodName}</span>
+              .
             </div>
-            <PieChart data={macronutrientData} />
+            <div className={classes.pieChart__chart}>
+              <PieChart data={macronutrientData} />
+            </div>
           </div>
         </div>
       </div>

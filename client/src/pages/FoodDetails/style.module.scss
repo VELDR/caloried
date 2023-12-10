@@ -189,8 +189,7 @@
         }
       }
       .pieChart {
-        width: 100%;
-
+        @include flex-column;
         padding: 2rem;
         box-sizing: border-box;
         border-top: 1px solid var(--color-text-secondary);
@@ -208,6 +207,9 @@
           span {
             font-weight: 700;
           }
+        }
+        &__chart {
+          @include box(100%, 20rem);
         }
       }
     }

@@ -1,5 +1,12 @@
 import { produce } from 'immer';
-import { RESET_SELECTION, SET_DATE, SET_MEALS_BY_DATE, SET_MEAL_TYPE, SET_USER } from './constants';
+import {
+  RESET_SELECTION,
+  SET_DATE,
+  SET_DELETE_FOOD_FROM_DIARY,
+  SET_MEALS_BY_DATE,
+  SET_MEAL_TYPE,
+  SET_USER,
+} from './constants';
 
 export const initialState = {
   user: null,
@@ -28,6 +35,11 @@ const diaryReducer = (state = initialState, action) =>
       case RESET_SELECTION:
         draft.selectedMealType = null;
         draft.selectedDate = null;
+        break;
+      case SET_DELETE_FOOD_FROM_DIARY:
+        draft.meals.forEach((meal) => {
+          meal.foodLogs = meal.foodLogs.filter((foodLog) => foodLog.id !== action.foodLogId);
+        });
         break;
     }
   });

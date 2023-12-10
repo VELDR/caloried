@@ -43,14 +43,15 @@ const Diary = ({ firstLogin, token, user, meals }) => {
   };
 
   const renderMealCards = (mealType) => {
-    const mealsForType = meals?.filter((meal) => meal.mealType === mealType);
+    const mealsForType = Array.isArray(meals) ? meals.filter((meal) => meal.mealType === mealType) : [];
 
-    if (mealsForType && mealsForType.length > 0) {
+    if (mealsForType.length > 0) {
       return mealsForType.map((meal) => <MealCard key={meal.id} meal={meal} mealType={mealType} />);
     }
 
     return <MealCard key={mealType} meal={{ mealType, foodLogs: [] }} mealType={mealType} />;
   };
+
   return (
     <div className={classes.page}>
       <div className={classes.container}>

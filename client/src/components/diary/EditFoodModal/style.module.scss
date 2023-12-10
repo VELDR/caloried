@@ -1,0 +1,113 @@
+@import '@styles/base';
+
+.dialog {
+  @include flex-column(1rem);
+  &__header {
+    @include flex-items-center(1rem);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-text-secondary);
+    .image {
+      @include box(6rem, auto);
+      border-radius: 1rem;
+    }
+    .food {
+      &__name {
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: $font-size-large;
+      }
+
+      &__serving {
+        font-size: $font-size-medium;
+        color: var(--color-text-secondary);
+      }
+    }
+  }
+  .nutrition {
+    @include flex-items-center(1rem);
+    .nutrient {
+      @include flex-column(1rem);
+      width: 30%;
+      &__item {
+        @include flex-items-center(0.25rem);
+        font-size: $font-size-regular;
+        font-weight: 500;
+      }
+      .icon {
+        @include box(1.5rem);
+      }
+    }
+    .pieChart {
+      width: 70%;
+      height: 14rem;
+    }
+  }
+  .editForm {
+    @include flex-column(1rem);
+    border-top: 1px solid var(--color-text-secondary);
+    .form {
+      @include flex-column;
+      .error {
+        font-size: $font-size-smaller;
+        color: $color-error;
+      }
+      &__group {
+        border-bottom: 1px solid var(--color-text-secondary);
+        padding: 0.5rem 0;
+        .label {
+          position: relative;
+          font-size: $font-size-small;
+          @include flex-items-center(1rem);
+          justify-content: space-between;
+          .input {
+            @include input;
+            padding: 0rem 0.25rem;
+            border-radius: 0.25rem;
+            @include truncate(6rem);
+
+            option {
+              background-color: var(--color-bg-primary);
+            }
+          }
+          .quantity {
+            width: 1rem;
+          }
+          .date {
+            width: 6.25rem;
+          }
+          .calendar {
+            @include box(0.75rem);
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+          }
+        }
+      }
+    }
+    .buttons {
+      @include flex-row(1rem);
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      .button {
+        @include flex-items-center(0.25rem);
+        svg {
+          display: block;
+          @include apply-at-sm-size {
+            display: none;
+          }
+        }
+        .text {
+          display: none;
+          @include apply-at-sm-size {
+            display: block;
+          }
+        }
+      }
+      .deleteButton {
+        background-color: $color-error;
+      }
+    }
+  }
+}

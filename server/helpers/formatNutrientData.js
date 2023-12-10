@@ -83,7 +83,7 @@ const mapFoods = (items) => {
     servingQty: item?.serving_qty,
     servingUnit: item?.serving_unit,
     servingWeight: isBranded
-      ? item?.serving_weight_grams?.toFixed(1)
+      ? parseFloat(item?.serving_weight_grams?.toFixed(1))
       : item?.serving_weight_grams,
     type: isBranded ? 'branded' : 'common',
     brandName: isBranded ? item?.brand_name : undefined,

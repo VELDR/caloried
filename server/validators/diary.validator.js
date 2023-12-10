@@ -12,8 +12,16 @@ const addFoodToDiaryValidator = Joi.object({
   quantity: Joi.number().positive().integer().min(1).required(),
   date: Joi.date().iso().required(),
   mealType: Joi.string()
-    .valid('breakfast', 'lunch', 'dinner', 'snack')
+    .valid('Breakfast', 'Lunch', 'Dinner', 'Snack')
     .required(),
 });
 
-module.exports = { addFoodToDiaryValidator };
+const editFoodInDiaryValidator = Joi.object({
+  quantity: Joi.number().positive().integer().min(1).required(),
+  date: Joi.date().iso().required(),
+  mealType: Joi.string()
+    .valid('Breakfast', 'Lunch', 'Dinner', 'Snack')
+    .required(),
+});
+
+module.exports = { addFoodToDiaryValidator, editFoodInDiaryValidator };
