@@ -14,7 +14,7 @@ import PieChart from '@components/charts/PieChart';
 import PrimaryButton from '@components/ui/PrimaryButton';
 import SecondaryButton from '@components/ui/SecondaryButton';
 import { deleteFoodFromDiary, editFoodInDiary } from '@pages/Diary/actions';
-import { calculateNutrientPercentage } from '@utils/foodUtils';
+import { calculateNutrientPercentage } from '@utils/calculateUtils';
 
 import classes from './style.module.scss';
 
@@ -61,7 +61,7 @@ const EditFoodModal = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogContent className={classes.dialog}>
         <div className={classes.dialog__header}>
           <img src={foodDetails?.image} alt={foodDetails?.foodName} className={classes.image} />

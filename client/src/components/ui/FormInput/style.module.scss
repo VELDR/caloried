@@ -2,6 +2,7 @@
 
 .form {
   @include flex-column;
+
   &__label {
     font-size: $font-size-regular;
     text-align: left;

@@ -8,7 +8,7 @@ exports.authorizeAdmin = (req, res, next) => {
     const { isAdmin } = req.user;
     if (!isAdmin) {
       return handleResponse(res, 403, {
-        error: 'Access forbidden. Admin authorization required.',
+        message: 'Access forbidden. Admin authorization required.',
       });
     }
     next();

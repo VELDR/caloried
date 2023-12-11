@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { createStructuredSelector } from 'reselect';
 
-import { calculateTotalNutrients } from '@utils/foodUtils';
+import { calculateTotalNutrients } from '@utils/calculateUtils';
 import { formatDate } from '@utils/formatUtils';
 import { selectFirstLogin, selectToken } from '@containers/Client/selectors';
 import { setFirstLogin } from '@containers/Client/actions';

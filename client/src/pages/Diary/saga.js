@@ -11,10 +11,8 @@ function* doGetUserById({ token }) {
     const response = yield call(getUserByIdApi, token);
     yield put(setUser(response));
   } catch (error) {
-    if (error.response && error.response.data) {
+    if (error?.response?.status === 404) {
       toast.error(error.response.data.message);
-    } else {
-      yield put(showPopup());
     }
   } finally {
     yield put(setLoading(false));

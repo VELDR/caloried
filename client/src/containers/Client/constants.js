@@ -4,3 +4,4 @@ export const REGISTER = 'Client/REGISTER';
 export const RESEND_VERIFICATION_EMAIL = 'Client/RESEND_VERIFICATION_EMAIL';
 export const LOGIN = 'Client/LOGIN';
 export const SET_FIRST_LOGIN = 'Client/SET_FIRST_LOGIN';
+export const LOGOUT_USER = 'Client/LOGOUT_USER';

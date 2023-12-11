@@ -16,6 +16,7 @@ export default {
   app_activity_level: 'Tingkat Aktivitas',
   app_account_setup: 'Pengaturan Akun',
 
+  app_goal: 'Tujuan',
   app_goal_title: 'Tetapkan Tujuan Kebugaran Anda',
   app_goal_description: 'Beri tahu kami apa yang menjadi tujuan Anda',
   app_lose: 'Turunkan Berat Badan',
@@ -42,6 +43,7 @@ export default {
   app_error_berat: 'Berat badan harus antara 20 kg dan 400 kg',
   app_metrics_title: 'Fisik Tubuh',
   app_metrics_description: 'Kami membutuhkan data fisik anda.',
+  app_sex: 'Jenis Kelamin',
   app_biological_sex: 'Jenis Kelamin',
   app_male: 'Laki-laki',
   app_female: 'Perempuan',
@@ -99,4 +101,10 @@ export default {
   app_calories_per_gram: 'Kalori per Gram',
   app_fat: 'Lemak',
   app_carbs: 'Karbohidrat',
+
+  app_profile: 'Profil',
+  app_logout: 'Keluar',
+  app_dashboard: 'Dashbor',
+  app_diary: 'Diary',
+  app_food: 'Makanan',
 };

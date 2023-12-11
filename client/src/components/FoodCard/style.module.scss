@@ -7,7 +7,7 @@
   @include flex-items-center(3rem);
   justify-content: space-between;
   &:hover {
-    opacity: 75%;
+    opacity: 0.75;
   }
   &:hover .chevronRight {
     color: var(--color-primary);

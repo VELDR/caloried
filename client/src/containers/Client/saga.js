@@ -50,7 +50,6 @@ function* doLogin({ data, callback }) {
     yield put(setToken(response.token));
     yield put(setFirstLogin(response.firstLogin));
     yield call(callback);
-    toast.success(response?.message);
   } catch (error) {
     if (error.response && error.response.data) {
       toast.error(error.response.data.message);

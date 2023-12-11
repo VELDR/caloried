@@ -1,0 +1,119 @@
+@import '@styles/base';
+
+.page {
+  margin-bottom: 7rem;
+  @include apply-at-sm-size {
+    margin: 0;
+  }
+  .container {
+    .title {
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid var(--color-text-secondary);
+      font-weight: 700;
+      font-size: $font-size-larger;
+      padding: 1rem 0.5rem;
+      @include apply-at-sm-size {
+        text-align: left;
+      }
+    }
+    .header {
+      padding: 1rem 0;
+      .avatar {
+        position: relative;
+        margin: 0 auto;
+        width: fit-content;
+        padding: 1rem;
+        &__image {
+          @include box(7rem);
+        }
+        &__edit {
+          cursor: pointer;
+          position: absolute;
+          bottom: 15px;
+          right: 20px;
+          padding: 0.5rem;
+          border-radius: 50%;
+          background-color: var(--color-accent);
+          &:hover {
+            background-color: var(--color-text-primary);
+            color: var(--color-bg-primary);
+          }
+        }
+      }
+      .heading {
+        text-align: center;
+        &__username {
+          font-size: $font-size-large;
+          font-weight: 700;
+        }
+        &__email {
+          color: var(--color-text-secondary);
+        }
+        &__goal {
+          padding: 0.5rem;
+          @include flex-center;
+          text-transform: capitalize;
+        }
+        .gainColor {
+          color: var(--color-primary);
+        }
+        .maintainColor {
+          color: $color-fat;
+        }
+        .loseColor {
+          color: $color-error;
+        }
+      }
+    }
+
+    .body {
+      border-top: 1px solid var(--color-text-secondary);
+      .section {
+        border-bottom: 1px solid var(--color-text-secondary);
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 0.25rem 0.5rem;
+      }
+      .profile {
+        border-bottom: 1px solid var(--color-text-secondary);
+        padding: 0.5rem;
+        &__label {
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: $font-size-small;
+          color: var(--color-text-secondary);
+        }
+        &__info {
+          span {
+            text-transform: capitalize;
+          }
+        }
+      }
+      .nutrition {
+        .nutrient {
+          border-bottom: 1px solid var(--color-text-secondary);
+          padding: 0.5rem;
+          &__label {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: $font-size-small;
+            color: var(--color-text-secondary);
+          }
+          &__info {
+            @include flex-items-center(0.25rem);
+            font-weight: 700;
+            span {
+              font-size: $font-size-small;
+              font-style: italic;
+            }
+          }
+        }
+
+        .icon {
+          @include box(1.25rem);
+        }
+      }
+    }
+  }
+}

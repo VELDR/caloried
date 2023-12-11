@@ -52,3 +52,16 @@ export const calculateNutrientPercentage = (nutrientValue, calories, multiplier)
   if (!calories || !nutrientValue) return 0;
   return Math.round(((nutrientValue * multiplier) / calories) * 100);
 };
+
+export const calculateAge = (dob) => {
+  const birthday = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthday.getFullYear();
+  const m = today.getMonth() - birthday.getMonth();
+
+  if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) {
+    age--;
+  }
+
+  return age;
+};

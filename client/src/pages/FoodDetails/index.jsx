@@ -11,7 +11,7 @@ import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
 
-import { calculateAdjustedNutrients, calculateNutrientPercentage } from '@utils/foodUtils';
+import { calculateAdjustedNutrients, calculateNutrientPercentage } from '@utils/calculateUtils';
 import { useServingForm } from '@utils/hookHelper';
 import { formatDate } from '@utils/formatUtils';
 import NutritionTable from '@components/NutritionTable';

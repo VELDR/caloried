@@ -1,5 +1,6 @@
 import {
   LOGIN,
+  LOGOUT_USER,
   REGISTER,
   RESEND_VERIFICATION_EMAIL,
   SET_FIRST_LOGIN,
@@ -37,4 +38,8 @@ export const login = (data, callback) => ({
 export const setFirstLogin = (firstLogin) => ({
   type: SET_FIRST_LOGIN,
   firstLogin,
+});
+
+export const logoutUser = () => ({
+  type: LOGOUT_USER,
 });

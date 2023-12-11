@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AutoStories, Dashboard, Fastfood, Person } from '@mui/icons-material';
-import SearchBar from '@components/SearchBar';
+import SearchBar from '@components/ui/SearchBar';
 
 import classes from './style.module.scss';
 

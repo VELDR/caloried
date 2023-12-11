@@ -9,6 +9,7 @@ import SignIn from '@pages/SignIn';
 import Diary from '@pages/Diary';
 import FoodSearch from '@pages/FoodSearch';
 import FoodDetails from '@pages/FoodDetails';
+import Profile from '@pages/Profile';
 
 const routes = [
   {
@@ -58,6 +59,13 @@ const routes = [
     name: 'FoodDetails',
     protected: true,
     component: FoodDetails,
+    layout: MainLayout,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    protected: true,
+    component: Profile,
     layout: MainLayout,
   },
   { path: '*', name: 'Not Found', component: NotFound, layout: MainLayout, protected: false },

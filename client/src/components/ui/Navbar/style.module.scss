@@ -35,7 +35,7 @@
     }
 
     .toolbar {
-      @include directionX;
+      @include flex-items-center(0.25rem);
     }
   }
 }

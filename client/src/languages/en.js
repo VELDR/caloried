@@ -16,6 +16,7 @@ export default {
   app_activity_level: 'Activity Level',
   app_account_setup: 'Account Setup',
 
+  app_goal: 'Goal',
   app_goal_title: 'Set Your Fitness Goals',
   app_goal_description: "Tell us what you're aiming for",
   app_lose: 'Lose Weight',
@@ -42,6 +43,7 @@ export default {
   app_error_weight: 'Weight must be between 20 kg and 400 kg.',
   app_metrics_title: 'Body Metrics',
   app_metrics_description: "Let's capture key measurements of your body.",
+  app_sex: 'Sex',
   app_biological_sex: 'Biological Sex',
   app_male: 'Male',
   app_female: 'Female',
@@ -100,4 +102,10 @@ export default {
   app_calories_per_gram: 'Calories per gram',
   app_fat: 'Fat',
   app_carbs: 'Carbs',
+
+  app_profile: 'Profile',
+  app_logout: 'Logout',
+  app_dashboard: 'Dashboard',
+  app_diary: 'Diary',
+  app_food: 'Food',
 };
