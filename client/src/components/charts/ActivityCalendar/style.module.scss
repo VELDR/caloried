@@ -1,0 +1,27 @@
+@import '@styles/base';
+
+.container {
+  height: 8rem;
+  width: 50rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  @include apply-at-md-size {
+    width: 63rem;
+    height: 9rem;
+  }
+}
+
+.tooltip {
+  background-color: hsla(var(--hue), var(--saturation), var(--lightness), 0.75);
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-text-primary);
+  position: absolute;
+  right: -25px;
+  bottom: 5px;
+  white-space: nowrap;
+  z-index: 1000;
+  &__text {
+    font-size: $font-size-small;
+  }
+}

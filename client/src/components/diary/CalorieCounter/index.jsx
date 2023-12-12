@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import caloriesIcon from '@static/images/calories.svg';
@@ -42,7 +43,9 @@ const CalorieCounter = ({ caloriesConsumed, dailyCalorieGoal }) => {
               {remainingCalories}
               <span>kcal</span>
             </div>
-            <div className={classes.subtitle}>Remaining</div>
+            <div className={classes.subtitle}>
+              <FormattedMessage id="app_remaining" />
+            </div>
           </div>
         )}
       </CircularProgressbarWithChildren>

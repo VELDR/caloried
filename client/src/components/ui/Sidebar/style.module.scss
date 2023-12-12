@@ -65,12 +65,21 @@
   .chevron {
     cursor: pointer;
     @include flex-center;
+
     padding: 0.5rem 0;
-    border-top-right-radius: 0.75rem;
-    border-bottom-right-radius: 0.75rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
     color: var(--color-bg-primary);
     background-color: var(--color-text-primary);
-
+    svg {
+      font-size: $font-size-medium;
+    }
+    @include apply-at-xl-size {
+      padding: 0.5rem 0;
+      svg {
+        font-size: $font-size-large;
+      }
+    }
     &:hover {
       color: var(--color-text-primary);
       background-color: var(--color-bg-primary);

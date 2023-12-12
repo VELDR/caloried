@@ -6,7 +6,16 @@ import diarySaga from '@pages/Diary/saga';
 import foodSearchSaga from '@pages/FoodSearch/saga';
 import foodDetailsSaga from '@pages/FoodDetails/saga';
 import editProfileSaga from '@pages/Profile/saga';
+import dashboardSaga from '@pages/Dashboard/saga';
 
 export default function* rootSaga() {
-  yield all([appSaga(), clientSaga(), diarySaga(), foodSearchSaga(), foodDetailsSaga(), editProfileSaga()]);
+  yield all([
+    appSaga(),
+    clientSaga(),
+    diarySaga(),
+    foodSearchSaga(),
+    foodDetailsSaga(),
+    editProfileSaga(),
+    dashboardSaga(),
+  ]);
 }

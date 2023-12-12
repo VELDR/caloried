@@ -2,9 +2,11 @@
 
 @mixin light-theme {
   --color-bg-primary: #f8fcf3;
-  --color-bg-secondary: #d7fde0;
+  // --color-bg-secondary: #d7fde0;
+  --color-bg-secondary: #f1fae9;
+  --color-bg-tertiary: #dce2d8;
   --color-text-primary: #070c03;
-  --color-text-secondary: #878b83;
+  --color-text-secondary: #9ca496;
   --color-primary: #75ce36;
   --color-secondary: #88e2bd;
   --color-accent: #62dad6;
@@ -15,9 +17,11 @@
 
 @mixin dark-theme {
   --color-bg-primary: #080c03;
-  --color-bg-secondary: #062d0f;
+  // --color-bg-secondary: #062d0f;
+  --color-bg-secondary: #121b07;
+  --color-bg-tertiary: #40413f;
   --color-text-primary: #f7fcf3;
-  --color-text-secondary: #7b7f76;
+  --color-text-secondary: #6b7164;
   --color-primary: #70c931;
   --color-secondary: #03ae41;
   --color-accent: #31fbb8;

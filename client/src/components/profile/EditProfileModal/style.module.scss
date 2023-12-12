@@ -17,7 +17,9 @@
       .account {
         @include flex-column(0.5rem);
         width: 100%;
+        overflow: hidden;
         &__form {
+          width: 100%;
           .label {
             position: relative;
             font-size: $font-size-regular;
@@ -32,8 +34,7 @@
             }
             .input {
               @include input;
-              padding-left: 1.5rem;
-              border-radius: 0.5rem;
+              padding-left: 1.75rem;
             }
             .inputError {
               border-color: $color-error;

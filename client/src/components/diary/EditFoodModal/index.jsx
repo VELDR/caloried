@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { Dialog, DialogContent } from '@mui/material';
 import { CalendarToday, Delete, Save } from '@mui/icons-material';
@@ -27,6 +28,7 @@ const EditFoodModal = ({
   initialDate,
   foodLogId,
   token,
+  intl: { formatMessage },
 }) => {
   const {
     register,
@@ -100,7 +102,7 @@ const EditFoodModal = ({
           <div className={classes.form}>
             <div className={classes.form__group}>
               <label htmlFor="quantity" className={classes.label}>
-                Number of serving
+                <FormattedMessage id="app_number_of_serving" />
                 <input
                   id="quantity"
                   type="number"
@@ -113,45 +115,59 @@ const EditFoodModal = ({
 
             <div className={classes.form__group}>
               <label htmlFor="date" className={classes.label}>
-                Date
+                <FormattedMessage id="app_date" />
                 <input
                   id="date"
                   type="date"
                   className={`${classes.input} ${classes.date}`}
-                  {...register('date', { required: true })}
+                  {...register('date', { required: formatMessage({ id: 'app_date_required' }) })}
                   defaultValue={initialDate}
                 />
                 <CalendarToday className={classes.calendar} />
               </label>
             </div>
-            {errors.date && <span className={classes.error}>Date is required</span>}
+            {errors.date && <span className={classes.error}>{errors.date.message}</span>}
             <div className={classes.form__group}>
               <label htmlFor="mealType" className={classes.label}>
-                Meal Type
+                <FormattedMessage id="app_meal_type" />
                 <select
                   id="mealType"
                   className={classes.input}
-                  {...register('mealType', { required: true })}
+                  {...register('mealType', { required: formatMessage({ id: 'app_meal_type_required' }) })}
                   defaultValue={initialMealType}
                 >
-                  <option value="Breakfast">Breakfast</option>
-                  <option value="Lunch">Lunch</option>
-                  <option value="Dinner">Dinner</option>
-                  <option value="Snack">Snack</option>
+                  <option value="Breakfast">
+                    <FormattedMessage id="app_breakfast" />
+                  </option>
+                  <option value="Lunch">
+                    <FormattedMessage id="app_lunch" />
+                  </option>
+                  <option value="Dinner">
+                    <FormattedMessage id="app_dinner" />
+                  </option>
+                  <option value="Snack">
+                    <FormattedMessage id="app_snack" />
+                  </option>
                 </select>
               </label>
-              {errors.mealType && <span className={classes.error}>Meal type is required</span>}
+              {errors.mealType && <span className={classes.error}>{errors.mealType.message}</span>}
             </div>
           </div>
           <div className={classes.buttons}>
             <SecondaryButton className={classes.button} onClick={onClose}>
-              Cancel
+              <FormattedMessage id="app_cancel" />
             </SecondaryButton>
             <PrimaryButton className={`${classes.button} ${classes.deleteButton}`} onClick={onDelete} isSubmit={false}>
-              <Delete /> <div className={classes.text}>Delete</div>
+              <Delete />
+              <div className={classes.text}>
+                <FormattedMessage id="app_delete" />
+              </div>
             </PrimaryButton>
             <PrimaryButton className={classes.button}>
-              <Save /> <div className={classes.text}>Save</div>
+              <Save />
+              <div className={classes.text}>
+                <FormattedMessage id="app_save" />
+              </div>
             </PrimaryButton>
           </div>
         </form>
@@ -169,10 +185,11 @@ EditFoodModal.propTypes = {
   initialDate: PropTypes.string,
   foodLogId: PropTypes.number,
   token: PropTypes.string,
+  intl: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   token: selectToken,
 });
 
-export default connect(mapStateToProps)(EditFoodModal);
+export default injectIntl(connect(mapStateToProps)(EditFoodModal));

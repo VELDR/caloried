@@ -1,0 +1,29 @@
+@import '@styles/base';
+
+.item {
+  @include flex-items-center(0.5rem);
+  padding: 1rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: 1rem;
+  @include apply-at-xl-size {
+    padding: 2rem;
+  }
+  .icon {
+    @include box(3rem);
+  }
+  .text {
+    @include flex-column;
+    .value {
+      font-size: $font-size-large;
+      font-weight: 500;
+      span {
+        font-weight: 300;
+        font-size: $font-size-regular;
+      }
+    }
+    .label {
+      color: var(--color-text-secondary);
+      font-size: $font-size-small;
+    }
+  }
+}

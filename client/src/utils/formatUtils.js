@@ -25,3 +25,10 @@ export const getActivityLevel = (activityCode) => {
       return 'Unknown Activity Level';
   }
 };
+
+export const formatLineChartLabel = (data) =>
+  data.map((item) => {
+    const date = new Date(item.x);
+    const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return { ...item, x: formattedDate };
+  });

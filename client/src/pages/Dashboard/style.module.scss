@@ -1,0 +1,129 @@
+@import '@styles/base';
+
+.page {
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+  .container {
+    @include flex-column(1rem);
+    margin: 0 auto;
+    max-width: 70rem;
+    overflow-x: auto;
+    padding: 0 0.5rem;
+    .header {
+      @include flex-items-center;
+      font-size: $font-size-larger;
+      font-weight: 700;
+    }
+    .top {
+      @include flex-column(1rem);
+      @include apply-at-md-size {
+        @include flex-row(1rem);
+      }
+
+      .pieChart {
+        background-color: var(--color-bg-secondary);
+        border-radius: 1rem;
+        @include apply-at-md-size {
+          width: 50%;
+        }
+        @include apply-at-lg-size {
+          width: 40%;
+        }
+        &__title {
+          font-weight: 700;
+          padding-top: 0.5rem;
+          padding-left: 1rem;
+        }
+        &__wrapper {
+          @include box(100%, 10rem);
+
+          .noDataMessage {
+            @include flex-center-column(1rem);
+            height: 100%;
+            text-align: center;
+            font-size: $font-size-small;
+            .logButton {
+              @include primary-button;
+            }
+          }
+        }
+      }
+    }
+
+    .todayIntake {
+      @include flex-column(1rem);
+      &__title {
+        font-size: $font-size-large;
+        font-weight: 700;
+      }
+    }
+    .nutrition {
+      @include flex-column(1rem);
+      @include apply-at-xs2-size {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include apply-at-lg-size {
+        @include flex-row(1.5rem);
+        justify-content: space-between;
+      }
+    }
+
+    .lineChart {
+      border: 3px solid var(--color-bg-tertiary);
+      // background-color: var(--color-bg-secondary);
+      padding: 0.5rem;
+      box-sizing: border-box;
+      border-radius: 0.5rem;
+      &__header {
+        @include flex-items-center;
+        justify-content: space-between;
+        padding: 0.25rem 0.5rem;
+        .title {
+          font-weight: 700;
+          font-size: $font-size-large;
+        }
+        .filter {
+          @include flex-row;
+          border: 1px solid var(--color-text-primary);
+          border-radius: 0.25rem;
+          overflow: hidden;
+          &__item {
+            cursor: pointer;
+            padding: 0 0.5rem;
+            font-size: $font-size-regular;
+            font-weight: 500;
+            &:last-child {
+              border-left: 1px solid var(--color-text-primary);
+            }
+          }
+          .active {
+            background-color: var(--color-primary);
+            color: var(--color-bg-primary);
+          }
+        }
+      }
+      &__wrapper {
+        overflow-x: auto;
+      }
+    }
+
+    .calendar {
+      @include flex-column(2rem);
+      border: 3px solid var(--color-bg-tertiary);
+      padding: 0.5rem;
+      box-sizing: border-box;
+      border-radius: 0.5rem;
+      &__title {
+        font-weight: 700;
+        font-size: $font-size-large;
+        padding: 0.25rem 0.5rem;
+      }
+
+      &__wrapper {
+        overflow-x: auto;
+      }
+    }
+  }
+}

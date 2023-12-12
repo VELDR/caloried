@@ -10,6 +10,7 @@ import Diary from '@pages/Diary';
 import FoodSearch from '@pages/FoodSearch';
 import FoodDetails from '@pages/FoodDetails';
 import Profile from '@pages/Profile';
+import Dashboard from '@pages/Dashboard';
 
 const routes = [
   {
@@ -66,6 +67,13 @@ const routes = [
     name: 'Profile',
     protected: true,
     component: Profile,
+    layout: MainLayout,
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    protected: true,
+    component: Dashboard,
     layout: MainLayout,
   },
   { path: '*', name: 'Not Found', component: NotFound, layout: MainLayout, protected: false },

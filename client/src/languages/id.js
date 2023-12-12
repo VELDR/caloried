@@ -101,6 +101,7 @@ export default {
   app_calories_per_gram: 'Kalori per Gram',
   app_fat: 'Lemak',
   app_carbs: 'Karbohidrat',
+  app_carbohydrate: 'Karbohidrat',
 
   app_profile: 'Profil',
   app_logout: 'Keluar',

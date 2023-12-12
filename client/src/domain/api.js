@@ -65,3 +65,7 @@ export const editFoodInDiaryApi = (foodData, foodLogId, token) =>
   callAPI(`${endpoints.diary}/edit/${foodLogId}`, 'PUT', { Authorization: `Bearer ${token}` }, {}, foodData);
 export const deleteFoodFromDiaryApi = (foodLogId, token) =>
   callAPI(`${endpoints.diary}/delete/${foodLogId}`, 'DELETE', { Authorization: `Bearer ${token}` });
+export const getUserActivityApi = (token) =>
+  callAPI(`${endpoints.diary}/activity`, 'GET', { Authorization: `Bearer ${token}` });
+export const getUserCaloriesConsumedApi = (days, token) =>
+  callAPI(`${endpoints.diary}/calories-consumed?days=${days}`, 'GET', { Authorization: `Bearer ${token}` });

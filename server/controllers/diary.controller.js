@@ -1,8 +1,9 @@
+const { Op } = require('sequelize');
 const {
   handleResponse,
   handleServerError,
 } = require('../helpers/responseHandler');
-const { Meal, FoodLog, Food, sequelize } = require('../models');
+const { Meal, FoodLog, Food, sequelize, Diary } = require('../models');
 const {
   addFoodToDiaryValidator,
   editFoodInDiaryValidator,
@@ -208,6 +209,111 @@ exports.deleteFoodFromDiary = async (req, res) => {
     return handleResponse(res, 200, { message: 'Meal removed.' });
   } catch (error) {
     console.error('Error in deleting food from diary: ', error);
+    return handleServerError(res);
+  }
+};
+
+exports.getUserYearlyActivity = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+    const activities = await Meal.findAll({
+      include: [
+        {
+          model: Diary,
+          as: 'diary',
+          where: { userId: userId },
+          attributes: [],
+        },
+        {
+          model: FoodLog,
+          as: 'foodLogs',
+          attributes: [],
+        },
+      ],
+      where: {
+        date: {
+          [Op.gte]: oneYearAgo,
+        },
+      },
+      group: ['Meal.date'],
+      attributes: [
+        [sequelize.literal('DATE_FORMAT(Meal.date, "%Y-%m-%d")'), 'day'],
+        [sequelize.fn('COUNT', sequelize.col('foodLogs.id')), 'value'],
+      ],
+      order: [['date', 'ASC']],
+    });
+
+    return handleResponse(res, 200, activities);
+  } catch (error) {
+    return handleServerError(res);
+  }
+};
+
+exports.getUserCaloriesConsumed = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const days = req.query.days ? parseInt(req.query.days) : 7;
+    const endDate = new Date();
+    const startDate = new Date();
+    startDate.setDate(endDate.getDate() - days);
+
+    const caloriesConsumed = await Meal.findAll({
+      include: [
+        {
+          model: Diary,
+          as: 'diary',
+          where: { userId: userId },
+          attributes: [],
+        },
+        {
+          model: FoodLog,
+          as: 'foodLogs',
+          include: [
+            {
+              model: Food,
+              as: 'food',
+              attributes: [],
+            },
+          ],
+          attributes: [],
+        },
+      ],
+      where: {
+        date: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+      group: ['Meal.date'],
+      attributes: [
+        'date',
+        [
+          sequelize.fn('SUM', sequelize.col('foodLogs.food.calories')),
+          'totalCalories',
+        ],
+      ],
+      order: [['date', 'ASC']],
+    });
+
+    let formattedData = [];
+    for (
+      let d = new Date(startDate);
+      d <= endDate;
+      d.setDate(d.getDate() + 1)
+    ) {
+      const formattedDate = d.toISOString().split('T')[0];
+      const found = caloriesConsumed.find((day) => day.date === formattedDate);
+
+      formattedData.push({
+        x: formattedDate,
+        y: found ? found.dataValues.totalCalories : 0,
+      });
+    }
+    return handleResponse(res, 200, formattedData);
+  } catch (error) {
+    console.error(error);
     return handleServerError(res);
   }
 };

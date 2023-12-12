@@ -7,6 +7,7 @@ import languageReducer from '@containers/Language/reducer';
 import diaryReducer, { storedKey as storedDiaryState } from '@pages/Diary/reducer';
 import foodSearchReducer from '@pages/FoodSearch/reducer';
 import foodDetailsReducer from '@pages/FoodDetails/reducer';
+import dashboardReducer from '@pages/Dashboard/reducer';
 
 import { mapWithPersistor } from './persistence';
 
@@ -21,6 +22,7 @@ const temporaryReducers = {
   language: languageReducer,
   foodSearch: foodSearchReducer,
   foodDetails: foodDetailsReducer,
+  dashboard: dashboardReducer,
 };
 
 const createReducer = () => {

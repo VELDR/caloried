@@ -65,3 +65,9 @@ export const calculateAge = (dob) => {
 
   return age;
 };
+
+export const calculateMacronutrientCalories = (protein, carbs, fat) => ({
+  proteinCalories: protein * 4,
+  carbsCalories: carbs * 4,
+  fatCalories: fat * 9,
+});
