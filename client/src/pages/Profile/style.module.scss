@@ -68,7 +68,9 @@
     }
 
     .body {
-      border-top: 1px solid var(--color-text-secondary);
+      border: 1px solid var(--color-text-secondary);
+      max-width: 50rem;
+      margin: 0 auto;
       .section {
         border-bottom: 1px solid var(--color-text-secondary);
         text-transform: uppercase;

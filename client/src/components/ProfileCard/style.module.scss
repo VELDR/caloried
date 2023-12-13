@@ -78,6 +78,7 @@
 
     svg {
       @include box(1rem);
+      animation: shake 1.5s ease-in-out infinite;
     }
   }
   .gainColor {
@@ -88,5 +89,32 @@
   }
   .loseColor {
     color: $color-error;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  5% {
+    transform: rotate(6deg);
+  }
+
+  10%,
+  20% {
+    transform: rotate(-6deg);
+  }
+
+  15%,
+  25%,
+  50% {
+    transform: rotate(6deg);
+  }
+
+  30%,
+  100% {
+    transform: rotate(0deg);
   }
 }

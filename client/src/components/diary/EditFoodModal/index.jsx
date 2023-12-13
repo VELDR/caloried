@@ -9,9 +9,11 @@ import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
+import { COLORS } from '@constants';
 
 import { selectToken } from '@containers/Client/selectors';
 import PieChart from '@components/charts/PieChart';
+import MacronutrientTooltip from '@components/charts/MacronutrientTooltip';
 import PrimaryButton from '@components/ui/PrimaryButton';
 import SecondaryButton from '@components/ui/SecondaryButton';
 import { deleteFoodFromDiary, editFoodInDiary } from '@pages/Diary/actions';
@@ -77,7 +79,7 @@ const EditFoodModal = ({
         </div>
         <div className={classes.nutrition}>
           <div className={classes.pieChart}>
-            <PieChart data={macronutrientData} />
+            <PieChart data={macronutrientData} colors={COLORS} tooltip={MacronutrientTooltip} />
           </div>
           <div className={classes.nutrient}>
             <div className={classes.nutrient__item}>

@@ -1,0 +1,15 @@
+@import '@styles/base';
+
+.container {
+  @include box(100%, 20rem);
+}
+
+.tooltip {
+  background-color: hsla(var(--hue), var(--saturation), var(--lightness), 0.5);
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-bg-primary);
+  font-size: $font-size-small;
+  text-transform: capitalize;
+  font-weight: 500;
+}

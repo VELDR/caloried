@@ -1,0 +1,19 @@
+@import '@styles/base';
+
+.actions {
+  gap: 0.75rem;
+}
+
+.button {
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+}
+
+.delete {
+  @include primary-button;
+  background-color: $color-error;
+}
+
+.cancel {
+  @include secondary-button;
+}

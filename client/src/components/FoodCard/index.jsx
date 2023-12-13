@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 import { Tooltip } from '@mui/material';
 import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
@@ -9,7 +10,7 @@ import { ChevronRight } from '@mui/icons-material';
 
 import classes from './style.module.scss';
 
-const FoodCard = ({ food, onClick }) => (
+const FoodCard = ({ food, onClick, intl: { formatMessage } }) => (
   <div className={classes.container} onClick={onClick}>
     <div className={classes.food}>
       <div className={classes.imageWrap}>
@@ -57,19 +58,19 @@ const FoodCard = ({ food, onClick }) => (
 
     <div className={classes.right}>
       <div className={classes.nutrientBig}>
-        <Tooltip title="Protein">
+        <Tooltip title={formatMessage({ id: 'app_protein' })}>
           <div className={classes.nutrientBig__item}>
             <img src={proteinIcon} alt="" className={classes.icon} />
             {food?.nutrients?.protein?.value} g
           </div>
         </Tooltip>
-        <Tooltip title="Carbs">
+        <Tooltip title={formatMessage({ id: 'app_carbs' })}>
           <div className={classes.nutrientBig__item}>
             <img src={carbsIcon} alt="" className={classes.icon} />
             {food?.nutrients?.carbs?.value} g
           </div>
         </Tooltip>
-        <Tooltip title="Fat">
+        <Tooltip title={formatMessage({ id: 'app_fat' })}>
           <div className={classes.nutrientBig__item}>
             <img src={fatIcon} alt="" className={classes.icon} />
             {food?.nutrients?.fat?.value} g
@@ -89,6 +90,7 @@ const FoodCard = ({ food, onClick }) => (
 FoodCard.propTypes = {
   food: PropTypes.object,
   onClick: PropTypes.func,
+  intl: PropTypes.object,
 };
 
-export default FoodCard;
+export default injectIntl(FoodCard);

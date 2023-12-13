@@ -7,6 +7,7 @@ import foodSearchSaga from '@pages/FoodSearch/saga';
 import foodDetailsSaga from '@pages/FoodDetails/saga';
 import editProfileSaga from '@pages/Profile/saga';
 import dashboardSaga from '@pages/Dashboard/saga';
+import adminSaga from '@pages/Admin/saga';
 
 export default function* rootSaga() {
   yield all([
@@ -17,5 +18,6 @@ export default function* rootSaga() {
     foodDetailsSaga(),
     editProfileSaga(),
     dashboardSaga(),
+    adminSaga(),
   ]);
 }

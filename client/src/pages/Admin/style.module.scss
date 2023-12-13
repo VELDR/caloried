@@ -1,0 +1,61 @@
+@import '@styles/base';
+
+.page {
+  padding: 0 0.5rem;
+  padding-top: 4rem;
+  @include flex-column(1rem);
+  margin: 0 auto;
+  max-width: 70rem;
+  overflow-x: hidden;
+  .title {
+    font-size: $font-size-larger;
+    font-weight: 700;
+  }
+  .analytics {
+    &__title {
+      font-size: $font-size-large;
+      font-weight: 700;
+    }
+    .chart {
+      @include flex-row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      &__bar {
+        width: 80%;
+        min-width: 40rem;
+      }
+      &__pie {
+        @include box(20%, 20rem);
+        min-width: 10rem;
+      }
+    }
+  }
+
+  .tableContainer {
+    max-width: 70rem;
+    .tableHead {
+      &__cell {
+        font-family: Poppins, sans-serif;
+
+        font-weight: 700;
+        .headLabel {
+          text-align: center;
+        }
+      }
+    }
+    .user {
+      @include flex-items-center(0.5rem);
+      .avatar {
+        @include box(2rem);
+      }
+    }
+    .verified {
+      text-align: center;
+    }
+    .delete {
+      @include primary-button;
+      width: fit-content;
+      background-color: $color-error;
+    }
+  }
+}

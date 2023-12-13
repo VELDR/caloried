@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useRef, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Avatar, Dialog, DialogContent } from '@mui/material';
 import { AlternateEmail, CalendarToday, Female, Male, Person } from '@mui/icons-material';
 import { formatDate } from '@utils/formatUtils';
@@ -13,7 +13,7 @@ import { editProfile } from '@pages/Profile/actions';
 
 import classes from './style.module.scss';
 
-const EditProfileModal = ({ user, open, onClose, token }) => {
+const EditProfileModal = ({ user, open, onClose, token, intl: { formatMessage } }) => {
   const dispatch = useDispatch();
   const {
     control,
@@ -93,7 +93,7 @@ const EditProfileModal = ({ user, open, onClose, token }) => {
                     id="username"
                     type="text"
                     className={`${classes.input} ${errors.username ? classes.inputError : ''}`}
-                    {...register('username', { required: 'Username is required' })}
+                    {...register('username', { required: formatMessage({ id: 'app_username_is_required' }) })}
                     defaultValue={user?.username}
                   />
                 </label>
@@ -107,7 +107,7 @@ const EditProfileModal = ({ user, open, onClose, token }) => {
                     id="email"
                     type="email"
                     className={`${classes.input} ${errors.email ? classes.inputError : ''}`}
-                    {...register('email', { required: 'Email is required' })}
+                    {...register('email', { required: formatMessage({ id: 'app_email_is_required' }) })}
                     defaultValue={user?.email}
                   />
                 </label>
@@ -155,7 +155,7 @@ const EditProfileModal = ({ user, open, onClose, token }) => {
                     type="date"
                     className={`${classes.input} ${errors.dob ? classes.inputError : ''}`}
                     {...register('dob', {
-                      required: 'Date is required',
+                      required: formatMessage({ id: 'app_date_is_required' }),
                     })}
                     defaultValue={formatDate(user?.dob)}
                   />
@@ -170,7 +170,7 @@ const EditProfileModal = ({ user, open, onClose, token }) => {
                     id="height"
                     type="number"
                     className={`${classes.input} ${errors.height ? classes.inputError : ''}`}
-                    {...register('height', { required: 'Height is required' })}
+                    {...register('height', { required: formatMessage({ id: 'app_height_is_required' }) })}
                     defaultValue={user?.height}
                   />
                   <div className={classes.adornment}>cm</div>
@@ -184,7 +184,7 @@ const EditProfileModal = ({ user, open, onClose, token }) => {
                     id="weight"
                     type="number"
                     className={`${classes.input} ${errors.weight ? classes.inputError : ''}`}
-                    {...register('weight', { required: 'Weight is required' })}
+                    {...register('weight', { required: formatMessage({ id: 'app_weight_is_required' }) })}
                     defaultValue={user?.weight}
                   />
                   <div className={classes.adornment}>kg</div>
@@ -243,10 +243,12 @@ const EditProfileModal = ({ user, open, onClose, token }) => {
           </div>
           <div className={classes.buttons}>
             <SecondaryButton className={classes.button} onClick={onClose}>
-              Cancel
+              <FormattedMessage id="app_cancel" />
             </SecondaryButton>
             <PrimaryButton className={classes.button}>
-              <div className={classes.text}>Save</div>
+              <div className={classes.text}>
+                <FormattedMessage id="app_save" />
+              </div>
             </PrimaryButton>
           </div>
         </form>
@@ -260,6 +262,7 @@ EditProfileModal.propTypes = {
   onClose: PropTypes.func,
   user: PropTypes.object,
   token: PropTypes.string,
+  intl: PropTypes.object,
 };
 
-export default EditProfileModal;
+export default injectIntl(EditProfileModal);

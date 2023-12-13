@@ -16,6 +16,7 @@ const dashboardReducer = (state = initialState, action) =>
         break;
       case SET_USER_CALORIES_CONSUMED:
         draft.consumedCalories = action.consumedCalories;
+        break;
     }
   });
 

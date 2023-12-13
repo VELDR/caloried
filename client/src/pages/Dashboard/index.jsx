@@ -14,8 +14,10 @@ import {
   calculateNutrientPercentage,
   calculateTotalNutrients,
 } from '@utils/calculateUtils';
+import { COLORS } from '@constants';
 
 import PieChart from '@components/charts/PieChart';
+import MacronutrientTooltip from '@components/charts/MacronutrientTooltip';
 import CaloriesLineChart from '@components/charts/CaloriesLineChart';
 import ActivityCalendar from '@components/charts/ActivityCalendar';
 import ProfileCard from '@components/ProfileCard';
@@ -88,7 +90,7 @@ const Dashboard = ({ user, activity, consumedCalories, meals, token, intl: { for
                   </div>
                 </div>
               ) : (
-                <PieChart data={pieChartData} />
+                <PieChart data={pieChartData} colors={COLORS} tooltip={MacronutrientTooltip} />
               )}
             </div>
           </div>

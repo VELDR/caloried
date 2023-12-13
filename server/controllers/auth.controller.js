@@ -153,12 +153,9 @@ exports.login = async (req, res) => {
       return handleResponse(res, 400, { message: error.details[0].message });
     }
 
-    const { email, password, isAdmin } = value;
+    const { email, password } = value;
 
-    const isUserAdmin = isAdmin || false;
-    const Model = isUserAdmin ? Admin : User;
-
-    const user = await Model.findOne({ where: { email } });
+    const user = await User.findOne({ where: { email } });
     if (!user) {
       return handleResponse(res, 400, {
         message: 'Invalid email or password.',
@@ -185,10 +182,59 @@ exports.login = async (req, res) => {
       user.firstLogin = false;
       await user.save();
     }
+    const tokenPayload = {
+      id: user.id,
+      role: 'user',
+    };
 
     return handleResponse(res, 200, {
-      token: generateToken(user),
+      token: generateToken(tokenPayload),
       firstLogin: isFirstLogin,
+      message: 'Successfully signed in!',
+    });
+  } catch (error) {
+    console.log(error);
+    return handleServerError(res);
+  }
+};
+
+exports.adminLogin = async (req, res) => {
+  try {
+    const userData = req.body;
+    const plainPassword = CryptoJS.AES.decrypt(
+      userData.password,
+      process.env.CRYPTOJS_SECRET
+    ).toString(CryptoJS.enc.Utf8);
+    userData.password = plainPassword;
+
+    const { error, value } = loginValidator.validate(userData);
+    if (error) {
+      return handleResponse(res, 400, { message: error.details[0].message });
+    }
+
+    const { email, password } = value;
+    const admin = await Admin.findOne({ where: { email } });
+
+    if (!admin) {
+      return handleResponse(res, 400, {
+        message: 'Invalid email or password.',
+      });
+    }
+
+    const isPasswordMatch = await comparePassword(password, admin.password);
+    if (!isPasswordMatch) {
+      return handleResponse(res, 400, {
+        message: 'Invalid email or password.',
+      });
+    }
+
+    const tokenPayload = {
+      id: admin.id,
+      role: 'admin',
+    };
+
+    return handleResponse(res, 200, {
+      token: generateToken(tokenPayload),
       message: 'Successfully signed in!',
     });
   } catch (error) {

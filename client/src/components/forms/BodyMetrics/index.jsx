@@ -40,11 +40,11 @@ const BodyMetrics = ({ metrics, intl: { formatMessage } }) => {
       return false;
     }
     if (!dob || dobDate >= today) {
-      toast.error(formatMessage({ id: 'app_error_weight' }));
+      toast.error(formatMessage({ id: 'app_error_date' }));
       return false;
     }
     if (!height || height < 120 || height > 250) {
-      toast.error(formatMessage({ id: 'app_error_weight' }));
+      toast.error(formatMessage({ id: 'app_error_height' }));
       return false;
     }
     if (!weight || weight < 20 || weight > 400) {

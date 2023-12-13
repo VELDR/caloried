@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { Popover, Tooltip } from '@mui/material';
@@ -9,7 +10,7 @@ import { setDate } from '@pages/Diary/actions';
 
 import classes from './style.module.scss';
 
-const DiaryDate = ({ currentDate, setCurrentDate }) => {
+const DiaryDate = ({ currentDate, setCurrentDate, intl: { formatMessage } }) => {
   const dispatch = useDispatch();
   const [anchor, setAnchor] = useState(null);
 
@@ -48,7 +49,7 @@ const DiaryDate = ({ currentDate, setCurrentDate }) => {
     <div className={classes.container}>
       <ChevronLeft onClick={handlePrevDate} />
 
-      <Tooltip title="Select a date">
+      <Tooltip title={formatMessage({ id: 'app_select_a_date' })}>
         <div className={classes.date} onClick={handlePopoverOpen}>
           {formattedDate}
         </div>
@@ -83,6 +84,7 @@ const DiaryDate = ({ currentDate, setCurrentDate }) => {
 DiaryDate.propTypes = {
   currentDate: PropTypes.instanceOf(Date),
   setCurrentDate: PropTypes.func,
+  intl: PropTypes.object,
 };
 
-export default DiaryDate;
+export default injectIntl(DiaryDate);

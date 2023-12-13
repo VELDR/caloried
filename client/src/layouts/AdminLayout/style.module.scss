@@ -1,0 +1,31 @@
+.container {
+  position: relative;
+  .toolbar {
+    @include flex-items-center(0.5rem);
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    z-index: 100;
+    .logout {
+      @include flex-items-center(0.25rem);
+      font-size: $font-size-regular;
+      color: $color-error;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      &:hover {
+        @include translucent-background($color-error, 0.2);
+      }
+      svg {
+        font-size: $font-size-large;
+      }
+      span {
+        display: none;
+        @include apply-at-xs2-size {
+          display: block;
+        }
+      }
+    }
+  }
+}

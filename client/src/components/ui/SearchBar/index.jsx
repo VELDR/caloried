@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -6,8 +7,9 @@ import { Search } from '@mui/icons-material';
 import { setCurrentPage } from '@pages/FoodSearch/actions';
 
 import classes from './style.module.scss';
+import { injectIntl } from 'react-intl';
 
-const SearchBar = () => {
+const SearchBar = ({ intl: { formatMessage } }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ const SearchBar = () => {
       <input
         type="search"
         className={classes.search__input}
-        placeholder="Search for food"
+        placeholder={formatMessage({ id: 'app_search_for_food' })}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={handleKeyPress}
@@ -39,4 +41,8 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+SearchBar.propTypes = {
+  intl: PropTypes.object,
+};
+
+export default injectIntl(SearchBar);

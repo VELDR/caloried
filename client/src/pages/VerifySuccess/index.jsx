@@ -1,11 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Verified } from '@mui/icons-material';
+import { resetForm } from '@pages/SignUp/actions';
 
 import classes from './style.module.scss';
 
 const VerifySuccess = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetForm());
+  }, [dispatch]);
 
   return (
     <div className={classes.container}>

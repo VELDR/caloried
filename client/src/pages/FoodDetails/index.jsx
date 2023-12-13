@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { useForm } from 'react-hook-form';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Tooltip } from '@mui/material';
 import { CalendarToday } from '@mui/icons-material';
 import proteinIcon from '@static/images/protein.png';
@@ -17,6 +18,8 @@ import { formatDate } from '@utils/formatUtils';
 import NutritionTable from '@components/NutritionTable';
 import PieChart from '@components/charts/PieChart';
 import PrimaryButton from '@components/ui/PrimaryButton';
+import MacronutrientTooltip from '@components/charts/MacronutrientTooltip';
+import { COLORS } from '@constants';
 
 import { selectToken } from '@containers/Client/selectors';
 import { selectSelectedDate, selectSelectedMealType } from '@pages/Diary/selectors';
@@ -25,7 +28,7 @@ import { selectFoodDetails } from './selectors';
 
 import classes from './style.module.scss';
 
-const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => {
+const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate, intl: { formatMessage } }) => {
   const dispatch = useDispatch();
   const { foodType, foodName } = useParams();
   const {
@@ -62,9 +65,24 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
       const fatPercentage = calculateNutrientPercentage(adjustedNutrients.fat.value, totalCalories, 9);
 
       setMacronutrientData([
-        { id: 'Fat', label: 'Fat', value: fatPercentage, grams: adjustedNutrients?.fat?.value },
-        { id: 'Protein', label: 'Protein', value: proteinPercentage, grams: adjustedNutrients?.protein?.value },
-        { id: 'Carbohydrates', label: 'Carbohydrates', value: carbsPercentage, grams: adjustedNutrients?.carbs?.value },
+        {
+          id: 'Fat',
+          label: formatMessage({ id: 'app_fat' }),
+          value: fatPercentage,
+          grams: adjustedNutrients?.fat?.value,
+        },
+        {
+          id: 'Protein',
+          label: formatMessage({ id: 'app_protein' }),
+          value: proteinPercentage,
+          grams: adjustedNutrients?.protein?.value,
+        },
+        {
+          id: 'Carbohydrates',
+          label: formatMessage({ id: 'app_carbohydrate' }),
+          value: carbsPercentage,
+          grams: adjustedNutrients?.carbs?.value,
+        },
       ]);
     }
   }, [
@@ -117,13 +135,15 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
         </div>
         <div className={classes.body}>
           <div className={classes.details}>
-            <div className={classes.details__title}>Track Your Intake</div>
+            <div className={classes.details__title}>
+              <FormattedMessage id="app_track_your_intake" />
+            </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className={classes.formContainer}>
               <div className={classes.form}>
                 <div className={classes.form__group}>
                   <label htmlFor="quantity" className={classes.label}>
-                    Number of serving
+                    <FormattedMessage id="app_number_of_serving" />
                     <input
                       id="quantity"
                       type="number"
@@ -134,10 +154,14 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
                     />
                   </label>
                 </div>
-                {errors.quantity && <span className={classes.error}>Number of serving is required</span>}
+                {errors.quantity && (
+                  <span className={classes.error}>
+                    <FormattedMessage id="app_serving_is_required" />
+                  </span>
+                )}
                 <div className={classes.form__group}>
                   <label htmlFor="servingSize" className={classes.label}>
-                    Serving Size
+                    <FormattedMessage id="app_serving_size" />
                     <select
                       id="servingSize"
                       className={classes.input}
@@ -163,7 +187,7 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
 
                 <div className={classes.form__group}>
                   <label htmlFor="date" className={classes.label}>
-                    Date
+                    <FormattedMessage id="app_date" />
                     <input
                       id="date"
                       type="date"
@@ -174,26 +198,39 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
                     <CalendarToday className={classes.calendar} />
                   </label>
                 </div>
-                {errors.date && <span className={classes.error}>Date is required</span>}
+                {errors.date && (
+                  <span className={classes.error}>
+                    <FormattedMessage id="app_date_is_required" />
+                  </span>
+                )}
                 <div className={classes.form__group}>
                   <label htmlFor="mealType" className={classes.label}>
-                    Meal Type
+                    <FormattedMessage id="app_meal_type" />
                     <select
                       id="mealType"
                       className={classes.input}
                       {...register('mealType', { required: true })}
                       defaultValue={selectedMealType || 'Breakfast'}
                     >
-                      <option value="Breakfast">Breakfast</option>
-                      <option value="Lunch">Lunch</option>
-                      <option value="Dinner">Dinner</option>
-                      <option value="Snack">Snack</option>
+                      <option value="Breakfast">
+                        <FormattedMessage id="app_breakfast" />
+                      </option>
+                      <option value="Lunch">
+                        <FormattedMessage id="app_lunch" />
+                      </option>
+                      <option value="Dinner">
+                        <FormattedMessage id="app_dinner" />
+                      </option>
+                      <option value="Snack">
+                        <FormattedMessage id="app_snack" />
+                      </option>
                     </select>
                   </label>
-                  {errors.mealType && <span className={classes.error}>Meal type is required</span>}
                 </div>
               </div>
-              <PrimaryButton className={classes.form__button}>Add to Diary</PrimaryButton>
+              <PrimaryButton className={classes.form__button}>
+                <FormattedMessage id="app_add_to_diary" />
+              </PrimaryButton>
             </form>
             <div className={classes.nutrition}>
               <div className={classes.calories}>
@@ -202,19 +239,19 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
               </div>
 
               <div className={classes.nutrientBig}>
-                <Tooltip title="Protein">
+                <Tooltip title={formatMessage({ id: 'app_protein' })}>
                   <div className={classes.nutrientBig__item}>
                     <img src={proteinIcon} alt="protein" className={classes.icon} />
                     {adjustedNutrients?.protein?.value} g
                   </div>
                 </Tooltip>
-                <Tooltip title="Carbs">
+                <Tooltip title={formatMessage({ id: 'app_carbs' })}>
                   <div className={classes.nutrientBig__item}>
                     <img src={carbsIcon} alt="carbohydrate" className={classes.icon} />
                     {adjustedNutrients?.carbs?.value} g
                   </div>
                 </Tooltip>
-                <Tooltip title="Fat">
+                <Tooltip title={formatMessage({ id: 'app_fat' })}>
                   <div className={classes.nutrientBig__item}>
                     <img src={fatIcon} alt="fat" className={classes.icon} />
                     {adjustedNutrients?.fat?.value} g
@@ -224,13 +261,15 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate }) => 
             </div>
           </div>
           <div className={classes.pieChart}>
-            <div className={classes.pieChart__title}>Nutrition Distribution</div>
+            <div className={classes.pieChart__title}>
+              <FormattedMessage id="app_nutrition_distribution" />
+            </div>
             <div className={classes.pieChart__description}>
-              This pie chart shows the percentage distribution of macronutrients of <span>{foodDetails?.foodName}</span>
-              .
+              <FormattedMessage id="app_this_pie_shows" />
+              <span>{foodDetails?.foodName}</span>.
             </div>
             <div className={classes.pieChart__chart}>
-              <PieChart data={macronutrientData} />
+              <PieChart data={macronutrientData} colors={COLORS} tooltip={MacronutrientTooltip} />
             </div>
           </div>
         </div>
@@ -251,7 +290,8 @@ FoodDetails.propTypes = {
   foodDetails: PropTypes.object,
   token: PropTypes.string,
   selectedMealType: PropTypes.string,
-  selectedDate: PropTypes.instanceOf(Date),
+  selectedDate: PropTypes.string,
+  intl: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -261,4 +301,4 @@ const mapStateToProps = createStructuredSelector({
   selectedDate: selectSelectedDate,
 });
 
-export default connect(mapStateToProps)(FoodDetails);
+export default injectIntl(connect(mapStateToProps)(FoodDetails));

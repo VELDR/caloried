@@ -5,7 +5,7 @@ import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { AlternateEmail, DoneAll, Info, Key, Person } from '@mui/icons-material';
 
-import { nextStep, resetForm, setAccount } from '@pages/SignUp/actions';
+import { nextStep, setAccount } from '@pages/SignUp/actions';
 import { register } from '@containers/Client/actions';
 import { selectAccount, selectActivityLevel, selectGoal, selectMetrics } from '@pages/SignUp/selectors';
 
@@ -46,7 +46,6 @@ const CreateAccount = ({ goal, metrics, activityLevel, account, intl: { formatMe
     dispatch(
       register(combinedData, () => {
         dispatch(nextStep());
-        dispatch(resetForm());
       })
     );
   };

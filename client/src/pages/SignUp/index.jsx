@@ -46,6 +46,12 @@ const SignUp = ({ currentStep }) => (
       </div>
     </div>
     <FormCard />
+    <div className={classes.signIn}>
+      <FormattedMessage id="app_already_have_account" />{' '}
+      <a href="/sign-in">
+        <FormattedMessage id="app_sign_in" />
+      </a>
+    </div>
   </div>
 );
 

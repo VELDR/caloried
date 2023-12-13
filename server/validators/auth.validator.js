@@ -53,7 +53,6 @@ const loginValidator = Joi.object({
   password: Joi.string().required().messages({
     'string.empty': 'Password is required',
   }),
-  isAdmin: Joi.boolean().required(),
 });
 
 const changePasswordValidator = Joi.object({

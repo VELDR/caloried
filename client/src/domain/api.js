@@ -38,11 +38,22 @@ export const registerApi = (data) => callAPI(`${endpoints.auth}/register`, 'POST
 export const resendVerificationEmailApi = (data) =>
   callAPI(`${endpoints.auth}/resend-verification`, 'POST', {}, {}, data);
 export const loginApi = (data) => callAPI(`${endpoints.auth}/login`, 'POST', {}, {}, data);
+export const adminLoginApi = (data) => callAPI(`${endpoints.auth}/admin-login`, 'POST', {}, {}, data);
 
 // USER
 export const getUserByIdApi = (token) => callAPI(`${endpoints.user}`, 'GET', { Authorization: `Bearer ${token}` });
 export const editProfileApi = (data, token) =>
   callAPI(`${endpoints.user}/profile`, 'PUT', { Authorization: `Bearer ${token}` }, {}, data);
+export const getAllUsersPaginatedApi = (page, pageSize, token, sort, order) =>
+  callAPI(`${endpoints.user}/all?page=${page}&pageSize=${pageSize}&sort=${sort}&order=${order}`, 'GET', {
+    Authorization: `Bearer ${token}`,
+  });
+export const deleteUserByIdApi = (userId, token) =>
+  callAPI(`${endpoints.user}/delete/${userId}`, 'DELETE', { Authorization: `Bearer ${token}` });
+export const getUserDemographicsApi = (token) =>
+  callAPI(`${endpoints.user}/demographic`, 'GET', { Authorization: `Bearer ${token}` });
+export const getUserSexDistributionApi = (token) =>
+  callAPI(`${endpoints.user}/sex-distribution`, 'GET', { Authorization: `Bearer ${token}` });
 
 // FOOD
 export const getFoodsApi = (query, page, pageSize, token, category) =>

@@ -49,6 +49,7 @@ const signUpReducer = (state = initialState, action) =>
         draft.metrics = {};
         draft.activityLevel = null;
         draft.account = {};
+        break;
     }
   });
 

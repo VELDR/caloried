@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { Avatar } from '@mui/material';
 import { Balance, Edit, KeyboardDoubleArrowDown, KeyboardDoubleArrowUp } from '@mui/icons-material';
@@ -18,7 +19,7 @@ import { selectToken } from '@containers/Client/selectors';
 
 import classes from './style.module.scss';
 
-const Profile = ({ user, token }) => {
+const Profile = ({ user, token, intl: { formatMessage } }) => {
   const dispatch = useDispatch();
 
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -40,11 +41,23 @@ const Profile = ({ user, token }) => {
   const getGoalInfo = (goal) => {
     switch (goal) {
       case 'gain':
-        return { icon: <KeyboardDoubleArrowUp />, text: 'Gaining Weight', className: classes.gainColor };
+        return {
+          icon: <KeyboardDoubleArrowUp />,
+          text: formatMessage({ id: 'app_gaining_weight' }),
+          className: classes.gainColor,
+        };
       case 'maintain':
-        return { icon: <Balance />, text: 'Maintaining Weight', className: classes.maintainColor };
+        return {
+          icon: <Balance />,
+          text: formatMessage({ id: 'app_maintaining_weight' }),
+          className: classes.maintainColor,
+        };
       case 'lose':
-        return { icon: <KeyboardDoubleArrowDown />, text: 'Losing Weight', className: classes.loseColor };
+        return {
+          icon: <KeyboardDoubleArrowDown />,
+          text: formatMessage({ id: 'app_losing_weight' }),
+          className: classes.loseColor,
+        };
       default:
         return { icon: null, text: '', className: '' };
     }
@@ -55,7 +68,9 @@ const Profile = ({ user, token }) => {
   return (
     <div className={classes.page}>
       <div className={classes.container}>
-        <div className={classes.title}>My Profile</div>
+        <div className={classes.title}>
+          <FormattedMessage id="app_my_profile" />
+        </div>
         <div className={classes.header}>
           <div className={classes.avatar}>
             <Avatar src={`${import.meta.env.VITE_API_BASE_URL}${user?.avatar}`} className={classes.avatar__image} />
@@ -71,59 +86,97 @@ const Profile = ({ user, token }) => {
         </div>
 
         <div className={classes.body}>
-          <div className={classes.section}>Physical Profile</div>
+          <div className={classes.section}>
+            <FormattedMessage id="app_physical_profile" />
+          </div>
           <div className={classes.profile}>
-            <div className={classes.profile__label}>Sex</div>
+            <div className={classes.profile__label}>
+              <FormattedMessage id="app_sex" />
+            </div>
             <div className={classes.profile__info}>
               <span>{user?.sex}</span>
             </div>
           </div>
           <div className={classes.profile}>
-            <div className={classes.profile__label}>Age</div>
-            <div className={classes.profile__info}>{calculateAge(user?.dob)} years old </div>
+            <div className={classes.profile__label}>
+              <FormattedMessage id="app_age" />
+            </div>
+            <div className={classes.profile__info}>
+              {calculateAge(user?.dob)} <FormattedMessage id="app_years_old" />
+            </div>
           </div>
           <div className={classes.profile}>
-            <div className={classes.profile__label}>Height</div>
+            <div className={classes.profile__label}>
+              <FormattedMessage id="app_height" />
+            </div>
             <div className={classes.profile__info}>{user?.height} cm</div>
           </div>
           <div className={classes.profile}>
-            <div className={classes.profile__label}>Weight</div>
+            <div className={classes.profile__label}>
+              <FormattedMessage id="app_weight" />
+            </div>
             <div className={classes.profile__info}>{user?.weight} kg</div>
           </div>
           <div className={classes.profile}>
-            <div className={classes.profile__label}>Activity Level</div>
+            <div className={classes.profile__label}>
+              <FormattedMessage id="app_activity_level" />
+            </div>
             <div className={classes.profile__info}>{getActivityLevel(user?.activityLevel)}</div>
           </div>
-          <div className={classes.section}>Nutritional Intake</div>
+          <div className={classes.section}>
+            <FormattedMessage id="app_nutritional_intake" />
+          </div>
           <div className={classes.nutrition}>
             <div className={classes.nutrient}>
-              <div className={classes.nutrient__label}>Basal Metabolic Rate (BMR)</div>
+              <div className={classes.nutrient__label}>
+                <FormattedMessage id="app_basal_metabolic_rate" />
+              </div>
               <div className={classes.nutrient__info}>
                 <img src={caloriesIcon} alt="" className={classes.icon} />
-                {user?.bmr} <span>kcal/day</span>
+                {user?.bmr}{' '}
+                <span>
+                  kcal/
+                  <FormattedMessage id="app_day" />
+                </span>
               </div>
             </div>
             <div className={classes.nutrient}>
-              <div className={classes.nutrient__label}>Protein Intake</div>
+              <div className={classes.nutrient__label}>
+                <FormattedMessage id="app_protein_intake" />
+              </div>
               <div className={classes.nutrient__info}>
                 <img src={proteinIcon} alt="" className={classes.icon} />
-                {user?.proteinIntake} <span>g/day</span>
+                {user?.proteinIntake}{' '}
+                <span>
+                  g/
+                  <FormattedMessage id="app_day" />
+                </span>
               </div>
             </div>
             <div className={classes.nutrient}>
-              <div className={classes.nutrient__label}>Carbohydrate Intake</div>
+              <div className={classes.nutrient__label}>
+                <FormattedMessage id="app_carbs_intake" />
+              </div>
               <div className={classes.nutrient__info}>
                 <img src={carbsIcon} alt="" className={classes.icon} />
                 {user?.carbsIntake}
-                <span>g/day</span>
+                <span>
+                  g/
+                  <FormattedMessage id="app_day" />
+                </span>
               </div>
             </div>
             <div className={classes.nutrient}>
-              <div className={classes.nutrient__label}>Fat Intake</div>
+              <div className={classes.nutrient__label}>
+                <FormattedMessage id="app_fat_intake" />
+              </div>
               <div className={classes.nutrient__info}>
                 <img src={fatIcon} alt="" className={classes.icon} />
                 {user?.fatIntake}
-                <span>g/day</span>
+                <span>
+                  g/
+                  <FormattedMessage id="app_day" />
+                </span>
               </div>
             </div>
           </div>
@@ -137,6 +190,7 @@ const Profile = ({ user, token }) => {
 Profile.propTypes = {
   user: PropTypes.object,
   token: PropTypes.string,
+  intl: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -144,4 +198,4 @@ const mapStateToProps = createStructuredSelector({
   token: selectToken,
 });
 
-export default connect(mapStateToProps)(Profile);
+export default injectIntl(connect(mapStateToProps)(Profile));

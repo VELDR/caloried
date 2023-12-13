@@ -31,6 +31,7 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/configureStore.js'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@utils': path.resolve(__dirname, './src/utils'),
+      '@constants': path.resolve(__dirname, './src/constants'),
     },
   },
   server: {

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import CountUp from 'react-countup';
+import { FormattedMessage } from 'react-intl';
 import { Dialog, DialogContent, DialogTitle, Tooltip } from '@mui/material';
 import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
@@ -10,18 +11,25 @@ import classes from './style.module.scss';
 const NutritionPopup = ({ open, onClose, user }) => (
   <Dialog className={classes.container} open={open} onClose={onClose}>
     <DialogTitle className={classes.header}>
-      <div className={classes.header__title}>Welcome {user?.username}!</div>
-      <div className={classes.header__subtitle}>Your Personalized Nutrition Plan</div>
+      <div className={classes.header__title}>
+        <FormattedMessage id="app_welcome" /> {user?.username}!
+      </div>
+      <div className={classes.header__subtitle}>
+        <FormattedMessage id="app_your_personalized_plan" />
+      </div>
     </DialogTitle>
     <DialogContent className={classes.content}>
       <div className={classes.message}>
         <div className={classes.message__content}>
-          To <span>{user?.goal}</span> weight you need to consume
+          <FormattedMessage id="app_to" /> <span>{user?.goal}</span> <FormattedMessage id="app_weight_need_consume" />
         </div>
         <span className={classes.calories}>
           <CountUp end={user?.bmr} duration={2} />
         </span>
-        <div className={classes.message__kcal}>kcal/day</div>
+        <div className={classes.message__kcal}>
+          kcal/
+          <FormattedMessage id="app_day" />
+        </div>
       </div>
       <div className={classes.message2}>Your Daily Nutritional Goals</div>
       <div className={classes.macronutrient}>
@@ -47,7 +55,7 @@ const NutritionPopup = ({ open, onClose, user }) => (
         </div>
       </div>
       <div className={classes.button} onClick={onClose}>
-        Got it
+        <FormattedMessage id="app_got_it" />
       </div>
     </DialogContent>
   </Dialog>

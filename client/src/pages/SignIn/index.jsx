@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import FormInput from '@components/ui/FormInput';
 import { AlternateEmail, Key } from '@mui/icons-material';
-import { login } from '@containers/Client/actions';
+import { adminLogin, login } from '@containers/Client/actions';
 
 import classes from './style.module.scss';
 
@@ -20,9 +20,20 @@ const SignIn = ({ intl: { formatMessage } }) => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const handleLogin = () => {
-    const data = { email, password, isAdmin };
-
-    dispatch(login(data, () => navigate('/diary')));
+    const data = { email, password };
+    if (isAdmin) {
+      dispatch(
+        adminLogin(data, () => {
+          navigate('/admin');
+        })
+      );
+    } else {
+      dispatch(
+        login(data, () => {
+          navigate('/diary');
+        })
+      );
+    }
   };
 
   const handleAdminChange = (e) => {
@@ -33,12 +44,12 @@ const SignIn = ({ intl: { formatMessage } }) => {
     <div className={classes.container}>
       <div className={isAdmin ? `${classes.hero} ${classes.admin}` : `${classes.hero}`}>
         <div className={classes.hero__title}>
-          {isAdmin ? 'Administrator Access Point' : 'Back for More Nutrition Wisdom?'}
+          {isAdmin ? formatMessage({ id: 'app_admin_sign_in_title' }) : formatMessage({ id: 'app_user_sign_in_title' })}
         </div>
         <div className={classes.hero__description}>
           {isAdmin
-            ? 'Access administrative controls and manage application settings.'
-            : 'Log in to manage your diet and nutrition plans, crafted just for you.'}
+            ? formatMessage({ id: 'app_admin_sign_in_description' })
+            : formatMessage({ id: 'app_user_sign_in_description' })}
         </div>
         <img src={isAdmin ? adminIllustration : loginIllustration} alt="Food Illustration" />
       </div>
@@ -62,7 +73,11 @@ const SignIn = ({ intl: { formatMessage } }) => {
               name="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            {!isAdmin && <div className={classes.form__forgot}>Forgot Password?</div>}
+            {!isAdmin && (
+              <div className={classes.form__forgot}>
+                <FormattedMessage id="app_forgot_password" />
+              </div>
+            )}
           </div>
           <div
             className={isAdmin ? `${classes.form__button} ${classes.admin}` : classes.form__button}
@@ -72,7 +87,10 @@ const SignIn = ({ intl: { formatMessage } }) => {
           </div>
           {!isAdmin && (
             <div className={classes.form__signUp}>
-              Dont have an account? <a href="/sign-up">Sign up</a>
+              <FormattedMessage id="app_dont_have_account" />{' '}
+              <a href="/sign-up">
+                <FormattedMessage id="app_sign_up" />
+              </a>
             </div>
           )}
           <div className={classes.option}>

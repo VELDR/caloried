@@ -5,19 +5,22 @@ import { useNavigate } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
 import { selectTheme } from '@containers/App/selectors';
-import { selectLogin } from '@containers/Client/selectors';
+import { selectIsAdminLogin, selectLogin } from '@containers/Client/selectors';
 import ThemeToggle from '@components/ui/ThemeToggle';
 import TranslateDropdown from '@components/ui/TranslateDropdown';
 
 import classes from './style.module.scss';
 
-const AuthLayout = ({ children, theme, login }) => {
+const AuthLayout = ({ children, theme, login, isAdminLogin }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (login) {
       navigate('/diary');
     }
-  }, [login, navigate]);
+    if (isAdminLogin) {
+      navigate('/admin');
+    }
+  }, [isAdminLogin, login, navigate]);
   return (
     <div className={classes.container}>
       <div className={classes.toolbar}>
@@ -37,12 +40,14 @@ const AuthLayout = ({ children, theme, login }) => {
 const mapStateToProps = createStructuredSelector({
   theme: selectTheme,
   login: selectLogin,
+  isAdminLogin: selectIsAdminLogin,
 });
 
 AuthLayout.propTypes = {
   children: PropTypes.element.isRequired,
   theme: PropTypes.string,
   login: PropTypes.bool,
+  isAdminLogin: PropTypes.bool,
 };
 
 export default connect(mapStateToProps)(AuthLayout);

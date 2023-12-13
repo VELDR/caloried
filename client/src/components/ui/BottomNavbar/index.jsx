@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { AutoStories, Dashboard, Fastfood, Person } from '@mui/icons-material';
 import SearchBar from '@components/ui/SearchBar';
 
@@ -22,19 +23,27 @@ const BottomNavbar = () => {
       <div className={classes.navbar}>
         <div className={getItemClassName('/dashboard')} onClick={() => navigate('/dashboard')}>
           <Dashboard />
-          <div className={classes.label}>Dashboard</div>
+          <div className={classes.label}>
+            <FormattedMessage id="app_dashboard" />
+          </div>
         </div>
         <div className={getItemClassName('/diary')} onClick={() => navigate('/diary')}>
           <AutoStories />
-          <div className={classes.label}>Diary</div>
+          <div className={classes.label}>
+            <FormattedMessage id="app_diary" />
+          </div>
         </div>
         <div className={getItemClassName('/search')} onClick={() => navigate('/search')}>
           <Fastfood />
-          <div className={classes.label}>Food</div>
+          <div className={classes.label}>
+            <FormattedMessage id="app_food" />
+          </div>
         </div>
         <div className={getItemClassName('/profile')} onClick={() => navigate('/profile')}>
           <Person />
-          <div className={classes.label}>Profile</div>
+          <div className={classes.label}>
+            <FormattedMessage id="app_profile" />
+          </div>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import diaryReducer, { storedKey as storedDiaryState } from '@pages/Diary/reduce
 import foodSearchReducer from '@pages/FoodSearch/reducer';
 import foodDetailsReducer from '@pages/FoodDetails/reducer';
 import dashboardReducer from '@pages/Dashboard/reducer';
+import adminReducer from '@pages/Admin/reducer';
 
 import { mapWithPersistor } from './persistence';
 
@@ -23,6 +24,7 @@ const temporaryReducers = {
   foodSearch: foodSearchReducer,
   foodDetails: foodDetailsReducer,
   dashboard: dashboardReducer,
+  admin: adminReducer,
 };
 
 const createReducer = () => {

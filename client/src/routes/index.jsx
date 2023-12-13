@@ -11,6 +11,8 @@ import FoodSearch from '@pages/FoodSearch';
 import FoodDetails from '@pages/FoodDetails';
 import Profile from '@pages/Profile';
 import Dashboard from '@pages/Dashboard';
+import AdminLayout from '@layouts/AdminLayout';
+import Admin from '@pages/Admin';
 
 const routes = [
   {
@@ -75,6 +77,13 @@ const routes = [
     protected: true,
     component: Dashboard,
     layout: MainLayout,
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    protected: true,
+    component: Admin,
+    layout: AdminLayout,
   },
   { path: '*', name: 'Not Found', component: NotFound, layout: MainLayout, protected: false },
 ];

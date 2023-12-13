@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -14,7 +15,7 @@ import { getFoods, setCurrentPage } from './actions';
 
 import classes from './style.module.scss';
 
-const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems }) => {
+const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems, intl: { formatMessage } }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -52,7 +53,9 @@ const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems }) => {
       <div className={classes.container}>
         <div className={classes.header}>
           <div className={classes.header__title}>
-            {query ? `Search results for "${query}"` : 'Type to search for food'}
+            {query
+              ? `${formatMessage({ id: 'app_search_results' })} "${query}"`
+              : formatMessage({ id: 'app_type_to_search' })}
           </div>
           <div className={classes.category}>
             {['All', 'Common', 'Branded'].map((category) => (
@@ -76,7 +79,7 @@ const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems }) => {
         ) : (
           <div className={classes.noResults}>
             <img src={noResults} alt="" />
-            We're drawing a blank here. Maybe try a broader search term?
+            <FormattedMessage id="app_blank_result" />
           </div>
         )}
       </div>
@@ -97,6 +100,7 @@ FoodSearch.propTypes = {
   currentPage: PropTypes.number,
   pageSize: PropTypes.number,
   totalItems: PropTypes.number,
+  intl: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -107,4 +111,4 @@ const mapStateToProps = createStructuredSelector({
   totalItems: selectTotalItems,
 });
 
-export default connect(mapStateToProps)(FoodSearch);
+export default injectIntl(connect(mapStateToProps)(FoodSearch));

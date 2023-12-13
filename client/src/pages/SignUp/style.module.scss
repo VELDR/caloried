@@ -53,4 +53,10 @@
       }
     }
   }
+  .signIn {
+    font-size: $font-size-small;
+    a {
+      color: var(--color-accent);
+    }
+  }
 }

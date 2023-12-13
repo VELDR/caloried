@@ -8,10 +8,11 @@ import { Add, KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material';
 import { setMealType } from '@pages/Diary/actions';
 import FoodCard from '@components/FoodCard';
 import EditFoodModal from '@components/diary/EditFoodModal';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import classes from './style.module.scss';
 
-const MealCard = ({ meal, mealType }) => {
+const MealCard = ({ meal, mealType, intl: { formatMessage } }) => {
   const navigate = useNavigate('');
   const dispatch = useDispatch();
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -63,7 +64,7 @@ const MealCard = ({ meal, mealType }) => {
     <div className={classes.container}>
       <div className={classes.header}>
         <div className={classes.left}>
-          <Tooltip title="Add food" onClick={handleAddClick}>
+          <Tooltip title={formatMessage({ id: 'app_add_food' })} onClick={handleAddClick}>
             <Add />
           </Tooltip>
           <div className={classes.title}>{mealType}</div>
@@ -80,7 +81,8 @@ const MealCard = ({ meal, mealType }) => {
             ))
           ) : (
             <div className={classes.noFood}>
-              🍽️No foods added yet!{' '}
+              🍽️
+              <FormattedMessage id="app_no_foods_yet" />{' '}
               <div className={classes.searchIcon} onClick={() => navigate('/search')}>
                 🔍
               </div>
@@ -104,6 +106,7 @@ const MealCard = ({ meal, mealType }) => {
 MealCard.propTypes = {
   meal: PropTypes.object,
   mealType: PropTypes.string,
+  intl: PropTypes.object,
 };
 
-export default MealCard;
+export default injectIntl(MealCard);

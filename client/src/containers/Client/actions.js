@@ -1,8 +1,10 @@
 import {
+  ADMIN_LOGIN,
   LOGIN,
   LOGOUT_USER,
   REGISTER,
   RESEND_VERIFICATION_EMAIL,
+  SET_ADMIN_LOGIN,
   SET_FIRST_LOGIN,
   SET_LOGIN,
   SET_TOKEN,
@@ -33,6 +35,17 @@ export const login = (data, callback) => ({
   type: LOGIN,
   data,
   callback,
+});
+
+export const adminLogin = (data, callback) => ({
+  type: ADMIN_LOGIN,
+  data,
+  callback,
+});
+
+export const setAdminLogin = (isAdminLogin) => ({
+  type: SET_ADMIN_LOGIN,
+  isAdminLogin,
 });
 
 export const setFirstLogin = (firstLogin) => ({

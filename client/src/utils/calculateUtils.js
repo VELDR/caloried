@@ -71,3 +71,13 @@ export const calculateMacronutrientCalories = (protein, carbs, fat) => ({
   carbsCalories: carbs * 4,
   fatCalories: fat * 9,
 });
+
+export const calculateDistributionPercentage = (distribution) => {
+  const total = distribution?.reduce((acc, current) => acc + current.value, 0);
+
+  return distribution?.map((item) => ({
+    ...item,
+    quantity: item.value,
+    value: total > 0 ? ((item.value / total) * 100).toFixed(1) : 0,
+  }));
+};
