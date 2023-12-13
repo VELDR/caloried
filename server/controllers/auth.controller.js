@@ -15,6 +15,7 @@ const { User, Admin } = require('../models');
 const {
   registerValidator,
   loginValidator,
+  changePasswordValidator,
 } = require('../validators/auth.validator');
 
 exports.register = async (req, res) => {
@@ -239,6 +240,44 @@ exports.adminLogin = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    return handleServerError(res);
+  }
+};
+
+exports.changePassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const userId = req.user.id;
+
+    const { error, value } = changePasswordValidator.validate({
+      currentPassword,
+      newPassword,
+    });
+
+    if (error) {
+      return handleResponse(res, 400, { message: error.details[0].message });
+    }
+
+    const user = await User.findByPk(userId);
+
+    const isPasswordMatch = await comparePassword(
+      value.currentPassword,
+      user.password
+    );
+
+    if (!isPasswordMatch) {
+      return handleResponse(res, 400, {
+        message: 'Current password is incorrect',
+      });
+    }
+
+    const hashedNewPassword = hashPassword(value.newPassword);
+    await user.update({ password: hashedNewPassword });
+
+    return handleResponse(res, 200, {
+      message: 'Password changed successfully',
+    });
+  } catch (error) {
     return handleServerError(res);
   }
 };

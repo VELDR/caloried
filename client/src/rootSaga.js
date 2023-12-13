@@ -5,7 +5,7 @@ import clientSaga from '@containers/Client/saga';
 import diarySaga from '@pages/Diary/saga';
 import foodSearchSaga from '@pages/FoodSearch/saga';
 import foodDetailsSaga from '@pages/FoodDetails/saga';
-import editProfileSaga from '@pages/Profile/saga';
+import profileSaga from '@pages/Profile/saga';
 import dashboardSaga from '@pages/Dashboard/saga';
 import adminSaga from '@pages/Admin/saga';
 
@@ -16,7 +16,7 @@ export default function* rootSaga() {
     diarySaga(),
     foodSearchSaga(),
     foodDetailsSaga(),
-    editProfileSaga(),
+    profileSaga(),
     dashboardSaga(),
     adminSaga(),
   ]);

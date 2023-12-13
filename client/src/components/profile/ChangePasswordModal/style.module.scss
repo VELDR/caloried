@@ -1,0 +1,59 @@
+@import '@styles/base';
+
+.dialog {
+  @include flex-column(1rem);
+  &__title {
+    @include flex-items-center(0.25rem);
+    font-size: $font-size-large;
+    font-weight: 500;
+  }
+  .form {
+    @include flex-center-column(1rem);
+    &__item {
+      width: 75%;
+      .label {
+        position: relative;
+        font-size: $font-size-regular;
+        font-weight: 500;
+        @include flex-column;
+        svg {
+          @include box(1rem);
+          position: absolute;
+          left: 8px;
+          top: 67%;
+          transform: translateY(-50%);
+        }
+        .input {
+          @include input;
+          padding-left: 1.75rem;
+          padding-right: 1.75rem;
+        }
+        .inputError {
+          border-color: $color-error;
+          color: $color-error;
+        }
+        .eyeIcon {
+          cursor: pointer;
+          position: absolute;
+          top: 65%;
+          right: 14px;
+          transform: translateY(-50%);
+          @include box(1rem);
+        }
+      }
+      .error {
+        font-size: $font-size-smaller;
+        color: $color-error;
+      }
+    }
+    .buttons {
+      @include flex-row(1rem);
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      align-self: flex-end;
+      .button {
+        @include flex-items-center(0.25rem);
+      }
+    }
+  }
+}

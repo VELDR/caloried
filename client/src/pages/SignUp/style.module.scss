@@ -55,6 +55,10 @@
   }
   .signIn {
     font-size: $font-size-small;
+    display: none;
+    @include apply-at-md-size {
+      display: block;
+    }
     a {
       color: var(--color-accent);
     }

@@ -1,9 +1,9 @@
 @import '@styles/base';
 
 .page {
-  margin-bottom: 7rem;
+  margin-bottom: 8rem;
   @include apply-at-sm-size {
-    margin: 0;
+    margin-bottom: 1rem;
   }
   .container {
     .title {
@@ -115,6 +115,13 @@
         .icon {
           @include box(1.25rem);
         }
+      }
+    }
+    .footer {
+      @include flex-center;
+      padding-top: 1rem;
+      &__button {
+        @include secondary-button;
       }
     }
   }

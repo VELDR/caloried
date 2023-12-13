@@ -13,6 +13,7 @@ import { getActivityLevel } from '@utils/formatUtils';
 import { calculateAge } from '@utils/calculateUtils';
 
 import EditProfileModal from '@components/profile/EditProfileModal';
+import ChangePasswordModal from '@components/profile/ChangePasswordModal';
 import { getUser } from '@pages/Diary/actions';
 import { selectUser } from '@pages/Diary/selectors';
 import { selectToken } from '@containers/Client/selectors';
@@ -23,6 +24,7 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
   const dispatch = useDispatch();
 
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -34,8 +36,13 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
     setIsEditOpen(true);
   };
 
+  const handleChangePasswordClick = () => {
+    setIsChangePasswordOpen(true);
+  };
+
   const handleCloseEditModal = () => {
     setIsEditOpen(false);
+    setIsChangePasswordOpen(false);
   };
 
   const getGoalInfo = (goal) => {
@@ -181,8 +188,14 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
             </div>
           </div>
         </div>
+        <div className={classes.footer}>
+          <div className={classes.footer__button} onClick={handleChangePasswordClick}>
+            Change Password
+          </div>
+        </div>
       </div>
       {user && <EditProfileModal open={isEditOpen} onClose={handleCloseEditModal} user={user} token={token} />}
+      <ChangePasswordModal open={isChangePasswordOpen} onClose={handleCloseEditModal} token={token} />
     </div>
   );
 };

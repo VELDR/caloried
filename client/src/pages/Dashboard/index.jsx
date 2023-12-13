@@ -20,7 +20,7 @@ import PieChart from '@components/charts/PieChart';
 import MacronutrientTooltip from '@components/charts/MacronutrientTooltip';
 import CaloriesLineChart from '@components/charts/CaloriesLineChart';
 import ActivityCalendar from '@components/charts/ActivityCalendar';
-import ProfileCard from '@components/ProfileCard';
+import ProfileCard from '@components/profile/ProfileCard';
 import { selectToken } from '@containers/Client/selectors';
 import NutritionCard from '@components/NutritionCard';
 import { selectMeals, selectUser } from '@pages/Diary/selectors';

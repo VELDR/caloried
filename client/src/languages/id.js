@@ -63,8 +63,8 @@ export default {
   app_verify_email: 'Verifikasi Email Anda',
   app_we_sent_email: 'Anda hampir sampai! Kami telah mengirim email ke',
   app_click_on_link: 'Jika Anda tidak melihat linknya, Anda mungkin perlu ',
-  app_check_spam: 'periksa folder spam',
-  app_folder: 'Anda',
+  app_check_spam: 'periksa folder spam.',
+  app_folder: '',
   app_still_cant_find: 'Masih tidak dapat menemukan email? Tidak masalah.',
   app_resend: 'Kirim Ulang Email Verifikasi',
   app_already_verified: 'Sudah terverifikasi?',
@@ -188,4 +188,10 @@ export default {
   app_user_sign_in_description: 'Masuk kembali untuk menjaga keseimbangan nutrisi Anda',
 
   app_already_have_account: 'Sudah punya akun?',
+  app_change: 'Ubah',
+  app_current_password: 'Sandi sekarang',
+  app_new_password: 'Sandi baru',
+  app_change_password: 'Ubah Sandi',
+  app_current_password_is_required: 'Sandi sekarang diperlukan',
+  app_new_password_is_required: 'Sandi baru diperlukan',
 };

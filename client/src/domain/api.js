@@ -39,6 +39,8 @@ export const resendVerificationEmailApi = (data) =>
   callAPI(`${endpoints.auth}/resend-verification`, 'POST', {}, {}, data);
 export const loginApi = (data) => callAPI(`${endpoints.auth}/login`, 'POST', {}, {}, data);
 export const adminLoginApi = (data) => callAPI(`${endpoints.auth}/admin-login`, 'POST', {}, {}, data);
+export const changePasswordApi = (data, token) =>
+  callAPI(`${endpoints.auth}/change-password`, 'PUT', { Authorization: `Bearer ${token}` }, {}, data);
 
 // USER
 export const getUserByIdApi = (token) => callAPI(`${endpoints.user}`, 'GET', { Authorization: `Bearer ${token}` });

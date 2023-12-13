@@ -25,6 +25,11 @@
         border-radius: 0.5rem;
         object-fit: cover;
       }
+      .skeletonImage {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.5rem;
+      }
       .type {
         position: absolute;
         bottom: 0;
@@ -107,7 +112,8 @@
       }
     }
   }
-  .leftMost {
+
+  .rightMost {
     @include flex-items-center;
     .calories {
       font-size: $font-size-small;
@@ -119,5 +125,19 @@
         font-size: $font-size-large;
       }
     }
+  }
+}
+
+.skeletonCalories {
+  width: 0;
+  @include apply-at-md-size {
+    width: 3rem;
+  }
+}
+
+.skeletonNutrient {
+  width: 8rem;
+  @include apply-at-md-size {
+    width: 0;
   }
 }

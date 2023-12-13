@@ -189,4 +189,10 @@ export default {
   app_user_sign_in_description: 'Log in to manage your diet and nutrition plans, crafted just for you.',
 
   app_already_have_account: 'Already have an account?',
+  app_change: 'Change',
+  app_current_password: 'Current password',
+  app_new_password: 'New Password',
+  app_change_password: 'Change Password',
+  app_current_password_is_required: 'Current password is required',
+  app_new_password_is_required: 'New password is required',
 };
