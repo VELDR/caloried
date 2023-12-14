@@ -1,19 +1,32 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { connect, useDispatch } from 'react-redux';
+import OTPInput from 'react-otp-input';
 import { createStructuredSelector } from 'reselect';
 import mail from '@static/images/mail-sent.svg';
 
 import { selectAccount } from '@pages/SignUp/selectors';
-import { resendVerificationEmail } from '@containers/Client/actions';
+import { resendVerificationEmail, verifyOTP } from '@containers/Client/actions';
 
 import classes from './style.module.scss';
 
 const VerifyEmail = ({ account }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [otp, setOtp] = useState(null);
 
   const handleResend = () => {
     dispatch(resendVerificationEmail({ email: account.email }));
+  };
+
+  const handleSubmitOTP = () => {
+    dispatch(
+      verifyOTP(otp, account.email, () => {
+        navigate('/verify-success');
+      })
+    );
   };
 
   return (
@@ -30,25 +43,23 @@ const VerifyEmail = ({ account }) => {
         </div>
         <div className={classes.email}>{account.email}</div>
       </div>
-      <div className={classes.description}>
-        <FormattedMessage id="app_click_on_link" />
-        <span>
-          <FormattedMessage id="app_check_spam" />
-        </span>{' '}
-        <FormattedMessage id="app_folder" />
+      <div className={classes.otp}>
+        <OTPInput
+          value={otp}
+          onChange={setOtp}
+          numInputs={4}
+          renderSeparator={<span>-</span>}
+          renderInput={(props) => <input {...props} />}
+        />
+        <div className={classes.button} onClick={handleSubmitOTP}>
+          Submit
+        </div>
       </div>
+
       <div className={classes.description}>
         <FormattedMessage id="app_still_cant_find" />
-      </div>
-      <div className={classes.footer}>
-        <div className={classes.button} onClick={handleResend}>
+        <div className={classes.link} onClick={handleResend}>
           <FormattedMessage id="app_resend" />
-        </div>
-        <div className={classes.login}>
-          <FormattedMessage id="app_already_verified" />{' '}
-          <a href="/sign-in">
-            <FormattedMessage id="app_sign_in_here" />
-          </a>
         </div>
       </div>
     </div>

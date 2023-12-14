@@ -13,6 +13,7 @@ import Profile from '@pages/Profile';
 import Dashboard from '@pages/Dashboard';
 import AdminLayout from '@layouts/AdminLayout';
 import Admin from '@pages/Admin';
+import ResetPassword from '@pages/ResetPassword';
 
 const routes = [
   {
@@ -84,6 +85,13 @@ const routes = [
     protected: true,
     component: Admin,
     layout: AdminLayout,
+  },
+  {
+    path: '/:token/reset-password',
+    name: 'ResetPassword',
+    protected: false,
+    component: ResetPassword,
+    layout: AuthLayout,
   },
   { path: '*', name: 'Not Found', component: NotFound, layout: MainLayout, protected: false },
 ];

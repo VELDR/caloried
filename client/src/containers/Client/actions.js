@@ -1,13 +1,16 @@
 import {
   ADMIN_LOGIN,
+  FORGOT_PASSWORD,
   LOGIN,
   LOGOUT_USER,
   REGISTER,
   RESEND_VERIFICATION_EMAIL,
+  RESET_PASSWORD,
   SET_ADMIN_LOGIN,
   SET_FIRST_LOGIN,
   SET_LOGIN,
   SET_TOKEN,
+  VERIFY_OTP,
 } from '@containers/Client/constants';
 
 export const setLogin = (login) => ({
@@ -55,4 +58,22 @@ export const setFirstLogin = (firstLogin) => ({
 
 export const logoutUser = () => ({
   type: LOGOUT_USER,
+});
+
+export const verifyOTP = (otp, email, callback) => ({
+  type: VERIFY_OTP,
+  otp,
+  email,
+  callback,
+});
+
+export const forgotPassword = (email) => ({
+  type: FORGOT_PASSWORD,
+  email,
+});
+
+export const resetPassword = (data, callback) => ({
+  type: RESET_PASSWORD,
+  data,
+  callback,
 });

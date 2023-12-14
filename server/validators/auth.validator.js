@@ -65,8 +65,23 @@ const changePasswordValidator = Joi.object({
   }),
 });
 
+const resetPasswordValidator = Joi.object({
+  email: Joi.string().email().required().messages({
+    'string.email': 'Invalid email format',
+    'string.empty': 'Email is required',
+  }),
+  newPassword: Joi.string().min(8).required().messages({
+    'string.min': 'Password must be at least {#limit} characters long',
+    'string.empty': 'Password is required',
+  }),
+  token: Joi.string().required().messages({
+    'string.empty': 'Token is required',
+  }),
+});
+
 module.exports = {
   registerValidator,
   loginValidator,
   changePasswordValidator,
+  resetPasswordValidator,
 };

@@ -58,15 +58,15 @@ export default {
   app_email: 'Email',
   app_password: 'Kata Sandi',
   app_confirm_password: 'Konfirmasi Kata Sandi',
-  app_info_verify: 'Link verifikasi akan dikirim ke email Anda untuk mengaktifkan akun Anda',
+  app_info_verify: 'OTP akan dikirim ke email Anda untuk mengaktifkan akun Anda',
 
   app_verify_email: 'Verifikasi Email Anda',
   app_we_sent_email: 'Anda hampir sampai! Kami telah mengirim email ke',
-  app_click_on_link: 'Jika Anda tidak melihat linknya, Anda mungkin perlu ',
+  app_click_on_link: 'Jika Anda tidak melihat emailnya, Anda mungkin perlu ',
   app_check_spam: 'periksa folder spam.',
   app_folder: '',
   app_still_cant_find: 'Masih tidak dapat menemukan email? Tidak masalah.',
-  app_resend: 'Kirim Ulang Email Verifikasi',
+  app_resend: 'Kirim Ulang OTP',
   app_already_verified: 'Sudah terverifikasi?',
   app_sign_in_here: 'Masuk di sini',
 
@@ -194,4 +194,8 @@ export default {
   app_change_password: 'Ubah Sandi',
   app_current_password_is_required: 'Sandi sekarang diperlukan',
   app_new_password_is_required: 'Sandi baru diperlukan',
+
+  app_reset_password_title: 'Atur Ulang Kata Sandi Anda',
+  app_reset_password_description: 'Gunakan kata sandi yang aman dan mudah diingat',
+  app_reset: 'Atur Ulang',
 };

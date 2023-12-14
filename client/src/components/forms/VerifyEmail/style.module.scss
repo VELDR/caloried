@@ -5,36 +5,44 @@
   text-align: center;
   max-width: 75%;
   margin: 0 auto;
+  position: relative;
+  height: 100%;
   img {
     @include box(8rem);
+    position: absolute;
+    top: 0;
   }
   .title {
+    @include flex-center-column;
     font-size: $font-size-large;
     font-weight: 700;
+    margin-top: 6rem;
   }
   .description {
     font-size: $font-size-small;
-    span {
-      font-weight: 700;
+  }
+  .otp {
+    @include flex-center-column(1rem);
+    input {
+      @include input;
+    }
+    .button {
+      @include primary-button;
+      font-size: $font-size-small;
+      width: fit-content;
     }
   }
+
   .email {
     font-weight: 700;
     font-size: $font-size-regular;
   }
-  .footer {
-    @include flex-column(0.2rem);
-    .button {
-      @include primary-button;
-      background-color: var(--color-text-primary);
-      color: var(--color-bg-primary);
-      font-size: $font-size-regular;
-    }
-    .login {
-      font-size: $font-size-smaller;
-      a {
-        color: var(--color-accent);
-      }
+  .link {
+    cursor: pointer;
+    font-size: $font-size-small;
+    color: var(--color-accent);
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

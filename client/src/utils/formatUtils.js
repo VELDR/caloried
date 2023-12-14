@@ -9,6 +9,28 @@ export const formatDate = (date) => {
   return localTime.toISOString().substring(0, 10);
 };
 
+export const formatDateAndTime = (date) => {
+  if (!date) {
+    date = new Date();
+  }
+
+  date = new Date(date);
+
+  const formattedDatePart = date.toLocaleString('default', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+
+  const formattedTimePart = date.toLocaleString('default', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  });
+
+  return `${formattedDatePart} - ${formattedTimePart}`;
+};
+
 export const getActivityLevel = (activityCode) => {
   switch (activityCode) {
     case 1:

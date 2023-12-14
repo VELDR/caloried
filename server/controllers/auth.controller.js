@@ -6,16 +6,21 @@ const {
 } = require('../helpers/responseHandler');
 const { hashPassword, comparePassword } = require('../utils/bcrypt');
 const {
-  generateVerificationToken,
   generateToken,
   verifyToken,
+  generateEmailVerificationToken,
+  generateForgotPasswordToken,
 } = require('../utils/jwt');
-const { sendVerificationEmail } = require('../utils/nodemailer');
+const {
+  sendOTPVerificationEmail,
+  sendPasswordResetEmail,
+} = require('../utils/nodemailer');
 const { User, Admin } = require('../models');
 const {
   registerValidator,
   loginValidator,
   changePasswordValidator,
+  resetPasswordValidator,
 } = require('../validators/auth.validator');
 
 exports.register = async (req, res) => {
@@ -70,16 +75,14 @@ exports.register = async (req, res) => {
       activityLevel,
       isEmailVerified: false,
     });
-    const verificationToken = generateVerificationToken(newUser);
+    const OTP = Math.floor(1000 + Math.random() * 9000).toString();
+    await sendOTPVerificationEmail(email, OTP);
+    const verificationToken = generateEmailVerificationToken(OTP, email);
     await newUser.update({ verificationToken });
-
-    const verificationLink = `${process.env.BACKEND_BASE_URL}/api/auth/verify-email?token=${newUser.verificationToken}`;
-
-    sendVerificationEmail(email, verificationLink);
 
     return handleResponse(res, 201, {
       user: newUser,
-      message: 'Registration Successful!',
+      message: 'Registration Successful! Please verify your email.',
     });
   } catch (error) {
     console.log(error);
@@ -102,16 +105,14 @@ exports.resendVerificationEmail = async (req, res) => {
       return handleResponse(res, 400, { message: 'Email already verified.' });
     }
 
-    const newVerificationToken = generateVerificationToken(user);
+    const newOTP = Math.floor(1000 + Math.random() * 9000).toString();
+
+    const newVerificationToken = generateEmailVerificationToken(newOTP, email);
     await user.update({ verificationToken: newVerificationToken });
 
-    const verificationLink = `${process.env.BACKEND_BASE_URL}/api/auth/verify-email?token=${newVerificationToken}`;
+    await sendOTPVerificationEmail(email, newOTP);
 
-    sendVerificationEmail(email, verificationLink);
-
-    return handleResponse(res, 200, {
-      message: 'Verification email resent successfully.',
-    });
+    return handleResponse(res, 200, { message: 'Verification OTP resent.' });
   } catch (error) {
     console.log(error);
     return handleServerError(res);
@@ -120,17 +121,26 @@ exports.resendVerificationEmail = async (req, res) => {
 
 exports.verifyEmail = async (req, res) => {
   try {
-    const { token } = req.query;
-    const decoded = verifyToken(token);
-    const user = await User.findByPk(decoded.id);
+    const { otp, email } = req.body;
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return handleResponse(res, 404, { message: 'User not found.' });
+    }
+    try {
+      const decoded = verifyToken(user.verificationToken);
 
-    if (user && user.email === decoded.email) {
-      user.isEmailVerified = true;
-      user.verificationToken = null;
-      await user.save();
-      res.redirect(`${process.env.FRONTEND_BASE_URL}/verify-success`);
-    } else {
-      return handleResponse(res, 400, { message: 'Invalid token.' });
+      if (decoded.otp === otp && decoded.email === email) {
+        user.isEmailVerified = true;
+        user.verificationToken = null;
+        await user.save();
+        return handleResponse(res, 200, { message: 'Verification Success!' });
+      } else {
+        return handleResponse(res, 400, { message: 'Invalid OTP.' });
+      }
+    } catch (error) {
+      return handleResponse(res, 400, {
+        message: 'Verification failed. OTP is expired.',
+      });
     }
   } catch (error) {
     console.log(error);
@@ -166,7 +176,7 @@ exports.login = async (req, res) => {
     if (!user.isEmailVerified) {
       return handleResponse(res, 403, {
         message:
-          'Your email address is not verified. Please check your email for the verification link.',
+          'Your email address is not verified. Please check your email for the verification OTP.',
       });
     }
 
@@ -277,6 +287,70 @@ exports.changePassword = async (req, res) => {
     return handleResponse(res, 200, {
       message: 'Password changed successfully',
     });
+  } catch (error) {
+    return handleServerError(res);
+  }
+};
+
+exports.forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    console.log(email, '<<<<EMAIL');
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return handleResponse(res, 404, { message: 'Email not registered.' });
+    }
+    const token = generateForgotPasswordToken(email);
+
+    await sendPasswordResetEmail(email, token);
+
+    return handleResponse(res, 200, {
+      message: 'Reset password link sent via email',
+    });
+  } catch (error) {
+    console.log(error);
+    return handleServerError(res);
+  }
+};
+
+exports.resetPassword = async (req, res) => {
+  try {
+    const userData = req.body;
+
+    const plainPassword = CryptoJS.AES.decrypt(
+      userData.newPassword,
+      process.env.CRYPTOJS_SECRET
+    ).toString(CryptoJS.enc.Utf8);
+
+    userData.newPassword = plainPassword;
+
+    const { error, value } = resetPasswordValidator.validate(userData);
+    if (error) {
+      return handleResponse(res, 400, { message: error.details[0].message });
+    }
+
+    const { email, newPassword, token } = value;
+
+    try {
+      const decoded = verifyToken(token);
+      console.log(decoded, token);
+    } catch (error) {
+      return handleResponse(res, 400, { message: 'Token expired.' });
+    }
+
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return handleResponse(res, 404, { message: 'Email not registered.' });
+    }
+
+    await User.update(
+      { password: hashPassword(newPassword) },
+      { where: { email: email } }
+    );
+
+    return handleResponse(res, 200, { message: 'Password reset successful.' });
   } catch (error) {
     return handleServerError(res);
   }

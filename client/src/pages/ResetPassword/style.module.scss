@@ -1,0 +1,35 @@
+@import '@styles/base';
+
+.page {
+  @include flex-center;
+  min-height: 80vh;
+  padding: 1rem;
+  .container {
+    @include flex-center-column(1rem);
+    background-color: hsla(var(--hue), var(--saturation), var(--lightness), 0.65);
+    border-radius: 2rem;
+    border: 1px solid var(--color-text-secondary);
+    box-sizing: border-box;
+    padding: 2rem;
+    position: relative;
+    text-align: center;
+    .header {
+      @include flex-center-column;
+      width: fit-content;
+      &__title {
+        font-size: $font-size-larger;
+      }
+      &__description {
+        width: 75%;
+        font-size: $font-size-smaller;
+      }
+    }
+    .form {
+      @include flex-column(0.5rem);
+      &__button {
+        @include primary-button;
+        font-size: $font-size-regular;
+      }
+    }
+  }
+}

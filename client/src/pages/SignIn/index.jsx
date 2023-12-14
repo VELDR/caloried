@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 
 import FormInput from '@components/ui/FormInput';
 import { AlternateEmail, Key } from '@mui/icons-material';
-import { adminLogin, login } from '@containers/Client/actions';
+import { adminLogin, forgotPassword, login } from '@containers/Client/actions';
 
 import classes from './style.module.scss';
 
@@ -38,6 +38,12 @@ const SignIn = ({ intl: { formatMessage } }) => {
 
   const handleAdminChange = (e) => {
     setIsAdmin(e.target.checked);
+  };
+
+  const handleForgotPassword = () => {
+    if (email) {
+      dispatch(forgotPassword({ email }));
+    }
   };
 
   return (
@@ -74,7 +80,7 @@ const SignIn = ({ intl: { formatMessage } }) => {
               onChange={(e) => setPassword(e.target.value)}
             />
             {!isAdmin && (
-              <div className={classes.form__forgot}>
+              <div className={classes.form__forgot} onClick={handleForgotPassword}>
                 <FormattedMessage id="app_forgot_password" />
               </div>
             )}

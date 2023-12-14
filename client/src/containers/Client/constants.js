@@ -7,3 +7,6 @@ export const ADMIN_LOGIN = 'Client/ADMIN_LOGIN';
 export const SET_ADMIN_LOGIN = 'Client/SET_ADMIN_LOGIN';
 export const SET_FIRST_LOGIN = 'Client/SET_FIRST_LOGIN';
 export const LOGOUT_USER = 'Client/LOGOUT_USER';
+export const VERIFY_OTP = 'Client/VERIFY_OTP';
+export const FORGOT_PASSWORD = 'Client/FORGOT_PASSWORD';
+export const RESET_PASSWORD = 'Client/RESET_PASSWORD';

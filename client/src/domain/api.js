@@ -41,6 +41,9 @@ export const loginApi = (data) => callAPI(`${endpoints.auth}/login`, 'POST', {},
 export const adminLoginApi = (data) => callAPI(`${endpoints.auth}/admin-login`, 'POST', {}, {}, data);
 export const changePasswordApi = (data, token) =>
   callAPI(`${endpoints.auth}/change-password`, 'PUT', { Authorization: `Bearer ${token}` }, {}, data);
+export const verifyOTPApi = (data) => callAPI(`${endpoints.auth}/verify-email`, 'POST', {}, {}, data);
+export const resetPasswordApi = (data) => callAPI(`${endpoints.auth}/reset-password`, 'PUT', {}, {}, data);
+export const forgotPasswordApi = (data) => callAPI(`${endpoints.auth}/forgot-password`, 'POST', {}, {}, data);
 
 // USER
 export const getUserByIdApi = (token) => callAPI(`${endpoints.user}`, 'GET', { Authorization: `Bearer ${token}` });

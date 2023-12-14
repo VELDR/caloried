@@ -16,11 +16,12 @@ import {
 } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import { Cancel, CheckCircle } from '@mui/icons-material';
+import { formatDateAndTime } from '@utils/formatUtils';
+import { SEX_COLORS } from '@constants';
 
 import ConfirmDeleteModal from '@components/ui/ConfirmDeleteModal';
 import DemographicsBarChart from '@components/charts/DemographicsBarChart';
 import PieChart from '@components/charts/PieChart';
-import { SEX_COLORS } from '@constants';
 import SexDistributionTooltip from '@components/charts/SexDistributionTooltip';
 
 import { selectToken } from '@containers/Client/selectors';
@@ -135,7 +136,7 @@ const Admin = ({ token, users, totalUsers, demographics, sexDistribution }) => {
                 <TableCell className={classes.verified}>
                   {user?.isEmailVerified ? <CheckCircle /> : <Cancel />}
                 </TableCell>
-                <TableCell>{new Date(user?.createdAt).toLocaleString()}</TableCell>
+                <TableCell>{formatDateAndTime(user?.createdAt)}</TableCell>
                 <TableCell>
                   <div className={classes.delete} onClick={() => handleDeleteClick(user?.id)}>
                     <FormattedMessage id="app_delete" />

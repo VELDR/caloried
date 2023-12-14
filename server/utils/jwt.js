@@ -7,17 +7,21 @@ const generateToken = (user, expiresIn = '1d') => {
   return jwt.sign({ id, role }, secretKey, { expiresIn });
 };
 
-const generateVerificationToken = (user, expiresIn = '1d') => {
-  const { id, email } = user;
-  return jwt.sign({ id, email }, secretKey, { expiresIn });
+const generateEmailVerificationToken = (otp, email, expiresIn = '2m') => {
+  return jwt.sign({ otp, email }, secretKey, { expiresIn });
+};
+
+const generateForgotPasswordToken = (email) => {
+  return jwt.sign({ email }, secretKey, { expiresIn: '5m' });
 };
 
 const verifyToken = (token) => {
-  try {
-    return jwt.verify(token, secretKey);
-  } catch (error) {
-    return null;
-  }
+  return jwt.verify(token, secretKey);
 };
 
-module.exports = { generateToken, generateVerificationToken, verifyToken };
+module.exports = {
+  generateToken,
+  generateEmailVerificationToken,
+  generateForgotPasswordToken,
+  verifyToken,
+};

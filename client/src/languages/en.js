@@ -58,15 +58,15 @@ export default {
   app_email: 'Email',
   app_password: 'Password',
   app_confirm_password: 'Confirm Password',
-  app_info_verify: 'A verification link will be emailed to you to activate your account.',
+  app_info_verify: 'An OTP will be emailed to you to activate your account.',
 
   app_verify_email: 'Verify Your Email Address',
   app_we_sent_email: "You're almost there! We sent an email to",
-  app_click_on_link: "If you don't see the link, you may need to ",
+  app_click_on_link: "If you don't see the email, you may need to ",
   app_check_spam: 'check your spam',
   app_folder: 'folder',
   app_still_cant_find: "Still can't find the email? No problem.",
-  app_resend: 'Resend Verification Email',
+  app_resend: 'Resend OTP',
   app_already_verified: 'Already verified?',
   app_sign_in_here: 'Sign in here',
 
@@ -195,4 +195,8 @@ export default {
   app_change_password: 'Change Password',
   app_current_password_is_required: 'Current password is required',
   app_new_password_is_required: 'New password is required',
+
+  app_reset_password_title: 'Reset Your Password',
+  app_reset_password_description: 'Remember to create something secure yet memorable',
+  app_reset: 'Reset',
 };
