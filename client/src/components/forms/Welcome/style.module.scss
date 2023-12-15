@@ -1,0 +1,23 @@
+@import '@styles/base';
+
+.container {
+  @include flex-center-column(3rem);
+  height: 100%;
+
+  .body {
+    @include flex-center-column(1rem);
+    text-align: center;
+    .title {
+      font-size: $font-size-larger;
+      font-weight: 700;
+    }
+    img {
+      @include box(12rem);
+    }
+    .subtitle {
+      @include apply-at-md-size {
+        width: 75%;
+      }
+    }
+  }
+}

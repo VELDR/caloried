@@ -15,13 +15,15 @@ const {
   sendOTPVerificationEmail,
   sendPasswordResetEmail,
 } = require('../utils/nodemailer');
-const { User, Admin } = require('../models');
+const { User, Admin, WeightEntry } = require('../models');
 const {
   registerValidator,
   loginValidator,
   changePasswordValidator,
   resetPasswordValidator,
 } = require('../validators/auth.validator');
+const redisClient = require('../utils/redisClient');
+const { invalidateUserCache } = require('../helpers/cacheHelper');
 
 exports.register = async (req, res) => {
   try {
@@ -80,10 +82,19 @@ exports.register = async (req, res) => {
     const verificationToken = generateEmailVerificationToken(OTP, email);
     await newUser.update({ verificationToken });
 
-    return handleResponse(res, 201, {
-      user: newUser,
-      message: 'Registration Successful! Please verify your email.',
-    });
+    if (newUser) {
+      await WeightEntry.create({
+        weight: newUser.weight,
+        dateRecorded: new Date(),
+        userId: newUser.id,
+      });
+
+      await invalidateUserCache();
+      return handleResponse(res, 201, {
+        user: newUser,
+        message: 'Registration Successful! Please verify your email.',
+      });
+    }
   } catch (error) {
     console.log(error);
     return handleServerError(res);
@@ -133,6 +144,9 @@ exports.verifyEmail = async (req, res) => {
         user.isEmailVerified = true;
         user.verificationToken = null;
         await user.save();
+
+        await invalidateUserCache();
+
         return handleResponse(res, 200, { message: 'Verification Success!' });
       } else {
         return handleResponse(res, 400, { message: 'Invalid OTP.' });

@@ -1,7 +1,6 @@
 import MainLayout from '@layouts/MainLayout';
 import AuthLayout from '@layouts/AuthLayout';
 
-import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
 import VerifySuccess from '@pages/VerifySuccess';
 import SignUp from '@pages/SignUp';
@@ -14,14 +13,16 @@ import Dashboard from '@pages/Dashboard';
 import AdminLayout from '@layouts/AdminLayout';
 import Admin from '@pages/Admin';
 import ResetPassword from '@pages/ResetPassword';
+import LandingPage from '@pages/LandingPage';
+import LandingPageLayout from '@layouts/LandingPageLayout';
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'LandingPage',
     protected: false,
-    component: Home,
-    layout: MainLayout,
+    component: LandingPage,
+    layout: LandingPageLayout,
   },
   {
     path: '/sign-up',

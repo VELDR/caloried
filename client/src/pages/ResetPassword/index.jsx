@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Key } from '@mui/icons-material';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { jwtDecode } from 'jwt-decode';
 
 import { resetPassword } from '@containers/Client/actions';
@@ -61,4 +61,4 @@ ResetPassword.propTypes = {
   intl: PropTypes.object,
 };
 
-export default ResetPassword;
+export default injectIntl(ResetPassword);

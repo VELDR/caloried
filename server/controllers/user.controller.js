@@ -1,16 +1,18 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
 const {
   handleResponse,
   handleServerError,
 } = require('../helpers/responseHandler');
 const fs = require('fs');
 const path = require('path');
-const { User } = require('../models');
+const { User, WeightEntry } = require('../models');
 const { editProfileValidator } = require('../validators/user.validator');
 const {
   calculateAge,
   determineAgeGroup,
 } = require('../helpers/functionHelper');
+const redisClient = require('../utils/redisClient');
+const { invalidateUserCache } = require('../helpers/cacheHelper');
 
 exports.getAllUsersPaginated = async (req, res) => {
   try {
@@ -22,25 +24,38 @@ exports.getAllUsersPaginated = async (req, res) => {
     const sort = req.query.sort || 'id';
     const order = req.query.order || 'ASC';
 
-    const offset = (page - 1) * pageSize;
+    const cacheKey = `users:${page}:${pageSize}:${sort}:${order}`;
 
-    const { count, rows } = await User.findAndCountAll({
-      attributes: { exclude: ['password'] },
-      limit: pageSize,
-      offset: offset,
-      order: [[sort, order]],
-    });
+    const cachedData = await redisClient.get(cacheKey);
 
-    if (rows.length === 0) {
-      return handleResponse(res, 404, { message: 'No users found.' });
+    if (cachedData) {
+      const cachedResult = JSON.parse(cachedData);
+      return handleResponse(res, 200, cachedResult);
+    } else {
+      const offset = (page - 1) * pageSize;
+      const { count, rows } = await User.findAndCountAll({
+        attributes: { exclude: ['password'] },
+        limit: pageSize,
+        offset: offset,
+        order: [[sort, order]],
+      });
+
+      if (rows.length === 0) {
+        return handleResponse(res, 404, { message: 'No users found.' });
+      }
+
+      const result = {
+        total: count,
+        users: rows,
+        page,
+        pageSize,
+      };
+
+      await redisClient.set(cacheKey, JSON.stringify(result), 'EX', 1800);
+      await redisClient.sadd('usersCacheKeys', cacheKey);
+
+      return handleResponse(res, 200, result);
     }
-
-    return handleResponse(res, 200, {
-      total: count,
-      users: rows,
-      page,
-      pageSize,
-    });
   } catch (error) {
     console.log(error);
     return handleServerError(res);
@@ -115,10 +130,32 @@ exports.editProfile = async (req, res) => {
 
     const updatedUser = await User.findOne({ where: { id: userId } });
 
-    return handleResponse(res, 200, {
-      user: updatedUser,
-      message: 'Profile updated successfully!',
-    });
+    if (updatedUser) {
+      if (weight !== currentUser.weight) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const existingEntry = await WeightEntry.findOne({
+          where: { userId: userId, dateRecorded: today },
+        });
+
+        if (existingEntry) {
+          await existingEntry.update({ weight });
+        } else {
+          await WeightEntry.create({
+            userId: userId,
+            weight: weight,
+            dateRecorded: today,
+          });
+        }
+      }
+      await invalidateUserCache();
+
+      return handleResponse(res, 200, {
+        user: updatedUser,
+        message: 'Profile updated successfully!',
+      });
+    }
   } catch (error) {
     console.log(error);
     return handleServerError(res);
@@ -135,6 +172,8 @@ exports.deleteUserById = async (req, res) => {
     }
 
     await user.destroy();
+
+    await invalidateUserCache();
 
     return handleResponse(res, 200, {
       deletedUser: user,
@@ -191,6 +230,48 @@ exports.getUserSexDistribution = async (req, res) => {
     ];
 
     return handleResponse(res, 200, data);
+  } catch (error) {
+    console.error(error);
+    return handleServerError(res);
+  }
+};
+
+exports.getUserWeightEntries = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const days = req.query.days ? parseInt(req.query.days) : 30;
+    const endDate = new Date();
+    const startDate = new Date();
+    startDate.setDate(endDate.getDate() - days);
+
+    const weightEntries = await WeightEntry.findAll({
+      where: {
+        userId: userId,
+        dateRecorded: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+      order: [['dateRecorded', 'ASC']],
+      attributes: ['dateRecorded', 'weight'],
+    });
+
+    let formattedData = [];
+    let previousWeight = null;
+
+    for (let entry of weightEntries) {
+      const entryDate = new Date(entry.dateRecorded);
+      const formattedDate = entryDate.toISOString().split('T')[0];
+
+      if (entry.weight !== previousWeight) {
+        formattedData.push({
+          x: formattedDate,
+          y: entry.weight,
+        });
+        previousWeight = entry.weight;
+      }
+    }
+
+    return handleResponse(res, 200, formattedData);
   } catch (error) {
     console.error(error);
     return handleServerError(res);

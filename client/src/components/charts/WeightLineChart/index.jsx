@@ -4,10 +4,10 @@ import { formatLineChartLabel } from '@utils/formatUtils';
 
 import classes from './style.module.scss';
 
-const CaloriesLineChart = ({ data }) => {
+const WeightLineChart = ({ data }) => {
   const formattedData = [
     {
-      id: 'calories',
+      id: 'weight',
       data: formatLineChartLabel(data),
     },
   ];
@@ -32,9 +32,17 @@ const CaloriesLineChart = ({ data }) => {
     },
   };
 
+  const maxWeight = Math.max(...data.map((d) => d.y));
+
+  const yMax = maxWeight + 10;
+
+  const tickIncrement = 5;
+
+  const tickValues = Array.from({ length: yMax / tickIncrement + 1 }, (_, i) => i * tickIncrement);
+
   const lineChartToolTip = (point) => (
     <div className={classes.tooltip}>
-      <div className={classes.tooltip__text}>{point.data.y} kcal</div>
+      <div className={classes.tooltip__text}>{point.data.y} kg</div>
     </div>
   );
 
@@ -43,12 +51,12 @@ const CaloriesLineChart = ({ data }) => {
       <ResponsiveLine
         data={formattedData}
         margin={{ top: 40, right: 30, bottom: 50, left: 60 }}
-        curve="monotoneX"
+        // curve="monotoneX"
         xScale={{ type: 'point' }}
         yScale={{
           type: 'linear',
-          min: 'auto',
-          max: 'auto',
+          min: 0,
+          max: yMax,
           stacked: true,
           reverse: false,
         }}
@@ -66,13 +74,13 @@ const CaloriesLineChart = ({ data }) => {
           tickSize: 5,
           tickPadding: 25,
           tickRotation: 0,
-          legend: 'Calories (kcal)',
+          legend: 'Weight (kg)',
           legendOffset: -50,
           legendPosition: 'middle',
+          tickValues,
         }}
         theme={theme}
-        enableArea
-        colors="var(--color-primary)"
+        colors="var(--color-accent)"
         pointSize={8}
         useMesh
         pointBorderWidth={4}
@@ -82,8 +90,8 @@ const CaloriesLineChart = ({ data }) => {
   );
 };
 
-CaloriesLineChart.propTypes = {
+WeightLineChart.propTypes = {
   data: PropTypes.array,
 };
 
-export default CaloriesLineChart;
+export default WeightLineChart;

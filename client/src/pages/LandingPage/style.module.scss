@@ -1,0 +1,128 @@
+@import '@styles/base';
+
+.heroContainer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('@static/images/landingpage.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  width: 100%;
+  height: 25rem;
+  @include apply-at-md-size {
+    height: 100vh;
+  }
+  .hero {
+    @include flex-center-column;
+    gap: 0.5rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 100%;
+    text-align: center;
+    color: $color-bg-primary;
+    @include apply-at-md-size {
+      max-width: 40rem;
+    }
+    .heroTitle {
+      font-size: $font-size-huge;
+      font-weight: 700;
+      background-image: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include apply-at-md-size {
+        font-size: 3rem;
+      }
+    }
+    .heroSubtitle {
+      font-size: $font-size-large;
+      font-weight: 500;
+      @include apply-at-md-size {
+        font-size: $font-size-larger;
+      }
+    }
+    .heroDescription {
+      margin-top: 1rem;
+      font-size: $font-size-regular;
+      max-width: 15rem;
+      @include apply-at-md-size {
+        width: 20rem;
+        font-size: $font-size-regular;
+      }
+    }
+    .heroButton {
+      @include flex-center;
+      gap: 0.35rem;
+      cursor: pointer;
+      position: relative;
+      background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+      margin-top: 2rem;
+      font-weight: 500;
+      &:hover {
+        box-shadow: 0 0 10px 1px $color-accent;
+      }
+      .buttonArrow {
+        @include box(1rem);
+        @include apply-at-md-size {
+          @include box(1.1rem);
+        }
+      }
+    }
+  }
+}
+
+.featuresContainer {
+  @include flex-center-column(2rem);
+  background-color: var(--color-bg-secondary);
+  padding: 2rem;
+  .featuresTitle {
+    font-size: $font-size-huge;
+    font-weight: 700;
+  }
+
+  .features {
+    @include flex-center(1rem);
+    flex-wrap: wrap;
+    &__item {
+      position: relative;
+      @include flex-center-column(1rem);
+      background-color: var(--color-bg-primary);
+      @include box(13rem, 10rem);
+      border-radius: 1rem;
+      box-shadow: 0 0 10px 1px var(--color-text-secondary);
+      &:hover {
+        animation: pulse 2s infinite;
+      }
+      svg {
+        @include box(2.5rem);
+      }
+      .description {
+        position: relative;
+        @include flex-center-column;
+        text-align: center;
+        .title {
+          font-size: $font-size-regular;
+          font-weight: 700;
+        }
+        .subtitle {
+          font-size: $font-size-small;
+          color: var(--color-text-secondary);
+          width: 75%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px 1px var(--color-text-secondary);
+  }
+  50% {
+    box-shadow: 0 0 20px 1px var(--color-secondary);
+  }
+}

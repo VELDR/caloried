@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectTheme } from '@containers/App/selectors';
 import { selectIsAdminLogin, selectLogin } from '@containers/Client/selectors';
+import Logo from '@components/ui/Logo';
 import ThemeToggle from '@components/ui/ThemeToggle';
 import TranslateDropdown from '@components/ui/TranslateDropdown';
 
@@ -23,6 +24,9 @@ const AuthLayout = ({ children, theme, login, isAdminLogin }) => {
   }, [isAdminLogin, login, navigate]);
   return (
     <div className={classes.container}>
+      <div className={classes.logo}>
+        <Logo onClick={() => navigate('/')} />
+      </div>
       <div className={classes.toolbar}>
         <ThemeToggle theme={theme} />
         <TranslateDropdown />

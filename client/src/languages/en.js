@@ -199,4 +199,31 @@ export default {
   app_reset_password_title: 'Reset Your Password',
   app_reset_password_description: 'Remember to create something secure yet memorable',
   app_reset: 'Reset',
+
+  app_hero_title: 'Plan Smart, Eat Smart',
+  app_hero_subtitle: 'Your Personal Nutrition Guide',
+  app_hero_description: 'Caloried brings the power of tracking and planning to your diet',
+  app_hero_button: 'Get Tracking Now',
+  app_get_started: 'Get Started',
+
+  app_features: 'Features',
+  app_nutrition_tracking: 'Nutrition Tracking',
+  app_nutrition_tracking_description: 'Detailed dietary intake analysis.',
+  app_meal_planning: 'Meal Planning',
+  app_meal_planning_description: 'Plan weekly meals effortlessly.',
+  app_weight_tracking: 'Weight Tracking',
+  app_weight_tracking_description: 'Track and visualize weight progress.',
+  app_food_database: 'Over a Million Foods',
+  app_food_database_description: 'Explore vast nutritional food info.',
+  app_dashboard_analytics: 'Dashboard Analytics',
+  app_dashboard_analytics_description: 'Insights into eating patterns.',
+
+  app_welcome_title: 'Step Into Healthy Living ',
+  app_welcome_subtitle:
+    "Before we begin, we'd like to know a bit more about you to create a customized experience that aligns with your goals.",
+
+  app_track_your_weight: 'Track Your Weight',
+  app_90_days: '90 Days',
+  app_180_days: '180 Days',
+  app_1_year: '1 Year',
 };

@@ -1,9 +1,8 @@
 @import '@styles/base';
 
 .headerWrapper {
-  background-color: var(--color-bg-primary) !important;
-  border-bottom: 1px solid var(--color-text-secondary);
-  position: sticky;
+  width: 100%;
+  position: fixed;
   top: 0;
   z-index: 10;
   .contentWrapper {
@@ -16,11 +15,12 @@
     .left {
       @include flex-items-center(2rem);
       flex-direction: row;
-      .search {
-        display: none;
-        @include apply-at-sm-size {
-          display: block;
-        }
+      .logo {
+        background-image: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
 
@@ -31,6 +31,8 @@
         &__secondary {
           font-size: $font-size-regular;
           display: none;
+          border-color: var(--color-primary);
+          color: $color-primary;
           @include apply-at-xs2-size {
             display: block;
           }
@@ -45,6 +47,9 @@
       }
       .misc {
         @include flex-items-center(0.25rem);
+        background-color: hsla(var(--hue), var(--saturation), var(--lightness), 0.2);
+        padding: 0 0.5rem;
+        border-radius: 0.5rem;
       }
     }
   }

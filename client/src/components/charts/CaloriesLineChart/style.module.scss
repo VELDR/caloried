@@ -5,7 +5,12 @@
   width: 80rem;
   overflow-y: hidden;
   overflow-x: auto;
-  @include apply-at-md-size {
+  direction: rtl;
+  @include apply-at-lg-size {
+    height: 15rem;
+    width: 100rem;
+  }
+  @include apply-at-xl-size {
     height: 15rem;
     width: 100%;
   }
@@ -15,7 +20,7 @@
   padding: 0 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-text-primary);
-
+  direction: ltr;
   &__text {
     font-size: $font-size-small;
   }

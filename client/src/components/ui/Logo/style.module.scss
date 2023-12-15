@@ -1,0 +1,14 @@
+@import '@styles/base';
+
+.logo {
+  cursor: pointer;
+  font-family:
+    Russo One,
+    sans-serif;
+  font-size: $font-size-larger;
+  &:hover {
+    text-shadow: 0 0 0.15em var(--color-primary);
+    white-space: nowrap;
+    filter: blur(0.02em);
+  }
+}

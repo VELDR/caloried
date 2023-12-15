@@ -103,9 +103,47 @@
             color: var(--color-bg-primary);
           }
         }
+        .range {
+          position: relative;
+          &:hover {
+            svg {
+              color: var(--color-primary);
+            }
+            select {
+              border-color: var(--color-primary);
+              color: var(--color-primary);
+
+              option {
+                color: var(--color-text-primary);
+              }
+            }
+          }
+
+          select {
+            cursor: pointer;
+            @include input;
+            padding: 0.25rem 0.5rem;
+            padding-left: 1.25rem;
+
+            &:focus {
+              outline: none;
+            }
+            option {
+              background-color: var(--color-bg-primary);
+            }
+          }
+          svg {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 5px;
+            @include box(1rem);
+          }
+        }
       }
       &__wrapper {
         overflow-x: auto;
+        direction: rtl;
       }
     }
 
@@ -123,6 +161,10 @@
 
       &__wrapper {
         overflow-x: auto;
+        direction: rtl;
+        @include apply-at-xxl-size {
+          direction: ltr;
+        }
       }
     }
   }

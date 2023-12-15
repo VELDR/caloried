@@ -1,11 +1,13 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { injectIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 import { AutoStories, ChevronLeft, ChevronRight, Dashboard, Fastfood, Person } from '@mui/icons-material';
 
 import classes from './style.module.scss';
 
-const Sidebar = () => {
+const Sidebar = ({ intl: { formatMessage } }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,22 +25,22 @@ const Sidebar = () => {
       {isOpen && (
         <div className={classes.sidebar}>
           <div className={getItemClassName('/dashboard')} onClick={() => navigate('/dashboard')}>
-            <Tooltip arrow title="Dashboard">
+            <Tooltip arrow title={formatMessage({ id: 'app_dashboard' })}>
               <Dashboard />
             </Tooltip>
           </div>
           <div className={getItemClassName('/diary')} onClick={() => navigate('/diary')}>
-            <Tooltip arrow title="Diary">
+            <Tooltip arrow title={formatMessage({ id: 'app_diary' })}>
               <AutoStories />
             </Tooltip>
           </div>
           <div className={getItemClassName('/search')} onClick={() => navigate('/search')}>
-            <Tooltip arrow title="Food">
+            <Tooltip arrow title={formatMessage({ id: 'app_food' })}>
               <Fastfood />
             </Tooltip>
           </div>
           <div className={getItemClassName('/profile')} onClick={() => navigate('/profile')}>
-            <Tooltip arrow title="Profile">
+            <Tooltip arrow title={formatMessage({ id: 'app_profile' })}>
               <Person />
             </Tooltip>
           </div>
@@ -52,4 +54,8 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+Sidebar.propTypes = {
+  intl: PropTypes.object,
+};
+
+export default injectIntl(Sidebar);

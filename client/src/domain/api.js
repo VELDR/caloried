@@ -59,6 +59,8 @@ export const getUserDemographicsApi = (token) =>
   callAPI(`${endpoints.user}/demographic`, 'GET', { Authorization: `Bearer ${token}` });
 export const getUserSexDistributionApi = (token) =>
   callAPI(`${endpoints.user}/sex-distribution`, 'GET', { Authorization: `Bearer ${token}` });
+export const getUserWeightEntriesApi = (days, token) =>
+  callAPI(`${endpoints.user}/weight-tracking?days=${days}`, 'GET', { Authorization: `Bearer ${token}` });
 
 // FOOD
 export const getFoodsApi = (query, page, pageSize, token, category) =>

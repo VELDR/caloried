@@ -23,7 +23,7 @@ const signUpReducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
       case NEXT_STEP:
-        if (state.currentStep < 4) {
+        if (state.currentStep < 5) {
           draft.currentStep = state.currentStep + 1;
         }
         break;

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { injectIntl } from 'react-intl';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -7,7 +8,6 @@ import { Search } from '@mui/icons-material';
 import { setCurrentPage } from '@pages/FoodSearch/actions';
 
 import classes from './style.module.scss';
-import { injectIntl } from 'react-intl';
 
 const SearchBar = ({ intl: { formatMessage } }) => {
   const [searchQuery, setSearchQuery] = useState('');

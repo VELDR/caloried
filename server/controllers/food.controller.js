@@ -7,6 +7,7 @@ const {
   handleServerError,
   handleResponse,
 } = require('../helpers/responseHandler');
+const redisClient = require('../utils/redisClient');
 
 exports.fetchFoods = async (req, res) => {
   try {
@@ -15,12 +16,22 @@ exports.fetchFoods = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const pageSize = parseInt(req.query.pageSize) || 5;
 
-    const nutritionixResponse = await fetchNutritionixFoodsApi({
-      query: query,
-      detailed: true,
-    });
+    const cacheKey = `foods:${query}:${category}:${page}:${pageSize}`;
 
-    const formattedResponse = mapFoods(nutritionixResponse);
+    const cachedData = await redisClient.get(cacheKey);
+    let formattedResponse;
+
+    if (cachedData) {
+      formattedResponse = JSON.parse(cachedData);
+    } else {
+      const nutritionixResponse = await fetchNutritionixFoodsApi({
+        query: query,
+        detailed: true,
+      });
+      formattedResponse = mapFoods(nutritionixResponse);
+
+      redisClient.set(cacheKey, JSON.stringify(formattedResponse), 'EX', 3600);
+    }
 
     const filteredResponse =
       category === 'All'
@@ -49,26 +60,35 @@ exports.fetchFoodDetails = async (req, res) => {
   try {
     const { foodType, foodName } = req.params;
 
+    const cacheKey = `foodDetails:${foodType}:${foodName.toLowerCase()}`;
+
+    const cachedData = await redisClient.get(cacheKey);
     let foodDetails;
 
-    if (foodType === 'common') {
-      const nutritionixResponse = await fetchNutritionixFoodDetailsApi({
-        query: foodName,
-      });
-      foodDetails = mapFoodDetails(nutritionixResponse.foods);
-    } else if (foodType === 'branded') {
-      const nutritionixResponse = await fetchNutritionixFoodsApi({
-        query: foodName,
-        detailed: true,
-      });
-      const formattedResponse = mapFoods(nutritionixResponse);
-      foodDetails = formattedResponse.find(
-        (food) => food.foodName.toLowerCase() === foodName.toLowerCase()
-      );
+    if (cachedData) {
+      foodDetails = JSON.parse(cachedData);
     } else {
-      return handleResponse(res, 400, {
-        message: 'Invalid food type specified.',
-      });
+      if (foodType === 'common') {
+        const nutritionixResponse = await fetchNutritionixFoodDetailsApi({
+          query: foodName,
+        });
+        foodDetails = mapFoodDetails(nutritionixResponse.foods);
+      } else if (foodType === 'branded') {
+        const nutritionixResponse = await fetchNutritionixFoodsApi({
+          query: foodName,
+          detailed: true,
+        });
+        const formattedResponse = mapFoods(nutritionixResponse);
+        foodDetails = formattedResponse.find(
+          (food) => food.foodName.toLowerCase() === foodName.toLowerCase()
+        );
+      } else {
+        return handleResponse(res, 400, {
+          message: 'Invalid food type specified.',
+        });
+      }
+
+      redisClient.set(cacheKey, JSON.stringify(foodDetails), 'EX', 3600);
     }
 
     return handleResponse(res, 200, foodDetails || null);

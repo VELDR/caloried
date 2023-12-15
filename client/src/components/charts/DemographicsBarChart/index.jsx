@@ -42,6 +42,10 @@ const DemographicsBarChart = ({ data }) => {
     <div className={classes.tooltip}>{`${id} (${indexValue}): ${value} users`}</div>
   );
 
+  const maxUserCount = Math.max(...data.map((d) => Math.max(d.male, d.female)));
+
+  const tickValues = Array.from({ length: maxUserCount + 1 }, (_, i) => i);
+
   return (
     <div className={classes.container}>
       <ResponsiveBar
@@ -69,6 +73,7 @@ const DemographicsBarChart = ({ data }) => {
           legend: 'User count',
           legendPosition: 'middle',
           legendOffset: -40,
+          tickValues,
         }}
         labelSkipWidth={12}
         labelSkipHeight={12}
@@ -87,6 +92,7 @@ const DemographicsBarChart = ({ data }) => {
             itemDirection: 'left-to-right',
             itemOpacity: 0.85,
             symbolSize: 20,
+
             effects: [
               {
                 on: 'hover',

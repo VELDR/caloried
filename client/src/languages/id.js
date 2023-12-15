@@ -133,8 +133,8 @@ export default {
   app_snack: 'Camilan',
   app_meal_type_required: 'Jam makan diperlukan',
   app_date_required: 'Tanggal diperlukan',
-  app_no_macronutrients_message: 'Sepertinya Anda belum mencatat makanan hari ini.',
-  app_log_your_food: 'Catat Makanan Anda',
+  app_no_macronutrients_message: 'Sepertinya Anda belum mencatat menu hari ini.',
+  app_log_your_food: 'Catat Menu Anda',
   app_select_a_date: 'Pilih Tanggal',
   app_no_foods_yet: 'Belum Ada Makanan!',
   app_add_food: 'Tambahkan Makanan',
@@ -198,4 +198,31 @@ export default {
   app_reset_password_title: 'Atur Ulang Kata Sandi Anda',
   app_reset_password_description: 'Gunakan kata sandi yang aman dan mudah diingat',
   app_reset: 'Atur Ulang',
+
+  app_hero_title: 'Makan Cerdas, Hidup Sehat',
+  app_hero_subtitle: 'Panduan Nutrisi Pribadi Anda',
+  app_hero_description: 'Caloried memudahkan pemantauan dan penyusunan diet Anda',
+  app_hero_button: 'Mulai Sekarang',
+  app_get_started: 'Mulai',
+
+  app_features: 'Fitur',
+  app_nutrition_tracking: 'Pemantauan Nutrisi',
+  app_nutrition_tracking_description: 'Analisis asupan diet yang terperinci.',
+  app_meal_planning: 'Penyusunan Menu',
+  app_meal_planning_description: 'Rancang menu mingguan dengan praktis.',
+  app_weight_tracking: 'Pemantauan Berat Badan',
+  app_weight_tracking_description: 'Pantau dan visualisasikan progres berat badan.',
+  app_food_database: 'Jutaan Data Makanan',
+  app_food_database_description: 'Temukan informasi nutrisi berbagai makanan.',
+  app_dashboard_analytics: 'Analitik Dasbor ',
+  app_dashboard_analytics_description: 'Wawasan tentang pola makan Anda.',
+
+  app_welcome_title: 'Langkah Menuju Hidup Sehat',
+  app_welcome_subtitle:
+    'Sebelum memulai, kami ingin mengetahui lebih tentang Anda untuk membuat pengalaman yang disesuaikan dengan tujuan Anda.',
+
+  app_track_your_weight: 'Pantau Berat Badan',
+  app_90_days: '90 Hari',
+  app_180_days: '180 Hari',
+  app_1_year: '1 Tahun',
 };

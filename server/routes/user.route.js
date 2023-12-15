@@ -6,6 +6,7 @@ const {
   deleteUserById,
   getUsersByAgeGroup,
   getUserSexDistribution,
+  getUserWeightEntries,
 } = require('../controllers/user.controller');
 const { authenticate } = require('../middlewares/authentication');
 const { uploadAvatar } = require('../middlewares/multer');
@@ -22,5 +23,6 @@ router.delete('/delete/:userId', authorizeAdmin, deleteUserById);
 
 router.get('/demographic', authorizeAdmin, getUsersByAgeGroup);
 router.get('/sex-distribution', authorizeAdmin, getUserSexDistribution);
+router.get('/weight-tracking', getUserWeightEntries);
 
 module.exports = router;
