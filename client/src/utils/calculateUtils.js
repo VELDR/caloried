@@ -38,13 +38,14 @@ export const calculateTotalNutrients = (meals) => {
   if (Array.isArray(meals)) {
     meals.forEach((meal) => {
       meal.foodLogs.forEach((foodLog) => {
-        totalCalories += foodLog.food.calories * foodLog.quantity;
-        totalProtein += foodLog.food.protein * foodLog.quantity;
-        totalCarbs += foodLog.food.carbs * foodLog.quantity;
+        totalCalories += Math.round(foodLog.food.calories * foodLog.quantity);
+        totalProtein += Math.round(foodLog.food.protein * foodLog.quantity);
+        totalCarbs += Math.round(foodLog.food.carbs * foodLog.quantity);
         totalFat += foodLog.food.fat * foodLog.quantity;
       });
     });
   }
+  totalFat = parseFloat(totalFat.toFixed(1));
   return { totalCalories, totalProtein, totalCarbs, totalFat };
 };
 

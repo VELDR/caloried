@@ -175,7 +175,7 @@ export default {
   app_age: 'Age',
   app_years_old: 'years old',
   app_nutritional_intake: 'Nutritional Intake',
-  app_basal_metabolic_rate: 'Basal Metabolic Rate (BMR)',
+  app_basal_metabolic_rate: 'Calorie Intake',
   app_protein_intake: 'Protein Intake',
   app_fat_intake: 'Fat Intake',
   app_carbs_intake: 'Carbohydrate Intake',

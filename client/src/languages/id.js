@@ -174,7 +174,7 @@ export default {
   app_age: 'Usia',
   app_years_old: 'tahun',
   app_nutritional_intake: 'Asupan Nutrisi',
-  app_basal_metabolic_rate: 'Basal Metabolic Rate (BMR)',
+  app_basal_metabolic_rate: 'Asupan Kalori',
   app_protein_intake: 'Asupan Protein',
   app_fat_intake: 'Asupan Lemak',
   app_carbs_intake: 'Asupan Karbohidrat',

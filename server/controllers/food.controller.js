@@ -30,7 +30,7 @@ exports.fetchFoods = async (req, res) => {
       });
       formattedResponse = mapFoods(nutritionixResponse);
 
-      redisClient.set(cacheKey, JSON.stringify(formattedResponse), 'EX', 3600);
+      redisClient.set(cacheKey, JSON.stringify(formattedResponse), 'EX', 10800);
     }
 
     const filteredResponse =
@@ -88,7 +88,7 @@ exports.fetchFoodDetails = async (req, res) => {
         });
       }
 
-      redisClient.set(cacheKey, JSON.stringify(foodDetails), 'EX', 3600);
+      redisClient.set(cacheKey, JSON.stringify(foodDetails), 'EX', 10800);
     }
 
     return handleResponse(res, 200, foodDetails || null);

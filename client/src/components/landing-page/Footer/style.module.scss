@@ -1,0 +1,38 @@
+@import '@styles/base';
+
+footer {
+  @include flex-center-column(1.5rem);
+  background-color: var(--color-text-primary);
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  .socialMedia {
+    @include flex-row(3rem);
+    .socialIcons {
+      color: var(--color-bg-primary);
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+  .bottom {
+    @include flex-center-column(1rem);
+    .copyright {
+      color: var(--color-bg-primary);
+      font-size: $font-size-regular;
+    }
+    .logo {
+      color: var(--color-bg-primary);
+      font-size: $font-size-huge;
+    }
+
+    a {
+      color: var(--color-accent);
+      font-size: $font-size-regular;
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+  }
+}

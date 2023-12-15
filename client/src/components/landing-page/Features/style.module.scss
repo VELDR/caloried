@@ -1,0 +1,16 @@
+@import '@styles/base';
+
+.featuresContainer {
+  @include flex-center-column(2rem);
+  background-color: var(--color-bg-secondary);
+  padding: 2rem;
+  .featuresTitle {
+    font-size: $font-size-huge;
+    font-weight: 700;
+  }
+
+  .features {
+    @include flex-center(1rem);
+    flex-wrap: wrap;
+  }
+}

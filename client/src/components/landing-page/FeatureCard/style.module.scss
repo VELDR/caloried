@@ -1,0 +1,40 @@
+@import '@styles/base';
+
+.card {
+  position: relative;
+  @include flex-center-column(1rem);
+  background-color: var(--color-bg-primary);
+  @include box(13rem, 10rem);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 1px var(--color-text-secondary);
+  &:hover {
+    animation: pulse 2s infinite;
+  }
+  svg {
+    @include box(2.5rem);
+  }
+  &__description {
+    position: relative;
+    @include flex-center-column;
+    text-align: center;
+    .title {
+      font-size: $font-size-regular;
+      font-weight: 700;
+    }
+    .subtitle {
+      font-size: $font-size-small;
+      color: var(--color-text-secondary);
+      width: 75%;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px 1px var(--color-text-secondary);
+  }
+  50% {
+    box-shadow: 0 0 20px 1px var(--color-secondary);
+  }
+}

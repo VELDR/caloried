@@ -20,4 +20,11 @@ describe('Navbar Component', () => {
     const navbar = render(<Navbar title="Title" locale="en" theme="light" />);
     expect(navbar).toMatchSnapshot();
   });
+
+  test('Displays ProfileMenu when user is present', () => {
+    const userMock = { name: 'Test User', email: 'test@example.com' };
+    const { getByText } = render(<Navbar user={userMock} />);
+
+    expect(getByText('Test User')).toBeInTheDocument();
+  });
 });
