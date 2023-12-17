@@ -225,4 +225,11 @@ export default {
   app_90_days: '90 Hari',
   app_180_days: '180 Hari',
   app_1_year: '1 Tahun',
+
+  app_user_demographics: 'Demografi User',
+  app_welcome_admin: 'Selamat Datang Kembali, Admin!',
+  app_email_verified: 'Email Terverifikasi',
+  app_registration_date: 'Tanggal Registrasi',
+  app_actions: 'Tindakan',
+  app_your_daily_nutritional_goals: 'Target Nutrisi Harian Anda',
 };

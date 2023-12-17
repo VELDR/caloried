@@ -18,6 +18,7 @@ import NutritionTable from '@components/NutritionTable';
 import PieChart from '@components/charts/PieChart';
 import MacronutrientTooltip from '@components/charts/MacronutrientTooltip';
 import { COLORS } from '@constants';
+import { isRoleMatch } from '@utils/authUtils';
 
 import { selectToken } from '@containers/Client/selectors';
 import { selectLoading } from '@containers/App/selectors';
@@ -42,7 +43,9 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate, intl:
   } = useServingForm(foodDetails);
 
   useEffect(() => {
-    dispatch(getFoodDetails(foodType, foodName, token));
+    if (isRoleMatch(token, 'user')) {
+      dispatch(getFoodDetails(foodType, foodName, token));
+    }
   }, [dispatch, foodName, foodType, token]);
 
   const adjustedNutrients = calculateAdjustedNutrients(foodDetails, selectedServingSize, servingCount);

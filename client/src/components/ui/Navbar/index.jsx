@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
@@ -43,10 +44,10 @@ const Navbar = ({ theme, user, token }) => {
           {!user && (
             <div className={classes.button}>
               <SecondaryButton className={classes.button__secondary} onClick={() => navigate('/sign-in')}>
-                Sign in
+                <FormattedMessage id="app_sign_in" />
               </SecondaryButton>
               <PrimaryButton className={classes.button__primary} onClick={() => navigate('/sign-up')}>
-                Sign up
+                <FormattedMessage id="app_sign_up" />
               </PrimaryButton>
             </div>
           )}

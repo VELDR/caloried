@@ -15,6 +15,7 @@ import {
   calculateTotalNutrients,
 } from '@utils/calculateUtils';
 import { COLORS, MONTHLY, WEEKLY, ANNUALLY, QUARTERLY, SEMI_ANNUALLY } from '@constants';
+import { isRoleMatch } from '@utils/authUtils';
 
 import PieChart from '@components/charts/PieChart';
 import MacronutrientTooltip from '@components/charts/MacronutrientTooltip';
@@ -69,11 +70,13 @@ const Dashboard = ({ user, activity, consumedCalories, meals, token, weightEntri
   ];
 
   useEffect(() => {
-    dispatch(getUserActivity(token));
-    dispatch(getUserCaloriesConsumed(selectedCaloriesTimeRange, token));
-    dispatch(getUser(token));
-    dispatch(getMealsByDate(today, token));
-    dispatch(getUserWeightEntries(selectedWeightTimeRange, token));
+    if (isRoleMatch(token, 'user')) {
+      dispatch(getUserActivity(token));
+      dispatch(getUserCaloriesConsumed(selectedCaloriesTimeRange, token));
+      dispatch(getUser(token));
+      dispatch(getMealsByDate(today, token));
+      dispatch(getUserWeightEntries(selectedWeightTimeRange, token));
+    }
   }, [dispatch, selectedCaloriesTimeRange, selectedWeightTimeRange, today, token]);
 
   return (

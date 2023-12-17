@@ -14,8 +14,10 @@ import {
   TableSortLabel,
   TablePagination,
 } from '@mui/material';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Cancel, CheckCircle } from '@mui/icons-material';
+
+import { isRoleMatch } from '@utils/authUtils';
 import { formatDateAndTime } from '@utils/formatUtils';
 import { SEX_COLORS } from '@constants';
 
@@ -31,8 +33,9 @@ import { deleteUserById, getAllUsers, getUserDemographics, getUserSexDistributio
 
 import classes from './style.module.scss';
 
-const Admin = ({ token, users, totalUsers, demographics, sexDistribution }) => {
+const Admin = ({ token, users, totalUsers, demographics, sexDistribution, intl: { formatMessage } }) => {
   const dispatch = useDispatch();
+
   const [orderDirection, setOrderDirection] = useState('asc');
   const [orderBy, setOrderBy] = useState('id');
   const [page, setPage] = useState(0);
@@ -42,16 +45,22 @@ const Admin = ({ token, users, totalUsers, demographics, sexDistribution }) => {
   const formattedDistribution = calculateDistributionPercentage(sexDistribution);
 
   useEffect(() => {
-    dispatch(getAllUsers(page + 1, rowsPerPage, token, orderBy, orderDirection));
-    dispatch(getUserDemographics(token));
-    dispatch(getUserSexDistribution(token));
+    if (isRoleMatch(token, 'admin')) {
+      dispatch(getAllUsers(page + 1, rowsPerPage, token, orderBy, orderDirection));
+      dispatch(getUserDemographics(token));
+      dispatch(getUserSexDistribution(token));
+    }
   }, [dispatch, orderBy, orderDirection, page, rowsPerPage, token]);
 
   const getSortColumnName = (header) => {
     switch (header) {
-      case 'Email Verified':
+      case formatMessage({ id: 'app_username' }):
+        return 'username';
+      case formatMessage({ id: 'app_email' }):
+        return 'email';
+      case formatMessage({ id: 'app_email_verified' }):
         return 'isEmailVerified';
-      case 'Registration Date':
+      case formatMessage({ id: 'app_registration_date' }):
         return 'createdAt';
       default:
         return header.toLowerCase();
@@ -84,22 +93,21 @@ const Admin = ({ token, users, totalUsers, demographics, sexDistribution }) => {
     setIsModalOpen(false);
   };
 
-  const tableHeaders = ['ID', 'Username', 'Email', 'Email Verified', 'Registration Date', 'Actions'];
+  const tableHeaders = [
+    'ID',
+    formatMessage({ id: 'app_username' }),
+    formatMessage({ id: 'app_email' }),
+    formatMessage({ id: 'app_email_verified' }),
+    formatMessage({ id: 'app_registration_date' }),
+    formatMessage({ id: 'app_actions' }),
+  ];
 
   return (
     <div className={classes.page}>
-      <div className={classes.title}>Welcome Back, Admin!</div>
-      <div className={classes.analytics}>
-        <div className={classes.analytics__title}>User Demographics</div>
-        <div className={classes.chart}>
-          <div className={classes.chart__bar}>{demographics && <DemographicsBarChart data={demographics} />}</div>
-          <div className={classes.chart__pie}>
-            {formattedDistribution && (
-              <PieChart data={formattedDistribution} colors={SEX_COLORS} tooltip={SexDistributionTooltip} />
-            )}
-          </div>
-        </div>
+      <div className={classes.title}>
+        <FormattedMessage id="app_welcome_admin" />
       </div>
+
       <TableContainer component={Paper} className={classes.tableContainer}>
         <Table aria-label="users table">
           <TableHead className={classes.tableHead}>
@@ -156,6 +164,19 @@ const Admin = ({ token, users, totalUsers, demographics, sexDistribution }) => {
           onRowsPerPageChange={(event) => setRowsPerPage(parseInt(event.target.value, 10))}
         />
       </TableContainer>
+      <div className={classes.analytics}>
+        <div className={classes.analytics__title}>
+          <FormattedMessage id="app_user_demographics" />
+        </div>
+        <div className={classes.chart}>
+          <div className={classes.chart__bar}>{demographics && <DemographicsBarChart data={demographics} />}</div>
+          <div className={classes.chart__pie}>
+            {formattedDistribution && (
+              <PieChart data={formattedDistribution} colors={SEX_COLORS} tooltip={SexDistributionTooltip} />
+            )}
+          </div>
+        </div>
+      </div>
       <ConfirmDeleteModal isOpen={isModalOpen} onClose={handleModalClose} onConfirm={handleConfirmDelete} />
     </div>
   );
@@ -167,6 +188,7 @@ Admin.propTypes = {
   totalUsers: PropTypes.number,
   demographics: PropTypes.array,
   sexDistribution: PropTypes.array,
+  intl: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -177,4 +199,4 @@ const mapStateToProps = createStructuredSelector({
   sexDistribution: selectSexDistribution,
 });
 
-export default connect(mapStateToProps)(Admin);
+export default injectIntl(connect(mapStateToProps)(Admin));

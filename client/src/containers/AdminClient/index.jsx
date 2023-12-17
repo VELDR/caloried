@@ -5,29 +5,30 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { isRoleMatch } from '@utils/authUtils';
-import { selectLogin, selectToken } from '@containers/Client/selectors';
+import { selectIsAdminLogin, selectToken } from '@containers/Client/selectors';
 
-const Client = ({ login, children, token }) => {
+const AdminClient = ({ isAdminLogin, token, children }) => {
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (token && !isRoleMatch(token, 'user')) {
-      navigate('/admin');
-    } else if (!login) {
+    if (token && !isRoleMatch(token, 'admin')) {
+      navigate('/dashboard');
+    } else if (!isAdminLogin) {
       navigate('/sign-in');
     }
-  }, [login, navigate, token]);
+  }, [isAdminLogin, navigate, token]);
   return children;
 };
 
-Client.propTypes = {
-  login: PropTypes.bool,
+AdminClient.propTypes = {
+  isAdminLogin: PropTypes.bool,
   children: PropTypes.element,
   token: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
-  login: selectLogin,
+  isAdminLogin: selectIsAdminLogin,
   token: selectToken,
 });
 
-export default connect(mapStateToProps)(Client);
+export default connect(mapStateToProps)(AdminClient);

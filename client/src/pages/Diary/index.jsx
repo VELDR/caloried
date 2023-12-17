@@ -3,6 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { createStructuredSelector } from 'reselect';
 
+import { isRoleMatch } from '@utils/authUtils';
 import { calculateTotalNutrients } from '@utils/calculateUtils';
 import { formatDate } from '@utils/formatUtils';
 import { selectFirstLogin, selectToken } from '@containers/Client/selectors';
@@ -30,12 +31,16 @@ const Diary = ({ firstLogin, token, user, meals }) => {
       setShowNutritionPopup(true);
       dispatch(setFirstLogin(false));
     }
-    dispatch(getUser(token));
-    dispatch(resetSelection());
+    if (isRoleMatch(token, 'user')) {
+      dispatch(getUser(token));
+      dispatch(resetSelection());
+    }
   }, [firstLogin, dispatch, token]);
 
   useEffect(() => {
-    dispatch(getMealsByDate(formatDate(currentDate), token));
+    if (token) {
+      dispatch(getMealsByDate(formatDate(currentDate), token));
+    }
   }, [currentDate, dispatch, token]);
 
   const handleClosePopup = () => {

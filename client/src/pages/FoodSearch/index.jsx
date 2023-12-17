@@ -6,6 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { Pagination } from '@mui/material';
 import noResults from '@static/images/no-result.svg';
+import { isRoleMatch } from '@utils/authUtils';
 
 import FoodCard from '@components/FoodCard';
 
@@ -27,21 +28,27 @@ const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems, intl: { f
 
   useEffect(() => {
     if (query) {
-      dispatch(getFoods(query, page, size, selectedCategory, token));
+      if (isRoleMatch(token, 'user')) {
+        dispatch(getFoods(query, page, size, selectedCategory, token));
+      }
     }
   }, [dispatch, query, page, size, selectedCategory, token]);
 
   const handlePageChange = (event, newPage) => {
-    setSearchParams({ query, page: newPage, pageSize: size });
-    dispatch(setCurrentPage(newPage));
-    dispatch(getFoods(query, newPage, size, selectedCategory, token));
+    if (query) {
+      setSearchParams({ query, page: newPage, pageSize: size });
+      dispatch(setCurrentPage(newPage));
+      dispatch(getFoods(query, newPage, size, selectedCategory, token));
+    }
   };
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    setSearchParams({ query, page: 1, pageSize: size });
-    dispatch(setCurrentPage(1));
-    dispatch(getFoods(query, 1, size, category, token));
+    if (query) {
+      setSearchParams({ query, page: 1, pageSize: size });
+      dispatch(setCurrentPage(1));
+      dispatch(getFoods(query, 1, size, category, token));
+    }
   };
 
   const handleFoodCardClick = (food) => {

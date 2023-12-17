@@ -9,6 +9,7 @@ import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
+import { isRoleMatch } from '@utils/authUtils';
 import { getActivityLevel } from '@utils/formatUtils';
 import { calculateAge } from '@utils/calculateUtils';
 
@@ -27,7 +28,7 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
   const [isChangePasswordOpen, setIsChangePasswordOpen] = useState(false);
 
   useEffect(() => {
-    if (token) {
+    if (isRoleMatch(token, 'user')) {
       dispatch(getUser(token));
     }
   }, [dispatch, token]);
@@ -190,7 +191,7 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
         </div>
         <div className={classes.footer}>
           <div className={classes.footer__button} onClick={handleChangePasswordClick}>
-            Change Password
+            <FormattedMessage id="app_change_password" />
           </div>
         </div>
       </div>

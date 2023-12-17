@@ -226,4 +226,11 @@ export default {
   app_90_days: '90 Days',
   app_180_days: '180 Days',
   app_1_year: '1 Year',
+
+  app_user_demographics: 'User Demographics',
+  app_welcome_admin: 'Welcome Back, Admin!',
+  app_email_verified: 'Email Verified',
+  app_registration_date: 'Registration Date',
+  app_actions: 'Actions',
+  app_your_daily_nutritional_goals: 'Your Daily Nutritional Goals',
 };

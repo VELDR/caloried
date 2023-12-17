@@ -31,7 +31,9 @@ const NutritionPopup = ({ open, onClose, user }) => (
           <FormattedMessage id="app_day" />
         </div>
       </div>
-      <div className={classes.message2}>Your Daily Nutritional Goals</div>
+      <div className={classes.message2}>
+        <FormattedMessage id="app_your_daily_nutritional_goals" />
+      </div>
       <div className={classes.macronutrient}>
         <div className={classes.macronutrient__item}>
           <Tooltip title="Protein">
