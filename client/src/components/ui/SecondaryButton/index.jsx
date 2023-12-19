@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './style.module.scss';
 
 const SecondaryButton = ({ children, onClick, className }) => (
-  <button type="button" onClick={onClick} className={`${classes.button} ${className}`}>
+  <button type="button" onClick={onClick} className={`${classes.button} ${className}`} data-testid="navigate-sign-in">
     {children}
   </button>
 );

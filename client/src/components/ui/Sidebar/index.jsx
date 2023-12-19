@@ -21,25 +21,41 @@ const Sidebar = ({ intl: { formatMessage } }) => {
   const getItemClassName = (path) => `${classes.sidebar__item} ${isActive(path) ? classes.active : ''}`;
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="sidebar">
       {isOpen && (
         <div className={classes.sidebar}>
-          <div className={getItemClassName('/dashboard')} onClick={() => navigate('/dashboard')}>
+          <div
+            className={getItemClassName('/dashboard')}
+            onClick={() => navigate('/dashboard')}
+            data-testid="side-navigate-dashboard"
+          >
             <Tooltip arrow title={formatMessage({ id: 'app_dashboard' })}>
               <Dashboard />
             </Tooltip>
           </div>
-          <div className={getItemClassName('/diary')} onClick={() => navigate('/diary')}>
+          <div
+            className={getItemClassName('/diary')}
+            onClick={() => navigate('/diary')}
+            data-testid="side-navigate-diary"
+          >
             <Tooltip arrow title={formatMessage({ id: 'app_diary' })}>
               <AutoStories />
             </Tooltip>
           </div>
-          <div className={getItemClassName('/search')} onClick={() => navigate('/search')}>
+          <div
+            className={getItemClassName('/search')}
+            onClick={() => navigate('/search')}
+            data-testid="side-navigate-search"
+          >
             <Tooltip arrow title={formatMessage({ id: 'app_food' })}>
               <Fastfood />
             </Tooltip>
           </div>
-          <div className={getItemClassName('/profile')} onClick={() => navigate('/profile')}>
+          <div
+            className={getItemClassName('/profile')}
+            onClick={() => navigate('/profile')}
+            data-testid="side-navigate-profile"
+          >
             <Tooltip arrow title={formatMessage({ id: 'app_profile' })}>
               <Person />
             </Tooltip>
@@ -47,7 +63,7 @@ const Sidebar = ({ intl: { formatMessage } }) => {
         </div>
       )}
 
-      <div className={classes.chevron} onClick={toggleSidebar}>
+      <div className={classes.chevron} onClick={toggleSidebar} data-testid="toggle-sidebar">
         {isOpen ? <ChevronLeft /> : <ChevronRight />}
       </div>
     </div>

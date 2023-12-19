@@ -7,7 +7,7 @@ const generateToken = (user, expiresIn = '1d') => {
   return jwt.sign({ id, role }, secretKey, { expiresIn });
 };
 
-const generateEmailVerificationToken = (otp, email, expiresIn = '2m') => {
+const generateEmailVerificationToken = (otp, email, expiresIn = '30s') => {
   return jwt.sign({ otp, email }, secretKey, { expiresIn });
 };
 

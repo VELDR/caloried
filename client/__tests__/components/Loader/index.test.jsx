@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render } from '@utils/testHelper';
 
 import Loader from '@components/ui/Loader';
 import classes from '@components/Loader/style.module.scss';
@@ -12,7 +12,6 @@ describe('Component Loader', () => {
 
   test('does not render loader when isLoading is false', () => {
     const { getByTestId } = render(<Loader isLoading={false} />);
-
     const loaderComponent = getByTestId('Loading');
     expect(loaderComponent).not.toHaveClass(classes.showLoader);
   });

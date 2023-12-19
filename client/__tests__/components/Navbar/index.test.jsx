@@ -1,30 +1,61 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@utils/testHelper';
 
 import Navbar from '@components/ui/Navbar';
 
-jest.mock('react-redux', () => ({
-  useDispatch: jest.fn(),
-}));
+const mockNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  useNavigate: jest.fn(),
+  useNavigate: () => mockNavigate,
 }));
 
+let wrapper;
+
+const mockUser = {
+  id: '1',
+  username: 'testuser',
+  email: 'test@example.com',
+  sex: 'male',
+  dob: '1990-01-01',
+  height: 180,
+  weight: 75,
+  goal: 'maintain',
+  activityLevel: 3,
+};
+
+beforeEach(() => {
+  wrapper = render(<Navbar theme="light" user={mockUser} token="mockToken" />);
+});
+
 describe('Navbar Component', () => {
-  test('Correct render', () => {
-    const navbar = render(<Navbar title="Title" locale="en" theme="light" />);
-    expect(navbar.getByTestId('navbar')).toBeInTheDocument();
+  it('should render correctly', () => {
+    const { getByTestId } = wrapper;
+    expect(getByTestId('navbar')).toBeInTheDocument();
   });
-
-  test('Should match with snapshot', () => {
-    const navbar = render(<Navbar title="Title" locale="en" theme="light" />);
-    expect(navbar).toMatchSnapshot();
+  it('should render Logo component', () => {
+    const { getByTestId } = wrapper;
+    expect(getByTestId('logo')).toBeInTheDocument();
   });
-
-  test('Displays ProfileMenu when user is present', () => {
-    const userMock = { name: 'Test User', email: 'test@example.com' };
-    const { getByText } = render(<Navbar user={userMock} />);
-
-    expect(getByText('Test User')).toBeInTheDocument();
+  it('should render PrimaryButton component', () => {
+    const { getByTestId } = wrapper;
+    expect(getByTestId('navigate-sign-up')).toBeInTheDocument();
+  });
+  it('should render SecondaryButton component', () => {
+    const { getByTestId } = wrapper;
+    expect(getByTestId('navigate-sign-in')).toBeInTheDocument();
+  });
+  it('should call navigate to sign up when sign up button is clicked', () => {
+    const { getByTestId } = wrapper;
+    const button = getByTestId('navigate-sign-up');
+    fireEvent.click(button);
+    expect(mockNavigate).toHaveBeenCalledWith(`/sign-up`);
+  });
+  it('should call navigate to sign in when sign in button is clicked', () => {
+    const { getByTestId } = wrapper;
+    const button = getByTestId('navigate-sign-in');
+    fireEvent.click(button);
+    expect(mockNavigate).toHaveBeenCalledWith(`/sign-in`);
+  });
+  it('should match with snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });

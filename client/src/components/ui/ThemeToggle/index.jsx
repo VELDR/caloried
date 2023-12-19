@@ -14,7 +14,7 @@ const ThemeToggle = ({ theme }) => {
   };
 
   return (
-    <div className={classes.theme} onClick={handleTheme} data-testid="toggleTheme">
+    <div className={classes.theme} onClick={handleTheme} data-testid="theme-toggle">
       {theme === 'light' ? <NightsStay /> : <LightMode />}
     </div>
   );

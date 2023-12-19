@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import store from '@store';
 import { logoutUser } from '@containers/Client/actions';
+import store from '../configureStore';
 
 axios.interceptors.request.use((reqConfig) => {
   const state = store.getState();

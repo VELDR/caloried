@@ -11,6 +11,7 @@ import {
 } from '@domain/api';
 import toast from 'react-hot-toast';
 import { takeLatest, call, put } from 'redux-saga/effects';
+import config from '@config/index';
 import {
   ADMIN_LOGIN,
   FORGOT_PASSWORD,
@@ -25,7 +26,7 @@ import { setAdminLogin, setFirstLogin, setLogin, setToken } from './actions';
 function* doRegister({ data, callback }) {
   yield put(setLoading(true));
   try {
-    data.password = CryptoJS.AES.encrypt(data.password, import.meta.env.VITE_CRYPTOJS_SECRET).toString();
+    data.password = CryptoJS.AES.encrypt(data.password, config.crypto.secret).toString();
     const response = yield call(registerApi, data);
     yield call(callback);
     toast.success(response?.message);
@@ -40,11 +41,12 @@ function* doRegister({ data, callback }) {
   }
 }
 
-function* doResendVerificationEmail({ data }) {
+function* doResendVerificationEmail({ data, callback }) {
   yield put(setLoading(true));
   try {
     const response = yield call(resendVerificationEmailApi, data);
     toast.success(response?.message);
+    yield call(callback);
   } catch (error) {
     if (error.response && error.response.data) {
       toast.error(error.response.data.message);
@@ -59,7 +61,7 @@ function* doResendVerificationEmail({ data }) {
 function* doLogin({ data, callback }) {
   yield put(setLoading(true));
   try {
-    data.password = CryptoJS.AES.encrypt(data.password, import.meta.env.VITE_CRYPTOJS_SECRET).toString();
+    data.password = CryptoJS.AES.encrypt(data.password, config.crypto.secret).toString();
     const response = yield call(loginApi, data);
 
     yield put(setLogin(true));
@@ -80,7 +82,7 @@ function* doLogin({ data, callback }) {
 function* doAdminLogin({ data, callback }) {
   yield put(setLoading(true));
   try {
-    data.password = CryptoJS.AES.encrypt(data.password, import.meta.env.VITE_CRYPTOJS_SECRET).toString();
+    data.password = CryptoJS.AES.encrypt(data.password, config.crypto.secret).toString();
     const response = yield call(adminLoginApi, data);
 
     yield put(setAdminLogin(true));
@@ -100,8 +102,7 @@ function* doAdminLogin({ data, callback }) {
 function* doVerifyOtp({ otp, email, callback }) {
   yield put(setLoading(true));
   try {
-    const response = yield call(verifyOTPApi, { otp, email });
-    toast.success(response.message);
+    yield call(verifyOTPApi, { otp, email });
     yield call(callback);
   } catch (error) {
     if (error.response && error.response.data) {
@@ -133,7 +134,7 @@ function* doForgotPassword({ email }) {
 function* doResetPassword({ data, callback }) {
   yield put(setLoading(true));
   try {
-    data.newPassword = CryptoJS.AES.encrypt(data.newPassword, import.meta.env.VITE_CRYPTOJS_SECRET).toString();
+    data.newPassword = CryptoJS.AES.encrypt(data.newPassword, config.crypto.secret).toString();
     const response = yield call(resetPasswordApi, data);
     toast.success(response.message);
     yield call(callback);

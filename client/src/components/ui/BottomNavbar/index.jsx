@@ -9,37 +9,51 @@ const BottomNavbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Function to determine if the current path matches the given path
   const isActive = (path) => location.pathname === path;
 
-  // Function to get the appropriate className for a navbar item
   const getItemClassName = (path) => `${classes.navbar__item} ${isActive(path) ? classes.active : ''}`;
 
   return (
-    <div className={classes.bottomNav}>
+    <div className={classes.bottomNav} data-testid="bottom-navbar">
       <div className={classes.searchBar}>
         <SearchBar />
       </div>
       <div className={classes.navbar}>
-        <div className={getItemClassName('/dashboard')} onClick={() => navigate('/dashboard')}>
+        <div
+          className={getItemClassName('/dashboard')}
+          onClick={() => navigate('/dashboard')}
+          data-testid="bottom-navigate-dashboard"
+        >
           <Dashboard />
           <div className={classes.label}>
             <FormattedMessage id="app_dashboard" />
           </div>
         </div>
-        <div className={getItemClassName('/diary')} onClick={() => navigate('/diary')}>
+        <div
+          className={getItemClassName('/diary')}
+          onClick={() => navigate('/diary')}
+          data-testid="bottom-navigate-diary"
+        >
           <AutoStories />
           <div className={classes.label}>
             <FormattedMessage id="app_diary" />
           </div>
         </div>
-        <div className={getItemClassName('/search')} onClick={() => navigate('/search')}>
+        <div
+          className={getItemClassName('/search')}
+          onClick={() => navigate('/search')}
+          data-testid="bottom-navigate-search"
+        >
           <Fastfood />
           <div className={classes.label}>
             <FormattedMessage id="app_food" />
           </div>
         </div>
-        <div className={getItemClassName('/profile')} onClick={() => navigate('/profile')}>
+        <div
+          className={getItemClassName('/profile')}
+          onClick={() => navigate('/profile')}
+          data-testid="bottom-navigate-profile"
+        >
           <Person />
           <div className={classes.label}>
             <FormattedMessage id="app_profile" />

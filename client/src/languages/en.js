@@ -137,7 +137,7 @@ export default {
   app_no_macronutrients_message: "Looks like you haven't logged any meals today.",
   app_log_your_food: 'Log Your Food',
   app_select_a_date: 'Select a date',
-  app_no_foods_yet: 'No foods yet!',
+  app_no_foods_yet: 'No foods yet',
   app_add_food: 'Add food',
   app_username_is_required: 'Username is required',
   app_email_is_required: 'Email is required',
@@ -233,4 +233,5 @@ export default {
   app_registration_date: 'Registration Date',
   app_actions: 'Actions',
   app_your_daily_nutritional_goals: 'Your Daily Nutritional Goals',
+  app_submit: 'Submit',
 };

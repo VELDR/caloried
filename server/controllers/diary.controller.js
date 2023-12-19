@@ -40,7 +40,6 @@ exports.getMealsByDate = async (req, res) => {
 
     return handleResponse(res, 200, meals);
   } catch (error) {
-    console.error('Error fetching meals:', error);
     return handleServerError(res);
   }
 };
@@ -94,7 +93,6 @@ exports.addFoodToDiary = async (req, res) => {
     });
   } catch (error) {
     await transaction.rollback();
-    console.error('Error in adding food to diary: ', error);
     return handleServerError(res);
   }
 };
@@ -166,7 +164,6 @@ exports.editFoodInDiary = async (req, res) => {
       updatedFoodLogData: updatedFoodLog,
     });
   } catch (error) {
-    console.error('Error in editing food in diary: ', error);
     return handleServerError(res);
   }
 };
@@ -208,7 +205,6 @@ exports.deleteFoodFromDiary = async (req, res) => {
 
     return handleResponse(res, 200, { message: 'Meal removed.' });
   } catch (error) {
-    console.error('Error in deleting food from diary: ', error);
     return handleServerError(res);
   }
 };
@@ -258,7 +254,7 @@ exports.getUserCaloriesConsumed = async (req, res) => {
     const days = req.query.days ? parseInt(req.query.days) : 7;
     const endDate = new Date();
     const startDate = new Date();
-    startDate.setDate(endDate.getDate() - days);
+    startDate.setDate(endDate.getDate() - (days - 1));
 
     const caloriesConsumed = await Meal.findAll({
       include: [
@@ -313,7 +309,6 @@ exports.getUserCaloriesConsumed = async (req, res) => {
     }
     return handleResponse(res, 200, formattedData);
   } catch (error) {
-    console.error(error);
     return handleServerError(res);
   }
 };

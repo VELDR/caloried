@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { Avatar } from '@mui/material';
 import { Balance, KeyboardDoubleArrowDown, KeyboardDoubleArrowUp } from '@mui/icons-material';
+import config from '@config/index';
 
 import classes from './style.module.scss';
 
@@ -38,7 +39,7 @@ const ProfileCard = ({ user, intl: { formatMessage } }) => {
   return (
     <div className={classes.profile}>
       <div className={classes.profile__header}>
-        <Avatar src={`${import.meta.env.VITE_API_BASE_URL}${user?.avatar}`} className={classes.avatar} />
+        <Avatar src={`${config.api.base}${user?.avatar}`} className={classes.avatar} />
         <div className={classes.identity}>
           <div className={classes.username}>{user?.username}</div>
           <div className={classes.email}>{user?.email}</div>

@@ -51,7 +51,6 @@ exports.fetchFoods = async (req, res) => {
       items: paginatedResponse,
     });
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -93,7 +92,6 @@ exports.fetchFoodDetails = async (req, res) => {
 
     return handleResponse(res, 200, foodDetails || null);
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };

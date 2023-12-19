@@ -57,7 +57,6 @@ exports.getAllUsersPaginated = async (req, res) => {
       return handleResponse(res, 200, result);
     }
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -68,17 +67,10 @@ exports.getUserById = async (req, res) => {
 
     const user = await User.findByPk(userId);
 
-    if (!user) {
-      return handleResponse(res, 404, {
-        message: 'User not found.',
-      });
-    }
-
     delete user.dataValues.password;
 
     return handleResponse(res, 200, user);
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -157,7 +149,6 @@ exports.editProfile = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -180,7 +171,6 @@ exports.deleteUserById = async (req, res) => {
       message: 'User deleted successfully.',
     });
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -214,7 +204,6 @@ exports.getUsersByAgeGroup = async (req, res) => {
 
     return handleResponse(res, 200, formattedData);
   } catch (error) {
-    console.error(error);
     return handleServerError(res);
   }
 };
@@ -231,7 +220,6 @@ exports.getUserSexDistribution = async (req, res) => {
 
     return handleResponse(res, 200, data);
   } catch (error) {
-    console.error(error);
     return handleServerError(res);
   }
 };
@@ -273,7 +261,6 @@ exports.getUserWeightEntries = async (req, res) => {
 
     return handleResponse(res, 200, formattedData);
   } catch (error) {
-    console.error(error);
     return handleServerError(res);
   }
 };

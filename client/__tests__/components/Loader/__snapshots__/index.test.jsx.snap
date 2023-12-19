@@ -9,10 +9,17 @@ exports[`Component Loader Should match with snapshot 1`] = `
         class="loaderComponent showLoader"
         data-testid="Loading"
       >
-        <img
-          alt="Loading"
-          src="/loader.svg"
-        />
+        <span
+          class="MuiLinearProgress-root MuiLinearProgress-colorSuccess MuiLinearProgress-indeterminate loader css-1hxt08m-MuiLinearProgress-root"
+          role="progressbar"
+        >
+          <span
+            class="MuiLinearProgress-bar MuiLinearProgress-barColorSuccess MuiLinearProgress-bar1Indeterminate css-1u7opxh-MuiLinearProgress-bar1"
+          />
+          <span
+            class="MuiLinearProgress-bar MuiLinearProgress-barColorSuccess MuiLinearProgress-bar2Indeterminate css-1e7jehc-MuiLinearProgress-bar2"
+          />
+        </span>
       </div>
     </div>
   </body>,
@@ -21,10 +28,17 @@ exports[`Component Loader Should match with snapshot 1`] = `
       class="loaderComponent showLoader"
       data-testid="Loading"
     >
-      <img
-        alt="Loading"
-        src="/loader.svg"
-      />
+      <span
+        class="MuiLinearProgress-root MuiLinearProgress-colorSuccess MuiLinearProgress-indeterminate loader css-1hxt08m-MuiLinearProgress-root"
+        role="progressbar"
+      >
+        <span
+          class="MuiLinearProgress-bar MuiLinearProgress-barColorSuccess MuiLinearProgress-bar1Indeterminate css-1u7opxh-MuiLinearProgress-bar1"
+        />
+        <span
+          class="MuiLinearProgress-bar MuiLinearProgress-barColorSuccess MuiLinearProgress-bar2Indeterminate css-1e7jehc-MuiLinearProgress-bar2"
+        />
+      </span>
     </div>
   </div>,
   "debug": [Function],

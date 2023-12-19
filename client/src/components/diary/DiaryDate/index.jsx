@@ -46,7 +46,7 @@ const DiaryDate = ({ currentDate, setCurrentDate, intl: { formatMessage } }) => 
   });
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="diary-date">
       <ChevronLeft onClick={handlePrevDate} />
 
       <Tooltip title={formatMessage({ id: 'app_select_a_date' })}>

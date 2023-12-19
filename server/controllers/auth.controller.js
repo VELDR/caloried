@@ -22,7 +22,6 @@ const {
   changePasswordValidator,
   resetPasswordValidator,
 } = require('../validators/auth.validator');
-const redisClient = require('../utils/redisClient');
 const { invalidateUserCache } = require('../helpers/cacheHelper');
 
 exports.register = async (req, res) => {
@@ -96,7 +95,6 @@ exports.register = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -125,7 +123,6 @@ exports.resendVerificationEmail = async (req, res) => {
 
     return handleResponse(res, 200, { message: 'Verification OTP resent.' });
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -157,7 +154,6 @@ exports.verifyEmail = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -218,7 +214,6 @@ exports.login = async (req, res) => {
       message: 'Successfully signed in!',
     });
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -226,6 +221,7 @@ exports.login = async (req, res) => {
 exports.adminLogin = async (req, res) => {
   try {
     const userData = req.body;
+
     const plainPassword = CryptoJS.AES.decrypt(
       userData.password,
       process.env.CRYPTOJS_SECRET
@@ -263,7 +259,6 @@ exports.adminLogin = async (req, res) => {
       message: 'Successfully signed in!',
     });
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -309,7 +304,7 @@ exports.changePassword = async (req, res) => {
 exports.forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
-    console.log(email, '<<<<EMAIL');
+
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
@@ -323,7 +318,6 @@ exports.forgotPassword = async (req, res) => {
       message: 'Reset password link sent via email',
     });
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };
@@ -347,8 +341,7 @@ exports.resetPassword = async (req, res) => {
     const { email, newPassword, token } = value;
 
     try {
-      const decoded = verifyToken(token);
-      console.log(decoded, token);
+      verifyToken(token);
     } catch (error) {
       return handleResponse(res, 400, { message: 'Token expired.' });
     }

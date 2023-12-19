@@ -12,6 +12,7 @@ import caloriesIcon from '@static/images/calories.svg';
 import { isRoleMatch } from '@utils/authUtils';
 import { getActivityLevel } from '@utils/formatUtils';
 import { calculateAge } from '@utils/calculateUtils';
+import config from '@config/index';
 
 import EditProfileModal from '@components/profile/EditProfileModal';
 import ChangePasswordModal from '@components/profile/ChangePasswordModal';
@@ -81,7 +82,7 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
         </div>
         <div className={classes.header}>
           <div className={classes.avatar}>
-            <Avatar src={`${import.meta.env.VITE_API_BASE_URL}${user?.avatar}`} className={classes.avatar__image} />
+            <Avatar src={`${config.api.base}${user?.avatar}`} className={classes.avatar__image} />
             <Edit className={classes.avatar__edit} onClick={handleEditClick} />
           </div>
           <div className={classes.heading}>

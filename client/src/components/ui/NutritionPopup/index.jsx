@@ -9,7 +9,7 @@ import carbsIcon from '@static/images/carbs.png';
 import classes from './style.module.scss';
 
 const NutritionPopup = ({ open, onClose, user }) => (
-  <Dialog className={classes.container} open={open} onClose={onClose}>
+  <Dialog className={classes.container} open={open} onClose={onClose} data-testid="nutrition-popup">
     <DialogTitle className={classes.header}>
       <div className={classes.header__title}>
         <FormattedMessage id="app_welcome" /> {user?.username}!
@@ -56,7 +56,7 @@ const NutritionPopup = ({ open, onClose, user }) => (
           <CountUp end={user?.fatIntake} duration={2} suffix="g" />
         </div>
       </div>
-      <div className={classes.button} onClick={onClose}>
+      <div className={classes.button} onClick={onClose} data-testid="nutrition-popup-button">
         <FormattedMessage id="app_got_it" />
       </div>
     </DialogContent>

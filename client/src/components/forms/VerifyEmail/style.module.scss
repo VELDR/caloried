@@ -39,10 +39,34 @@
   }
   .link {
     cursor: pointer;
-    font-size: $font-size-small;
     color: var(--color-accent);
     &:hover {
       text-decoration: underline;
     }
   }
+  .disabledLink {
+    cursor: default;
+    color: var(--color-text-primary);
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .countdown {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+}
+
+.swalPopup {
+  font-size: $font-size-regular;
+  color: var(--color-text-secondary);
+}
+
+.swalTitle {
+  font-size: $font-size-larger;
+  color: var(--color-text-primary);
+}
+
+.swalButton {
+  @include primary-button;
 }

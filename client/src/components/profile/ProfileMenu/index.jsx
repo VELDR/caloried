@@ -6,6 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { Avatar, Menu, MenuItem } from '@mui/material';
 import { AutoStories, Dashboard, Fastfood, Logout, Person } from '@mui/icons-material';
 import { logoutUser } from '@containers/Client/actions';
+import config from '@config/index';
 
 import classes from './style.module.scss';
 
@@ -28,11 +29,7 @@ const ProfileMenu = ({ user }) => {
   };
   return (
     <>
-      <Avatar
-        className={classes.avatarUser}
-        src={`${import.meta.env.VITE_API_BASE_URL}${user?.avatar}`}
-        onClick={handleAvatarClick}
-      />
+      <Avatar className={classes.avatarUser} src={`${config.api.base}${user?.avatar}`} onClick={handleAvatarClick} />
 
       <Menu
         className={classes.dropdownAvatar}

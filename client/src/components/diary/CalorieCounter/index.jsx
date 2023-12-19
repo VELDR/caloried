@@ -17,7 +17,12 @@ const CalorieCounter = ({ caloriesConsumed, dailyCalorieGoal }) => {
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <div className={classes.container} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div
+      className={classes.container}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      data-testid="calorie-counter-container"
+    >
       <CircularProgressbarWithChildren
         value={percentage}
         circleRatio={0.75}

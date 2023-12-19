@@ -6,6 +6,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Avatar, Dialog, DialogContent } from '@mui/material';
 import { AlternateEmail, CalendarToday, Female, Male, Person } from '@mui/icons-material';
 import { formatDate } from '@utils/formatUtils';
+import config from '@config/index';
 
 import PrimaryButton from '@components/ui/PrimaryButton';
 import SecondaryButton from '@components/ui/SecondaryButton';
@@ -60,7 +61,7 @@ const EditProfileModal = ({ user, open, onClose, token, intl: { formatMessage } 
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.form__top}>
             <Avatar
-              src={avatar?.startsWith('blob') ? avatar : `${import.meta.env.VITE_API_BASE_URL}${avatar}`}
+              src={avatar?.startsWith('blob') ? avatar : `${config.api.base}${avatar}`}
               className={classes.image}
               onClick={handleAvatarClick}
             />

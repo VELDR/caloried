@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest --env=jsdom --onlyChanged",
+    "test": "jest --env=jsdom --onlyChanged --coverage=true --passWithNoTests",
     "test:all": "jest --env=jsdom --all"
   },
   "dependencies": {
@@ -34,6 +34,7 @@
     "react": "^18.2.0",
     "react-calendar": "^4.6.1",
     "react-circular-progressbar": "^2.1.0",
+    "react-countdown": "^2.3.5",
     "react-countup": "^6.5.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
@@ -46,6 +47,7 @@
     "redux-saga": "^1.2.3",
     "reselect": "^4.1.8",
     "sass": "^1.63.6",
+    "sweetalert2": "^11.10.1",
     "vite": "^4.4.0"
   },
   "devDependencies": {

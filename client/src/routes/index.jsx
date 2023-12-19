@@ -2,7 +2,6 @@ import MainLayout from '@layouts/MainLayout';
 import AuthLayout from '@layouts/AuthLayout';
 
 import NotFound from '@pages/NotFound';
-import VerifySuccess from '@pages/VerifySuccess';
 import SignUp from '@pages/SignUp';
 import SignIn from '@pages/SignIn';
 import Diary from '@pages/Diary';
@@ -31,14 +30,6 @@ const routes = [
     protected: false,
     isAdmin: false,
     component: SignUp,
-    layout: AuthLayout,
-  },
-  {
-    path: '/verify-success',
-    name: 'VerifySuccess',
-    protected: false,
-    isAdmin: false,
-    component: VerifySuccess,
     layout: AuthLayout,
   },
   {

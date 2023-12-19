@@ -32,7 +32,7 @@ const TranslateDropdown = ({ locale }) => {
   };
 
   return (
-    <div>
+    <div data-testid="translate-dropdown">
       <div className={classes.toggle} onClick={handleClick}>
         <Avatar className={classes.avatar} src={locale === 'id' ? '/id.png' : '/en.png'} />
         <div className={classes.lang}>{locale}</div>

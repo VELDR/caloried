@@ -25,7 +25,7 @@ const SearchBar = ({ intl: { formatMessage } }) => {
     }
   };
   return (
-    <div className={classes.search}>
+    <div className={classes.search} data-testid="search-bar">
       <input
         type="search"
         className={classes.search__input}

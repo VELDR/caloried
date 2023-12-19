@@ -11,6 +11,7 @@ const MacronutrientBar = ({ type, value, dailyGoal }) => {
       className={classes.progressBarContainer}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      data-testid="macronutrient-bar"
     >
       <div className={classes.wrapper}>
         <span className={classes.micronutrient}>{type}</span>

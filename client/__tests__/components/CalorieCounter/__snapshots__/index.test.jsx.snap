@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalorieCounter Component should match with snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container"
+        data-testid="calorie-counter-container"
+      >
+        <div
+          data-test-id="CircularProgressbarWithChildren"
+        >
+          <div
+            style="position: relative; width: 100%; height: 100%;"
+          >
+            <svg
+              class="CircularProgressbar "
+              data-test-id="CircularProgressbar"
+              viewBox="0 0 100 100"
+            >
+              <path
+                class="CircularProgressbar-trail"
+                d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+                fill-opacity="0"
+                stroke-width="8"
+                style="stroke: var(--color-bg-secondary); stroke-linecap: butt; transform: rotate(0.625turn); transform-origin: center center; stroke-dasharray: 289.02652413026095px 289.02652413026095px; stroke-dashoffset: 72.25663103256524px;"
+              />
+              <path
+                class="CircularProgressbar-path"
+                d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+                fill-opacity="0"
+                stroke-width="8"
+                style="stroke: var(--color-primary); stroke-linecap: butt; transform: rotate(0.625turn); transform-origin: center center; transition-duration: 0.5s; stroke-dasharray: 289.02652413026095px 289.02652413026095px; stroke-dashoffset: 126.44910430698917px;"
+              />
+            </svg>
+            <div
+              data-test-id="CircularProgressbarWithChildren__children"
+              style="position: absolute; width: 100%; height: 100%; margin-top: -100%; display: flex; flex-direction: column; justify-content: center; align-items: center;"
+            >
+              <div
+                class="content"
+              >
+                <div
+                  class="title"
+                >
+                  500
+                  <span>
+                    kcal
+                  </span>
+                </div>
+                <div
+                  class="subtitle"
+                >
+                  Sisa
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container"
+      data-testid="calorie-counter-container"
+    >
+      <div
+        data-test-id="CircularProgressbarWithChildren"
+      >
+        <div
+          style="position: relative; width: 100%; height: 100%;"
+        >
+          <svg
+            class="CircularProgressbar "
+            data-test-id="CircularProgressbar"
+            viewBox="0 0 100 100"
+          >
+            <path
+              class="CircularProgressbar-trail"
+              d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+              fill-opacity="0"
+              stroke-width="8"
+              style="stroke: var(--color-bg-secondary); stroke-linecap: butt; transform: rotate(0.625turn); transform-origin: center center; stroke-dasharray: 289.02652413026095px 289.02652413026095px; stroke-dashoffset: 72.25663103256524px;"
+            />
+            <path
+              class="CircularProgressbar-path"
+              d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+              fill-opacity="0"
+              stroke-width="8"
+              style="stroke: var(--color-primary); stroke-linecap: butt; transform: rotate(0.625turn); transform-origin: center center; transition-duration: 0.5s; stroke-dasharray: 289.02652413026095px 289.02652413026095px; stroke-dashoffset: 126.44910430698917px;"
+            />
+          </svg>
+          <div
+            data-test-id="CircularProgressbarWithChildren__children"
+            style="position: absolute; width: 100%; height: 100%; margin-top: -100%; display: flex; flex-direction: column; justify-content: center; align-items: center;"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="title"
+              >
+                500
+                <span>
+                  kcal
+                </span>
+              </div>
+              <div
+                class="subtitle"
+              >
+                Sisa
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

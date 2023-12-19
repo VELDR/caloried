@@ -29,9 +29,10 @@ export const register = (data, callback) => ({
   callback,
 });
 
-export const resendVerificationEmail = (data) => ({
+export const resendVerificationEmail = (data, callback) => ({
   type: RESEND_VERIFICATION_EMAIL,
   data,
+  callback,
 });
 
 export const login = (data, callback) => ({

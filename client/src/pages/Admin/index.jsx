@@ -20,6 +20,7 @@ import { Cancel, CheckCircle } from '@mui/icons-material';
 import { isRoleMatch } from '@utils/authUtils';
 import { formatDateAndTime } from '@utils/formatUtils';
 import { SEX_COLORS } from '@constants';
+import config from '@config/index';
 
 import ConfirmDeleteModal from '@components/ui/ConfirmDeleteModal';
 import DemographicsBarChart from '@components/charts/DemographicsBarChart';
@@ -132,11 +133,7 @@ const Admin = ({ token, users, totalUsers, demographics, sexDistribution, intl: 
                 <TableCell>{user?.id}</TableCell>
                 <TableCell>
                   <div className={classes.user}>
-                    <Avatar
-                      src={`${import.meta.env.VITE_API_BASE_URL}${user?.avatar}`}
-                      alt={user?.username}
-                      className={classes.avatar}
-                    />
+                    <Avatar src={`${config.api.base}${user?.avatar}`} alt={user?.username} className={classes.avatar} />
                     {user?.username}
                   </div>
                 </TableCell>

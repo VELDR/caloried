@@ -136,7 +136,7 @@ export default {
   app_no_macronutrients_message: 'Sepertinya Anda belum mencatat menu hari ini.',
   app_log_your_food: 'Catat Menu Anda',
   app_select_a_date: 'Pilih Tanggal',
-  app_no_foods_yet: 'Belum Ada Makanan!',
+  app_no_foods_yet: 'Belum ada makanan',
   app_add_food: 'Tambahkan Makanan',
   app_username_is_required: 'Nama user diperlukan',
   app_email_is_required: 'Email diperlukan',
@@ -232,4 +232,5 @@ export default {
   app_registration_date: 'Tanggal Registrasi',
   app_actions: 'Tindakan',
   app_your_daily_nutritional_goals: 'Target Nutrisi Harian Anda',
+  app_submit: 'Kirim',
 };
