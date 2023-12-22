@@ -50,7 +50,7 @@ const DiaryDate = ({ currentDate, setCurrentDate, intl: { formatMessage } }) => 
       <ChevronLeft onClick={handlePrevDate} />
 
       <Tooltip title={formatMessage({ id: 'app_select_a_date' })}>
-        <div className={classes.date} onClick={handlePopoverOpen}>
+        <div className={classes.date} onClick={handlePopoverOpen} data-testid="calendar-date">
           {formattedDate}
         </div>
       </Tooltip>
@@ -68,6 +68,7 @@ const DiaryDate = ({ currentDate, setCurrentDate, intl: { formatMessage } }) => 
           vertical: 'top',
           horizontal: 'center',
         }}
+        data-testid="calendar-popover"
       >
         <Calendar
           value={currentDate}

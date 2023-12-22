@@ -56,7 +56,7 @@ const EditProfileModal = ({ user, open, onClose, token, intl: { formatMessage } 
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth data-testid="edit-profile-modal">
       <DialogContent className={classes.dialog}>
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.form__top}>

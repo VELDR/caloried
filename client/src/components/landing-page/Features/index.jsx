@@ -6,7 +6,7 @@ import FeatureCard from '@components/landing-page/FeatureCard';
 import classes from './style.module.scss';
 
 const Features = ({ intl: { formatMessage } }) => (
-  <div className={classes.featuresContainer}>
+  <div className={classes.featuresContainer} data-testid="features">
     <div className={classes.featuresTitle}>
       <FormattedMessage id="app_features" />
     </div>

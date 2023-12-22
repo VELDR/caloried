@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './style.module.scss';
 
 const FeatureCard = ({ icon, title, subtitle }) => (
-  <div className={classes.card}>
+  <div className={classes.card} data-testid="feature-card">
     {icon}
     <div className={classes.card__description}>
       <div className={classes.title}>{title}</div>

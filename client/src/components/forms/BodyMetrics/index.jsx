@@ -61,7 +61,7 @@ const BodyMetrics = ({ metrics, intl: { formatMessage } }) => {
     }
   };
   return (
-    <div className={classes.form}>
+    <div className={classes.form} data-testid="body-metrics">
       <FormHeader
         title={formatMessage({ id: 'app_metrics_title' })}
         description={formatMessage({ id: 'app_metrics_description' })}
@@ -80,6 +80,7 @@ const BodyMetrics = ({ metrics, intl: { formatMessage } }) => {
                   metricsData.sex === 'male' ? classes.activeMale : ''
                 }`}
                 onClick={() => handleSexSelect('male')}
+                data-testid="sex-option-male"
               >
                 <Male />
                 <div className={classes.sex__label}>
@@ -91,6 +92,7 @@ const BodyMetrics = ({ metrics, intl: { formatMessage } }) => {
                   metricsData.sex === 'female' ? classes.activeFemale : ''
                 }`}
                 onClick={() => handleSexSelect('female')}
+                data-testid="sex-option-female"
               >
                 <Female />
                 <div className={classes.sex__label}>
@@ -110,6 +112,7 @@ const BodyMetrics = ({ metrics, intl: { formatMessage } }) => {
                 className={classes.dob__input}
                 value={metricsData.dob}
                 onChange={handleInputChange}
+                data-testid="metrics-dob"
               />
               <CalendarToday className={classes.calendar} />
             </div>
@@ -131,6 +134,7 @@ const BodyMetrics = ({ metrics, intl: { formatMessage } }) => {
                   className={classes.input}
                   value={metricsData.height}
                   onChange={handleInputChange}
+                  data-testid="metrics-height"
                 />
                 <div className={classes.adornment}>cm</div>
               </div>
@@ -146,6 +150,7 @@ const BodyMetrics = ({ metrics, intl: { formatMessage } }) => {
                   className={classes.input}
                   value={metricsData.weight}
                   onChange={handleInputChange}
+                  data-testid="metrics-weight"
                 />
                 <div className={classes.adornment}>kg</div>
               </div>

@@ -75,7 +75,7 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
   const goalContent = getGoalInfo(user?.goal);
 
   return (
-    <div className={classes.page}>
+    <div className={classes.page} data-testid="profile">
       <div className={classes.container}>
         <div className={classes.title}>
           <FormattedMessage id="app_my_profile" />
@@ -83,7 +83,7 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
         <div className={classes.header}>
           <div className={classes.avatar}>
             <Avatar src={`${config.api.base}${user?.avatar}`} className={classes.avatar__image} />
-            <Edit className={classes.avatar__edit} onClick={handleEditClick} />
+            <Edit className={classes.avatar__edit} onClick={handleEditClick} data-testid="edit-profile-button" />
           </div>
           <div className={classes.heading}>
             <div className={classes.heading__username}>{user?.username}</div>
@@ -191,7 +191,11 @@ const Profile = ({ user, token, intl: { formatMessage } }) => {
           </div>
         </div>
         <div className={classes.footer}>
-          <div className={classes.footer__button} onClick={handleChangePasswordClick}>
+          <div
+            className={classes.footer__button}
+            onClick={handleChangePasswordClick}
+            data-testid="change-password-button"
+          >
             <FormattedMessage id="app_change_password" />
           </div>
         </div>

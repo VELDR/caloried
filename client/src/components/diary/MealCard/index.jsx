@@ -61,7 +61,7 @@ const MealCard = ({ meal, mealType, intl: { formatMessage } }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="meal-card">
       <div className={classes.header}>
         <div className={classes.left}>
           <Tooltip title={formatMessage({ id: 'app_add_food' })} onClick={handleAddClick}>
@@ -69,7 +69,7 @@ const MealCard = ({ meal, mealType, intl: { formatMessage } }) => {
           </Tooltip>
           <div className={classes.title}>{mealType}</div>
         </div>
-        <div className={classes.right} onClick={toggleCollapse}>
+        <div className={classes.right} onClick={toggleCollapse} data-testid="meal-card-header">
           {isCollapsed ? <KeyboardArrowDown /> : <KeyboardArrowUp />}
         </div>
       </div>

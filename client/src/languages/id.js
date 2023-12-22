@@ -40,7 +40,7 @@ export default {
   app_error_sex: 'Pilih jenis kelamin.',
   app_error_date: 'Tanggal lahir tidak valid. Silakan pilih tanggal yang valid.',
   app_error_height: 'Tinggi badan harus antara 120 cm dan 250 cm',
-  app_error_berat: 'Berat badan harus antara 20 kg dan 400 kg',
+  app_error_weight: 'Berat badan harus antara 20 kg dan 400 kg',
   app_metrics_title: 'Fisik Tubuh',
   app_metrics_description: 'Kami membutuhkan data fisik anda.',
   app_sex: 'Jenis Kelamin',

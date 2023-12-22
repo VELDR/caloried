@@ -29,10 +29,15 @@ footer {
 
     a {
       color: var(--color-accent);
-      font-size: $font-size-regular;
+      font-size: $font-size-small;
       &:hover {
         color: var(--color-secondary);
       }
+    }
+    .nutritionix {
+      font-size: $font-size-smaller;
+      color: var(--color-bg-primary);
+      text-align: center;
     }
   }
 }

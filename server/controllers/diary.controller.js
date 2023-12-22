@@ -71,14 +71,24 @@ exports.addFoodToDiary = async (req, res) => {
 
     const transaction = await sequelize.transaction();
 
+    const caloriesPerServing = calories / quantity;
+    const fatPerServing = fat / quantity;
+    const carbsPerServing = carbs / quantity;
+    const proteinPerServing = protein / quantity;
+
     const [meal, mealCreated] = await Meal.findOrCreate({
       where: { diaryId: userId, date, mealType },
       transaction,
     });
-
     const [food, foodCreated] = await Food.findOrCreate({
       where: { name, servingSize, servingUnit },
-      defaults: { image, calories, fat, carbs, protein },
+      defaults: {
+        image,
+        calories: caloriesPerServing,
+        fat: fatPerServing,
+        carbs: carbsPerServing,
+        protein: proteinPerServing,
+      },
       transaction,
     });
 
@@ -274,7 +284,7 @@ exports.getUserCaloriesConsumed = async (req, res) => {
               attributes: [],
             },
           ],
-          attributes: [],
+          attributes: ['quantity'],
         },
       ],
       where: {
@@ -286,7 +296,12 @@ exports.getUserCaloriesConsumed = async (req, res) => {
       attributes: [
         'date',
         [
-          sequelize.fn('SUM', sequelize.col('foodLogs.food.calories')),
+          sequelize.fn(
+            'SUM',
+            sequelize.literal(
+              '`foodLogs->food`.`calories` * `foodLogs`.`quantity`'
+            )
+          ),
           'totalCalories',
         ],
       ],
@@ -304,11 +319,12 @@ exports.getUserCaloriesConsumed = async (req, res) => {
 
       formattedData.push({
         x: formattedDate,
-        y: found ? found.dataValues.totalCalories : 0,
+        y: found ? Math.round(found.dataValues.totalCalories) : 0,
       });
     }
     return handleResponse(res, 200, formattedData);
   } catch (error) {
+    console.log(error);
     return handleServerError(res);
   }
 };

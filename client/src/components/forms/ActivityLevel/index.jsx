@@ -74,7 +74,7 @@ const ActivityLevel = ({ activityLevel, intl: { formatMessage } }) => {
   const activity = activities[selectedActivity];
 
   return (
-    <div className={classes.form}>
+    <div className={classes.form} data-testid="activity-level">
       <FormHeader
         title={formatMessage({ id: 'app_activity_level_title' })}
         description={formatMessage({ id: 'app_activity_level_description' })}

@@ -30,14 +30,14 @@ exports[`Navbar Component should match with snapshot 1`] = `
             >
               <button
                 class="button button__secondary"
-                data-testid="navigate-sign-in"
+                data-testid="secondary-button"
                 type="button"
               >
                 Masuk
               </button>
               <button
                 class="button button__primary"
-                data-testid="navigate-sign-up"
+                data-testid="primary-button"
                 type="submit"
               >
                 Daftar
@@ -129,14 +129,14 @@ exports[`Navbar Component should match with snapshot 1`] = `
           >
             <button
               class="button button__secondary"
-              data-testid="navigate-sign-in"
+              data-testid="secondary-button"
               type="button"
             >
               Masuk
             </button>
             <button
               class="button button__primary"
-              data-testid="navigate-sign-up"
+              data-testid="primary-button"
               type="submit"
             >
               Daftar

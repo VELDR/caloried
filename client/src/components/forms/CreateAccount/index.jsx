@@ -51,7 +51,7 @@ const CreateAccount = ({ goal, metrics, activityLevel, account, intl: { formatMe
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="create-account">
       <FormHeader
         title={formatMessage({ id: 'app_account_title' })}
         description={formatMessage({ id: 'app_account_description' })}

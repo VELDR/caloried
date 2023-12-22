@@ -10,7 +10,7 @@ import { selectCurrentStep } from './selectors';
 import classes from './style.module.scss';
 
 const SignUp = ({ currentStep }) => (
-  <div className={classes.register}>
+  <div className={classes.register} data-testid="sign-up">
     <div className={classes.progressContainer}>
       <div className={`${classes.progress} ${currentStep === 1 ? classes.active : ''}`}>
         <div className={classes.progress__item}>

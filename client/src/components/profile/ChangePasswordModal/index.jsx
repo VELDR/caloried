@@ -21,10 +21,15 @@ const ChangePasswordModal = ({ open, onClose, token, intl: { formatMessage } }) 
     reset,
   } = useForm();
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
-  const handleTogglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleTogglePasswordVisibility = (passwordType) => {
+    if (passwordType === 'current') {
+      setShowCurrentPassword(!showCurrentPassword);
+    } else if (passwordType === 'new') {
+      setShowNewPassword(!showNewPassword);
+    }
   };
 
   const onSubmit = (data) => {
@@ -36,7 +41,7 @@ const ChangePasswordModal = ({ open, onClose, token, intl: { formatMessage } }) 
     );
   };
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth data-testid="change-password-modal">
       <DialogContent className={classes.dialog}>
         <div className={classes.dialog__title}>
           <LockReset /> <FormattedMessage id="app_change_password" />
@@ -48,14 +53,18 @@ const ChangePasswordModal = ({ open, onClose, token, intl: { formatMessage } }) 
               <LockPerson />
               <input
                 id="currentPassword"
-                type={showPassword ? 'text' : 'password'}
+                type={showCurrentPassword ? 'text' : 'password'}
                 className={`${classes.input} ${errors.currentPassword ? classes.inputError : ''}`}
                 {...register('currentPassword', {
                   required: formatMessage({ id: 'app_current_password_is_required' }),
                 })}
               />
-              <div onClick={handleTogglePasswordVisibility} className={classes.eyeIcon}>
-                {showPassword ? <VisibilityOff /> : <Visibility />}
+              <div
+                onClick={() => handleTogglePasswordVisibility('current')}
+                className={classes.eyeIcon}
+                data-testid="toggle-visibility-current-password"
+              >
+                {showCurrentPassword ? <VisibilityOff /> : <Visibility />}
               </div>
             </label>
             {errors.currentPassword && <span className={classes.error}>{errors.currentPassword.message}</span>}
@@ -66,14 +75,18 @@ const ChangePasswordModal = ({ open, onClose, token, intl: { formatMessage } }) 
               <Key />
               <input
                 id="newPassword"
-                type={showPassword ? 'text' : 'password'}
+                type={showNewPassword ? 'text' : 'password'}
                 className={`${classes.input} ${errors.newPassword ? classes.inputError : ''}`}
                 {...register('newPassword', {
                   required: formatMessage({ id: 'app_new_password_is_required' }),
                 })}
               />
-              <div onClick={handleTogglePasswordVisibility} className={classes.eyeIcon}>
-                {showPassword ? <VisibilityOff /> : <Visibility />}
+              <div
+                onClick={() => handleTogglePasswordVisibility('new')}
+                className={classes.eyeIcon}
+                data-testid="toggle-visibility-new-password"
+              >
+                {showNewPassword ? <VisibilityOff /> : <Visibility />}
               </div>
             </label>
             {errors.newPassword && <span className={classes.error}>{errors.newPassword.message}</span>}

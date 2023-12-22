@@ -21,13 +21,13 @@ const VerifyEmail = ({ account, intl: { formatMessage } }) => {
   const [otp, setOtp] = useState(null);
   const [isResendDisabled, setIsResendDisabled] = useState(true);
   const [timerKey, setTimerKey] = useState(0);
-  const [endTime, setEndTime] = useState(Date.now() + 15000);
+  const [endTime, setEndTime] = useState(Date.now() + 30000);
 
   const handleResend = () => {
     dispatch(
       resendVerificationEmail({ email: account.email }, () => {
         setIsResendDisabled(true);
-        setEndTime(Date.now() + 15000);
+        setEndTime(Date.now() + 30000);
         setTimerKey((prevKey) => prevKey + 1);
       })
     );
@@ -77,7 +77,7 @@ const VerifyEmail = ({ account, intl: { formatMessage } }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="verify-email">
       <img src={mail} alt="Email sent illustration" />
       <div className={classes.title}>
         <FormattedMessage id="app_verify_email" />

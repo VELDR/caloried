@@ -30,7 +30,7 @@ const ResetPassword = ({ intl: { formatMessage } }) => {
   };
 
   return (
-    <div className={classes.page}>
+    <div className={classes.page} data-testid="reset-password">
       <div className={classes.container}>
         <div className={classes.header}>
           <div className={classes.header__title}>

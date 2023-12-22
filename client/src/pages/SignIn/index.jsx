@@ -47,7 +47,7 @@ const SignIn = ({ intl: { formatMessage } }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="sign-in">
       <div className={isAdmin ? `${classes.hero} ${classes.admin}` : `${classes.hero}`}>
         <div className={classes.hero__title}>
           {isAdmin ? formatMessage({ id: 'app_admin_sign_in_title' }) : formatMessage({ id: 'app_user_sign_in_title' })}
@@ -88,6 +88,7 @@ const SignIn = ({ intl: { formatMessage } }) => {
           <div
             className={isAdmin ? `${classes.form__button} ${classes.admin}` : classes.form__button}
             onClick={handleLogin}
+            data-testid="sign-in-button"
           >
             <FormattedMessage id="app_sign_in" />
           </div>
@@ -100,7 +101,10 @@ const SignIn = ({ intl: { formatMessage } }) => {
             </div>
           )}
           <div className={classes.option}>
-            <div className={isAdmin ? classes.option__text : `${classes.option__selected} ${classes.option__text}`}>
+            <div
+              className={isAdmin ? classes.option__text : `${classes.option__selected} ${classes.option__text}`}
+              data-testid="option-role-user"
+            >
               User
             </div>
 
@@ -111,10 +115,14 @@ const SignIn = ({ intl: { formatMessage } }) => {
                 className={classes.option__checkbox}
                 checked={isAdmin}
                 onChange={handleAdminChange}
+                data-testid="role-option-switch"
               />
               <span className={classes.option__slider} id="round" />
             </label>
-            <div className={isAdmin ? `${classes.option__selected} ${classes.option__text}` : classes.option__text}>
+            <div
+              className={isAdmin ? `${classes.option__selected} ${classes.option__text}` : classes.option__text}
+              data-testid="option-role-admin"
+            >
               Admin
             </div>
           </div>

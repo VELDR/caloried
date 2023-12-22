@@ -24,7 +24,7 @@ const FormFooter = ({ currentStep, onContinue }) => {
   };
 
   return (
-    <div className={classes.footer}>
+    <div className={classes.footer} data-testid="form-footer">
       {currentStep > 0 && (
         <SecondaryButton onClick={handlePreviousStep} className={classes.footer__button}>
           <FormattedMessage id="app_button_previous" />

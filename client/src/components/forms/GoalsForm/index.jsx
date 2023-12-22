@@ -38,7 +38,7 @@ const GoalsForm = ({ goal, intl: { formatMessage } }) => {
   };
 
   return (
-    <div className={classes.form}>
+    <div className={classes.form} data-testid="goals-form">
       <FormHeader
         title={formatMessage({ id: 'app_goal_title' })}
         description={formatMessage({ id: 'app_goal_description' })}
@@ -50,6 +50,7 @@ const GoalsForm = ({ goal, intl: { formatMessage } }) => {
             key={key}
             className={`${classes.goal__item} ${selectedGoal === key ? classes.active : ''}`}
             onClick={() => handleGoalSelect(key)}
+            data-testid={`goal-item-${key}`}
           >
             <img className={classes.image} src={image} alt={label} />
             <div className={classes.label}>{label}</div>

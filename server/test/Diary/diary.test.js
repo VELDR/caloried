@@ -74,7 +74,7 @@ beforeAll(async () => {
   } catch (err) {
     console.error(err);
   }
-});
+}, 10000);
 
 afterAll(async () => {
   try {
@@ -95,8 +95,6 @@ describe('Add Food To Diary', () => {
         .post('/api/diary/add')
         .set('Authorization', `Bearer ${userToken}`)
         .send(dummyFood);
-
-      console.log(response.body, '<<<<<<REQSSDQ');
     } catch (err) {
       console.error(err);
     }
@@ -145,7 +143,6 @@ describe('Get Meals By Date', () => {
     } catch (err) {
       console.error(err);
     }
-    console.log(response.body[0].foodLogs, '<<<<<<REQSSDQ');
     expect(response.status).toBe(200);
     expect(response.body).toBeInstanceOf(Array);
   });
@@ -270,7 +267,6 @@ describe('Get User Calories Consumed', () => {
     } catch (err) {
       console.error(err);
     }
-    console.log(response.body, '<<<<<<<CONSUMED');
 
     expect(response.status).toBe(200);
     expect(response.body).toBeInstanceOf(Array);

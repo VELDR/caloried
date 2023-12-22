@@ -42,20 +42,6 @@ beforeAll(async () => {
       .post('/api/auth/register')
       .send(dummyUser);
 
-    const dataUser = {
-      id: response.body.user.id,
-      username: response.body.user.username,
-      email: response.body.user.email,
-      sex: response.body.user.sex,
-      dob: response.body.user.dob,
-      height: response.body.user.height,
-      weight: response.body.user.weight,
-      goal: response.body.user.goal,
-      activityLevel: response.body.user.activityLevel,
-      verificationToken: null,
-      isEmailVerified: true,
-    };
-
     userId = response.body.user.id;
     const userTokenPayload = {
       id: userId,

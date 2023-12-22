@@ -37,13 +37,13 @@ const ProfileCard = ({ user, intl: { formatMessage } }) => {
   const goalContent = getGoalInfo(user?.goal);
 
   return (
-    <div className={classes.profile}>
+    <div className={classes.profile} data-testid="profile-card">
       <div className={classes.profile__header}>
         <Avatar src={`${config.api.base}${user?.avatar}`} className={classes.avatar} />
         <div className={classes.identity}>
           <div className={classes.username}>{user?.username}</div>
           <div className={classes.email}>{user?.email}</div>
-          <div className={classes.button} onClick={() => navigate('/profile')}>
+          <div className={classes.button} onClick={() => navigate('/profile')} data-testid="view-profile-button">
             <FormattedMessage id="app_view_profile" />
           </div>
         </div>

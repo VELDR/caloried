@@ -71,7 +71,6 @@ const CaloriesLineChart = ({ data }) => {
           legendPosition: 'middle',
         }}
         theme={theme}
-        enableArea
         colors="var(--color-primary)"
         pointSize={8}
         useMesh

@@ -1,0 +1,404 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp Page should match with snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="register"
+        data-testid="sign-up"
+      >
+        <div
+          class="progressContainer"
+        >
+          <div
+            class="progress "
+          >
+            <div
+              class="progress__item"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="FlagIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z"
+                />
+              </svg>
+            </div>
+            <div
+              class="progress__label"
+            >
+              Target Berat Badan
+            </div>
+          </div>
+          <div
+            class="progress "
+          >
+            <div
+              class="progress__item"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="AccessibilityNewIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
+                />
+              </svg>
+            </div>
+            <div
+              class="progress__label"
+            >
+              Fisik Tubuh
+            </div>
+          </div>
+          <div
+            class="progress "
+          >
+            <div
+              class="progress__item"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="FitnessCenterIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20.57 14.86 22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"
+                />
+              </svg>
+            </div>
+            <div
+              class="progress__label"
+            >
+              Tingkat Aktivitas
+            </div>
+          </div>
+          <div
+            class="progress "
+          >
+            <div
+              class="progress__item"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="PersonIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
+              </svg>
+            </div>
+            <div
+              class="progress__label"
+            >
+              Pengaturan Akun
+            </div>
+          </div>
+        </div>
+        <div
+          class="formContainer"
+          data-testid="form-card"
+        >
+          <div
+            class="container"
+            data-testid="welcome"
+          >
+            <div
+              class="body"
+            >
+              <div
+                class="title"
+              >
+                Langkah Menuju Hidup Sehat
+                🌱
+              </div>
+              <div
+                class="subtitle"
+              >
+                Sebelum memulai, kami ingin mengetahui lebih tentang Anda untuk membuat pengalaman yang disesuaikan dengan tujuan Anda.
+                🎯
+              </div>
+            </div>
+            <div
+              class="footer"
+            >
+              <div
+                class="footer"
+                data-testid="form-footer"
+              >
+                <button
+                  class="button footer__right footer__button"
+                  data-testid="primary-button"
+                  type="submit"
+                >
+                  Mulai
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EastIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="signIn"
+        >
+          Sudah punya akun?
+           
+          <a
+            href="/sign-in"
+          >
+            Masuk
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="register"
+      data-testid="sign-up"
+    >
+      <div
+        class="progressContainer"
+      >
+        <div
+          class="progress "
+        >
+          <div
+            class="progress__item"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="FlagIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z"
+              />
+            </svg>
+          </div>
+          <div
+            class="progress__label"
+          >
+            Target Berat Badan
+          </div>
+        </div>
+        <div
+          class="progress "
+        >
+          <div
+            class="progress__item"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="AccessibilityNewIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
+              />
+            </svg>
+          </div>
+          <div
+            class="progress__label"
+          >
+            Fisik Tubuh
+          </div>
+        </div>
+        <div
+          class="progress "
+        >
+          <div
+            class="progress__item"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="FitnessCenterIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20.57 14.86 22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"
+              />
+            </svg>
+          </div>
+          <div
+            class="progress__label"
+          >
+            Tingkat Aktivitas
+          </div>
+        </div>
+        <div
+          class="progress "
+        >
+          <div
+            class="progress__item"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="PersonIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+              />
+            </svg>
+          </div>
+          <div
+            class="progress__label"
+          >
+            Pengaturan Akun
+          </div>
+        </div>
+      </div>
+      <div
+        class="formContainer"
+        data-testid="form-card"
+      >
+        <div
+          class="container"
+          data-testid="welcome"
+        >
+          <div
+            class="body"
+          >
+            <div
+              class="title"
+            >
+              Langkah Menuju Hidup Sehat
+              🌱
+            </div>
+            <div
+              class="subtitle"
+            >
+              Sebelum memulai, kami ingin mengetahui lebih tentang Anda untuk membuat pengalaman yang disesuaikan dengan tujuan Anda.
+              🎯
+            </div>
+          </div>
+          <div
+            class="footer"
+          >
+            <div
+              class="footer"
+              data-testid="form-footer"
+            >
+              <button
+                class="button footer__right footer__button"
+                data-testid="primary-button"
+                type="submit"
+              >
+                Mulai
+                 
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="EastIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="signIn"
+      >
+        Sudah punya akun?
+         
+        <a
+          href="/sign-in"
+        >
+          Masuk
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

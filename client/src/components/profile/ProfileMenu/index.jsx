@@ -29,7 +29,12 @@ const ProfileMenu = ({ user }) => {
   };
   return (
     <>
-      <Avatar className={classes.avatarUser} src={`${config.api.base}${user?.avatar}`} onClick={handleAvatarClick} />
+      <Avatar
+        className={classes.avatarUser}
+        src={`${config.api.base}${user?.avatar}`}
+        onClick={handleAvatarClick}
+        data-testid="menu-avatar-user"
+      />
 
       <Menu
         className={classes.dropdownAvatar}
@@ -44,13 +49,18 @@ const ProfileMenu = ({ user }) => {
           vertical: 'top',
           horizontal: 'right',
         }}
+        data-testid="profile-menu"
       >
         <div className={classes.userData}>
           <div className={classes.username}>{user?.username}</div>
           <div className={classes.email}>{user?.email}</div>
         </div>
         <div className={classes.divider} />
-        <MenuItem onClick={() => navigate('/profile')} className={classes.dropdownAvatar__item}>
+        <MenuItem
+          onClick={() => navigate('/profile')}
+          className={classes.dropdownAvatar__item}
+          data-testid="profile-navigate-profile"
+        >
           <Person className={classes.dropdownIcon} />
           <div className={classes.dropdownText}>
             <FormattedMessage id="app_profile" />
@@ -74,7 +84,7 @@ const ProfileMenu = ({ user }) => {
             <FormattedMessage id="app_food" />
           </div>
         </MenuItem>
-        <MenuItem onClick={handleLogout} className={classes.dropdownAvatar__item}>
+        <MenuItem onClick={handleLogout} className={classes.dropdownAvatar__item} data-testid="profile-logout">
           <Logout className={`${classes.dropdownIcon} ${classes.logoutIcon}`} />
           <div className={`${classes.dropdownText} ${classes.logoutText}`}>
             <FormattedMessage id="app_logout" />

@@ -1,0 +1,646 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage page should match with snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        data-testid="landing-page"
+      >
+        <div
+          class="heroContainer"
+          data-testid="hero"
+        >
+          <div
+            class="hero"
+          >
+            <div
+              class="heroTitle"
+            >
+              Makan Cerdas, Hidup Sehat
+            </div>
+            <div
+              class="heroSubtitle"
+            >
+              Panduan Nutrisi Pribadi Anda
+            </div>
+            <div
+              class="heroDescription"
+            >
+              Caloried memudahkan pemantauan dan penyusunan diet Anda
+            </div>
+            <div
+              class="heroButton"
+              data-testid="hero-button"
+            >
+              <span>
+                Mulai Sekarang
+              </span>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium buttonArrow css-i4bv87-MuiSvgIcon-root"
+                data-testid="EastIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="featuresContainer"
+          data-testid="features"
+        >
+          <div
+            class="featuresTitle"
+          >
+            Fitur
+          </div>
+          <div
+            class="features"
+          >
+            <div
+              class="card"
+              data-testid="feature-card"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="PieChartIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+                />
+              </svg>
+              <div
+                class="card__description"
+              >
+                <div
+                  class="title"
+                >
+                  Pemantauan Nutrisi
+                </div>
+                <div
+                  class="subtitle"
+                >
+                  Analisis asupan diet yang terperinci.
+                </div>
+              </div>
+            </div>
+            <div
+              class="card"
+              data-testid="feature-card"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="EditCalendarIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 22H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2v6h-2v-2H5v10h7v2zm10.13-5.01.71-.71c.39-.39.39-1.02 0-1.41l-.71-.71a.9959.9959 0 0 0-1.41 0l-.71.71 2.12 2.12zm-.71.71-5.3 5.3H14v-2.12l5.3-5.3 2.12 2.12z"
+                />
+              </svg>
+              <div
+                class="card__description"
+              >
+                <div
+                  class="title"
+                >
+                  Penyusunan Menu
+                </div>
+                <div
+                  class="subtitle"
+                >
+                  Rancang menu mingguan dengan praktis.
+                </div>
+              </div>
+            </div>
+            <div
+              class="card"
+              data-testid="feature-card"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="ScaleIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14 11V8c4.56-.58 8-3.1 8-6H2c0 2.9 3.44 5.42 8 6v3c-3.68.73-8 3.61-8 11h6v-2H4.13c.93-6.83 6.65-7.2 7.87-7.2s6.94.37 7.87 7.2H16v2h6c0-7.39-4.32-10.27-8-11zm-2 11c-1.1 0-2-.9-2-2 0-.55.22-1.05.59-1.41C11.39 17.79 16 16 16 16s-1.79 4.61-2.59 5.41c-.36.37-.86.59-1.41.59z"
+                />
+              </svg>
+              <div
+                class="card__description"
+              >
+                <div
+                  class="title"
+                >
+                  Pemantauan Berat Badan
+                </div>
+                <div
+                  class="subtitle"
+                >
+                  Pantau dan visualisasikan progres berat badan.
+                </div>
+              </div>
+            </div>
+            <div
+              class="card"
+              data-testid="feature-card"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="RestaurantMenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m8.1 13.34 2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"
+                />
+              </svg>
+              <div
+                class="card__description"
+              >
+                <div
+                  class="title"
+                >
+                  Jutaan Data Makanan
+                </div>
+                <div
+                  class="subtitle"
+                >
+                  Temukan informasi nutrisi berbagai makanan.
+                </div>
+              </div>
+            </div>
+            <div
+              class="card"
+              data-testid="feature-card"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="QueryStatsIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19.88 18.47c.44-.7.7-1.51.7-2.39 0-2.49-2.01-4.5-4.5-4.5s-4.5 2.01-4.5 4.5 2.01 4.5 4.49 4.5c.88 0 1.7-.26 2.39-.7L21.58 23 23 21.58l-3.12-3.11zm-3.8.11c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm-.36-8.5c-.74.02-1.45.18-2.1.45l-.55-.83-3.8 6.18-3.01-3.52-3.63 5.81L1 17l5-8 3 3.5L13 6l2.72 4.08zm2.59.5c-.64-.28-1.33-.45-2.05-.49L21.38 2 23 3.18l-4.69 7.4z"
+                />
+              </svg>
+              <div
+                class="card__description"
+              >
+                <div
+                  class="title"
+                >
+                  Analitik Dasbor 
+                </div>
+                <div
+                  class="subtitle"
+                >
+                  Wawasan tentang pola makan Anda.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer
+          data-testid="footer"
+        >
+          <div
+            class="socialMedia"
+          >
+            <a
+              href="https://www.facebook.com"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium socialIcons css-i4bv87-MuiSvgIcon-root"
+                data-testid="FacebookIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.twitter.com"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium socialIcons css-i4bv87-MuiSvgIcon-root"
+                data-testid="TwitterIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium socialIcons css-i4bv87-MuiSvgIcon-root"
+                data-testid="InstagramIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
+                />
+              </svg>
+            </a>
+          </div>
+          <div
+            class="bottom"
+          >
+            <div
+              class="logo logo"
+              data-testid="logo"
+            >
+              Caloried
+            </div>
+            <div
+              class="copyright"
+            >
+              © 2023 Caloried. All rights reserved.
+            </div>
+            <div>
+              <a
+                href="https://storyset.com"
+              >
+                Illustrations by Storyset
+              </a>
+              <div
+                class="nutritionix"
+              >
+                Powered by Nutritionix
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      data-testid="landing-page"
+    >
+      <div
+        class="heroContainer"
+        data-testid="hero"
+      >
+        <div
+          class="hero"
+        >
+          <div
+            class="heroTitle"
+          >
+            Makan Cerdas, Hidup Sehat
+          </div>
+          <div
+            class="heroSubtitle"
+          >
+            Panduan Nutrisi Pribadi Anda
+          </div>
+          <div
+            class="heroDescription"
+          >
+            Caloried memudahkan pemantauan dan penyusunan diet Anda
+          </div>
+          <div
+            class="heroButton"
+            data-testid="hero-button"
+          >
+            <span>
+              Mulai Sekarang
+            </span>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium buttonArrow css-i4bv87-MuiSvgIcon-root"
+              data-testid="EastIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="featuresContainer"
+        data-testid="features"
+      >
+        <div
+          class="featuresTitle"
+        >
+          Fitur
+        </div>
+        <div
+          class="features"
+        >
+          <div
+            class="card"
+            data-testid="feature-card"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="PieChartIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+              />
+            </svg>
+            <div
+              class="card__description"
+            >
+              <div
+                class="title"
+              >
+                Pemantauan Nutrisi
+              </div>
+              <div
+                class="subtitle"
+              >
+                Analisis asupan diet yang terperinci.
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+            data-testid="feature-card"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="EditCalendarIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 22H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2v6h-2v-2H5v10h7v2zm10.13-5.01.71-.71c.39-.39.39-1.02 0-1.41l-.71-.71a.9959.9959 0 0 0-1.41 0l-.71.71 2.12 2.12zm-.71.71-5.3 5.3H14v-2.12l5.3-5.3 2.12 2.12z"
+              />
+            </svg>
+            <div
+              class="card__description"
+            >
+              <div
+                class="title"
+              >
+                Penyusunan Menu
+              </div>
+              <div
+                class="subtitle"
+              >
+                Rancang menu mingguan dengan praktis.
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+            data-testid="feature-card"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ScaleIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14 11V8c4.56-.58 8-3.1 8-6H2c0 2.9 3.44 5.42 8 6v3c-3.68.73-8 3.61-8 11h6v-2H4.13c.93-6.83 6.65-7.2 7.87-7.2s6.94.37 7.87 7.2H16v2h6c0-7.39-4.32-10.27-8-11zm-2 11c-1.1 0-2-.9-2-2 0-.55.22-1.05.59-1.41C11.39 17.79 16 16 16 16s-1.79 4.61-2.59 5.41c-.36.37-.86.59-1.41.59z"
+              />
+            </svg>
+            <div
+              class="card__description"
+            >
+              <div
+                class="title"
+              >
+                Pemantauan Berat Badan
+              </div>
+              <div
+                class="subtitle"
+              >
+                Pantau dan visualisasikan progres berat badan.
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+            data-testid="feature-card"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="RestaurantMenuIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m8.1 13.34 2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"
+              />
+            </svg>
+            <div
+              class="card__description"
+            >
+              <div
+                class="title"
+              >
+                Jutaan Data Makanan
+              </div>
+              <div
+                class="subtitle"
+              >
+                Temukan informasi nutrisi berbagai makanan.
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+            data-testid="feature-card"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="QueryStatsIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.88 18.47c.44-.7.7-1.51.7-2.39 0-2.49-2.01-4.5-4.5-4.5s-4.5 2.01-4.5 4.5 2.01 4.5 4.49 4.5c.88 0 1.7-.26 2.39-.7L21.58 23 23 21.58l-3.12-3.11zm-3.8.11c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm-.36-8.5c-.74.02-1.45.18-2.1.45l-.55-.83-3.8 6.18-3.01-3.52-3.63 5.81L1 17l5-8 3 3.5L13 6l2.72 4.08zm2.59.5c-.64-.28-1.33-.45-2.05-.49L21.38 2 23 3.18l-4.69 7.4z"
+              />
+            </svg>
+            <div
+              class="card__description"
+            >
+              <div
+                class="title"
+              >
+                Analitik Dasbor 
+              </div>
+              <div
+                class="subtitle"
+              >
+                Wawasan tentang pola makan Anda.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        data-testid="footer"
+      >
+        <div
+          class="socialMedia"
+        >
+          <a
+            href="https://www.facebook.com"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium socialIcons css-i4bv87-MuiSvgIcon-root"
+              data-testid="FacebookIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m13 2h-2.5A3.5 3.5 0 0 0 12 8.5V11h-2v3h2v7h3v-7h3v-3h-3V9a1 1 0 0 1 1-1h2V5z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.twitter.com"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium socialIcons css-i4bv87-MuiSvgIcon-root"
+              data-testid="TwitterIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium socialIcons css-i4bv87-MuiSvgIcon-root"
+              data-testid="InstagramIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"
+              />
+            </svg>
+          </a>
+        </div>
+        <div
+          class="bottom"
+        >
+          <div
+            class="logo logo"
+            data-testid="logo"
+          >
+            Caloried
+          </div>
+          <div
+            class="copyright"
+          >
+            © 2023 Caloried. All rights reserved.
+          </div>
+          <div>
+            <a
+              href="https://storyset.com"
+            >
+              Illustrations by Storyset
+            </a>
+            <div
+              class="nutritionix"
+            >
+              Powered by Nutritionix
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

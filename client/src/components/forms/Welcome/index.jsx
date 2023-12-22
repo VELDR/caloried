@@ -9,7 +9,7 @@ import classes from './style.module.scss';
 const Welcome = () => {
   const dispatch = useDispatch();
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="welcome">
       <div className={classes.body}>
         <div className={classes.title}>
           <FormattedMessage id="app_welcome_title" />

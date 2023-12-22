@@ -1,0 +1,419 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditProfileModal Component should match with snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body
+    style="padding-right: 1024px; overflow: hidden;"
+  >
+    <div
+      aria-hidden="true"
+    />
+    <div
+      class="MuiDialog-root MuiModal-root css-zw3mfo-MuiModal-root-MuiDialog-root"
+      data-testid="edit-profile-modal"
+      role="presentation"
+    >
+      <div
+        aria-hidden="true"
+        class="MuiBackdrop-root MuiModal-backdrop css-yiavyu-MuiBackdrop-root-MuiDialog-backdrop"
+        style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      />
+      <div
+        data-testid="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="MuiDialog-container MuiDialog-scrollPaper css-hz1bth-MuiDialog-container"
+        role="presentation"
+        style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+        tabindex="-1"
+      >
+        <div
+          aria-labelledby=":r1:"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs MuiDialog-paperFullWidth css-twia2z-MuiPaper-root-MuiDialog-paper"
+          role="dialog"
+        >
+          <div
+            class="MuiDialogContent-root dialog css-ypiqx9-MuiDialogContent-root"
+          >
+            <form
+              class="form"
+            >
+              <div
+                class="form__top"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circular image css-1wlk0hk-MuiAvatar-root"
+                >
+                  <img
+                    class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+                    src="http://localhost:8080/path/to/avatar.jpg"
+                  />
+                </div>
+                <input
+                  accept="image/*"
+                  style="display: none;"
+                  type="file"
+                />
+                <div
+                  class="account"
+                >
+                  <div
+                    class="account__form"
+                  >
+                    <label
+                      class="label"
+                      for="username"
+                    >
+                      Nama user
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="PersonIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                        />
+                      </svg>
+                      <input
+                        class="input "
+                        id="username"
+                        name="username"
+                        type="text"
+                        value="testuser"
+                      />
+                    </label>
+                  </div>
+                  <div
+                    class="account__form"
+                  >
+                    <label
+                      class="label"
+                      for="email"
+                    >
+                      Email
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                        data-testid="AlternateEmailIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8 8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57V12c0-2.76-2.24-5-5-5s-5 2.24-5 5 2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47.65.89 1.77 1.47 2.96 1.47 1.97 0 3.5-1.6 3.5-3.57V12c0-5.52-4.48-10-10-10zm0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"
+                        />
+                      </svg>
+                      <input
+                        class="input "
+                        id="email"
+                        name="email"
+                        type="email"
+                        value="test@example.com"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="form__bottom"
+              >
+                <div
+                  class="physique"
+                >
+                  <input
+                    name="sex"
+                    type="hidden"
+                    value="male"
+                  />
+                  <div
+                    class="sex"
+                  >
+                    <div
+                      class="sex__label"
+                    >
+                      Jenis Kelamin
+                    </div>
+                    <div
+                      class="sex__option"
+                    >
+                      <div
+                        class="sex__item sex__male activeMale"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                          data-testid="MaleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M9.5 11c1.93 0 3.5 1.57 3.5 3.5S11.43 18 9.5 18 6 16.43 6 14.5 7.57 11 9.5 11zm0-2C6.46 9 4 11.46 4 14.5S6.46 20 9.5 20s5.5-2.46 5.5-5.5c0-1.16-.36-2.23-.97-3.12L18 7.42V10h2V4h-6v2h2.58l-3.97 3.97C11.73 9.36 10.66 9 9.5 9z"
+                          />
+                        </svg>
+                        <div
+                          class="sex__text"
+                        >
+                          Laki-laki
+                        </div>
+                      </div>
+                      <div
+                        class="sex__item sex__female "
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                          data-testid="FemaleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M17.5 9.5C17.5 6.46 15.04 4 12 4S6.5 6.46 6.5 9.5c0 2.7 1.94 4.93 4.5 5.4V17H9v2h2v2h2v-2h2v-2h-2v-2.1c2.56-.47 4.5-2.7 4.5-5.4zm-9 0C8.5 7.57 10.07 6 12 6s3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5z"
+                          />
+                        </svg>
+                        <div
+                          class="sex__text"
+                        >
+                          Perempuan
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="formInput"
+                  >
+                    <label
+                      class="label"
+                      for="dob"
+                    >
+                      Tanggal Lahir
+                      <input
+                        class="input "
+                        id="dob"
+                        name="dob"
+                        type="date"
+                        value="1990-01-01"
+                      />
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium calendar adornment css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CalendarTodayIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"
+                        />
+                      </svg>
+                    </label>
+                  </div>
+                  <div
+                    class="formInput"
+                  >
+                    <label
+                      class="label"
+                      for="height"
+                    >
+                      Tinggi Badan
+                      <input
+                        class="input "
+                        id="height"
+                        name="height"
+                        type="number"
+                        value="175"
+                      />
+                      <div
+                        class="adornment"
+                      >
+                        cm
+                      </div>
+                    </label>
+                  </div>
+                  <div
+                    class="formInput"
+                  >
+                    <label
+                      class="label"
+                      for="weight"
+                    >
+                      Berat Badan
+                      <input
+                        class="input "
+                        id="weight"
+                        name="weight"
+                        type="number"
+                        value="70"
+                      />
+                      <div
+                        class="adornment"
+                      >
+                        kg
+                      </div>
+                    </label>
+                  </div>
+                  <div
+                    class="formInput"
+                  >
+                    <label
+                      class="label"
+                      for="activityLevel"
+                    >
+                      Tingkat Aktivitas
+                      <select
+                        class="input"
+                        id="activityLevel"
+                        name="activityLevel"
+                      >
+                        <option
+                          value="1"
+                        >
+                          Tidak banyak bergerak
+                        </option>
+                        <option
+                          value="2"
+                        >
+                          Sedikit aktif
+                        </option>
+                        <option
+                          selected=""
+                          value="3"
+                        >
+                          Cukup Aktif
+                        </option>
+                        <option
+                          value="4"
+                        >
+                          Sangat Aktif
+                        </option>
+                        <option
+                          value="5"
+                        >
+                          Sangat Aktif Sekali
+                        </option>
+                      </select>
+                    </label>
+                  </div>
+                  <div
+                    class="formInput"
+                  >
+                    <label
+                      class="label"
+                      for="goal"
+                    >
+                      Tujuan
+                      <select
+                        class="input"
+                        id="goal"
+                        name="goal"
+                      >
+                        <option
+                          value="gain"
+                        >
+                          Menambah Berat Badan
+                        </option>
+                        <option
+                          selected=""
+                          value="maintain"
+                        >
+                          Pertahankan Berat Badan
+                        </option>
+                        <option
+                          value="lose"
+                        >
+                          Turunkan Berat Badan
+                        </option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="buttons"
+              >
+                <button
+                  class="button button"
+                  data-testid="secondary-button"
+                  type="button"
+                >
+                  Batal
+                </button>
+                <button
+                  class="button button"
+                  data-testid="primary-button"
+                  type="submit"
+                >
+                  <div
+                    class="text"
+                  >
+                    Simpan
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,0 +1,338 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileCard Component should match with snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="profile"
+        data-testid="profile-card"
+      >
+        <div
+          class="profile__header"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circular avatar css-1wlk0hk-MuiAvatar-root"
+          >
+            <img
+              class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+              src="http://localhost:8080avatar-url"
+            />
+          </div>
+          <div
+            class="identity"
+          >
+            <div
+              class="username"
+            >
+              testuser
+            </div>
+            <div
+              class="email"
+            >
+              test@example.com
+            </div>
+            <div
+              class="button"
+              data-testid="view-profile-button"
+            >
+              Lihat Profil
+            </div>
+          </div>
+        </div>
+        <div
+          class="profile__footer"
+        >
+          <div
+            class="intake"
+          >
+            <div
+              class="intake__label"
+            >
+              Kalori
+            </div>
+            <div
+              class="intake__value"
+            >
+              2000
+               
+              <span>
+                kcal/
+                hari
+              </span>
+            </div>
+          </div>
+          <div
+            class="intake"
+          >
+            <div
+              class="intake__label"
+            >
+              Protein
+            </div>
+            <div
+              class="intake__value"
+            >
+              100
+               
+              <span>
+                g/
+                hari
+              </span>
+            </div>
+          </div>
+          <div
+            class="intake"
+          >
+            <div
+              class="intake__label"
+            >
+              Karbohidrat
+            </div>
+            <div
+              class="intake__value"
+            >
+              150
+               
+              <span>
+                g/
+                hari
+              </span>
+            </div>
+          </div>
+          <div
+            class="intake"
+          >
+            <div
+              class="intake__label"
+            >
+              Lemak
+            </div>
+            <div
+              class="intake__value"
+            >
+              50
+               
+              <span>
+                g/
+                hari
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="goal loseColor"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="KeyboardDoubleArrowDownIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M18 6.41 16.59 5 12 9.58 7.41 5 6 6.41l6 6z"
+            />
+            <path
+              d="m18 13-1.41-1.41L12 16.17l-4.59-4.58L6 13l6 6z"
+            />
+          </svg>
+           
+          Menurunkan Berat Badan
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="profile"
+      data-testid="profile-card"
+    >
+      <div
+        class="profile__header"
+      >
+        <div
+          class="MuiAvatar-root MuiAvatar-circular avatar css-1wlk0hk-MuiAvatar-root"
+        >
+          <img
+            class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+            src="http://localhost:8080avatar-url"
+          />
+        </div>
+        <div
+          class="identity"
+        >
+          <div
+            class="username"
+          >
+            testuser
+          </div>
+          <div
+            class="email"
+          >
+            test@example.com
+          </div>
+          <div
+            class="button"
+            data-testid="view-profile-button"
+          >
+            Lihat Profil
+          </div>
+        </div>
+      </div>
+      <div
+        class="profile__footer"
+      >
+        <div
+          class="intake"
+        >
+          <div
+            class="intake__label"
+          >
+            Kalori
+          </div>
+          <div
+            class="intake__value"
+          >
+            2000
+             
+            <span>
+              kcal/
+              hari
+            </span>
+          </div>
+        </div>
+        <div
+          class="intake"
+        >
+          <div
+            class="intake__label"
+          >
+            Protein
+          </div>
+          <div
+            class="intake__value"
+          >
+            100
+             
+            <span>
+              g/
+              hari
+            </span>
+          </div>
+        </div>
+        <div
+          class="intake"
+        >
+          <div
+            class="intake__label"
+          >
+            Karbohidrat
+          </div>
+          <div
+            class="intake__value"
+          >
+            150
+             
+            <span>
+              g/
+              hari
+            </span>
+          </div>
+        </div>
+        <div
+          class="intake"
+        >
+          <div
+            class="intake__label"
+          >
+            Lemak
+          </div>
+          <div
+            class="intake__value"
+          >
+            50
+             
+            <span>
+              g/
+              hari
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="goal loseColor"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="KeyboardDoubleArrowDownIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M18 6.41 16.59 5 12 9.58 7.41 5 6 6.41l6 6z"
+          />
+          <path
+            d="m18 13-1.41-1.41L12 16.17l-4.59-4.58L6 13l6 6z"
+          />
+        </svg>
+         
+        Menurunkan Berat Badan
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

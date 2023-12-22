@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter } from '@mui/icons-material';
 import classes from './style.module.scss';
 
 const Footer = () => (
-  <footer>
+  <footer data-testid="footer">
     <div className={classes.socialMedia}>
       <a href="https://www.facebook.com">
         <Facebook className={classes.socialIcons} />
@@ -19,7 +19,10 @@ const Footer = () => (
       <Logo className={classes.logo} />
       <div className={classes.copyright}>© 2023 Caloried. All rights reserved.</div>
 
-      <a href="https://storyset.com">Illustrations by Storyset</a>
+      <div>
+        <a href="https://storyset.com">Illustrations by Storyset</a>
+        <div className={classes.nutritionix}>Powered by Nutritionix</div>
+      </div>
     </div>
   </footer>
 );

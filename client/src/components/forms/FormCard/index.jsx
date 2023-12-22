@@ -24,7 +24,7 @@ const formMap = {
 const FormCard = ({ currentStep }) => {
   const CurrentForm = formMap[currentStep];
   return (
-    <div className={classes.formContainer}>
+    <div className={classes.formContainer} data-testid="form-card">
       <CurrentForm />
     </div>
   );

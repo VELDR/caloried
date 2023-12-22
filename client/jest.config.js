@@ -15,6 +15,7 @@ export default {
     '@static/(.*)': '<rootDir>/src/static/$1',
     '@styles/(.*)': '<rootDir>/src/styles/$1',
     '@utils/(.*)': '<rootDir>/src/utils/$1',
+    '@constants/(.*)': '<rootDir>/src/constants/$1',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };

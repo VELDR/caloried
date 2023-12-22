@@ -13,7 +13,7 @@ import { selectLoading } from '@containers/App/selectors';
 import classes from './style.module.scss';
 
 const FoodCard = ({ food, onClick, intl: { formatMessage }, loading }) => (
-  <div className={classes.container} onClick={onClick}>
+  <div className={classes.container} onClick={onClick} data-testid="food-card">
     <div className={classes.food}>
       <div className={classes.imageWrap}>
         {loading ? (

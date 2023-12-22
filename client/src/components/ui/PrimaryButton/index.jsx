@@ -7,7 +7,7 @@ const PrimaryButton = ({ children, onClick, className, isSubmit = true }) => (
     type={isSubmit ? 'submit' : 'button'}
     onClick={onClick}
     className={`${classes.button} ${className}`}
-    data-testid="navigate-sign-up"
+    data-testid="primary-button"
   >
     {children}
   </button>

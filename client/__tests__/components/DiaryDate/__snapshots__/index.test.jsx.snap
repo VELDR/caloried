@@ -3,7 +3,9 @@
 exports[`DiaryDate Component should match with snapshot 1`] = `
 {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    style=""
+  >
     <div>
       <div
         class="container"
@@ -24,6 +26,7 @@ exports[`DiaryDate Component should match with snapshot 1`] = `
           aria-label="Pilih Tanggal"
           class="date"
           data-mui-internal-clone-element="true"
+          data-testid="calendar-date"
         >
           Sunday, January 1, 2023
         </div>
@@ -61,6 +64,7 @@ exports[`DiaryDate Component should match with snapshot 1`] = `
         aria-label="Pilih Tanggal"
         class="date"
         data-mui-internal-clone-element="true"
+        data-testid="calendar-date"
       >
         Sunday, January 1, 2023
       </div>

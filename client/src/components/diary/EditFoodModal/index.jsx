@@ -65,7 +65,7 @@ const EditFoodModal = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth data-testid="edit-food-modal">
       <DialogContent className={classes.dialog}>
         <div className={classes.dialog__header}>
           <img src={foodDetails?.image} alt={foodDetails?.foodName} className={classes.image} />

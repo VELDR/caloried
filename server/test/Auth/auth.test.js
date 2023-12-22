@@ -2,10 +2,14 @@ const request = require('supertest');
 const CryptoJS = require('crypto-js');
 const app = require('../../index');
 const { User, Admin, sequelize } = require('../../models');
-const { generateForgotPasswordToken } = require('../../utils/jwt');
+const {
+  generateForgotPasswordToken,
+  generateToken,
+  generateEmailVerificationToken,
+} = require('../../utils/jwt');
 const jwt = require('jsonwebtoken');
+const { hashPassword } = require('../../utils/bcrypt');
 const { queryInterface } = sequelize;
-const nodemailer = require('nodemailer');
 
 const dummyUser = {
   username: 'newUser',
@@ -25,18 +29,21 @@ const dummyUser = {
 const dummyAdmin = {
   username: 'testadmin',
   email: 'testadmin@example.com',
-  password: CryptoJS.AES.encrypt(
-    'password123',
-    process.env.CRYPTOJS_SECRET
-  ).toString(),
+  password: hashPassword('password123'),
 };
 
 let OTP;
-const sendMailMock = jest.fn();
-
-jest.mock('nodemailer');
-
-nodemailer.createTransport.mockReturnValue({ sendMail: sendMailMock });
+let userToken;
+let userId;
+jest.mock('nodemailer', () => {
+  const sendMailMock = jest.fn(() => ({ info: { response: '' } }));
+  return {
+    createTransport: jest.fn().mockReturnValue({
+      sendMail: sendMailMock,
+    }),
+    sendMailMock,
+  };
+});
 
 beforeAll(async () => {
   try {
@@ -45,15 +52,9 @@ beforeAll(async () => {
       email: dummyAdmin.email,
       password: dummyAdmin.password,
     });
-    console.log(adminUser, '<<<<<<DA ADMINNNN');
   } catch (err) {
     console.error(err);
   }
-});
-
-beforeEach(() => {
-  sendMailMock.mockClear();
-  nodemailer.createTransport.mockClear();
 });
 
 afterAll(async () => {
@@ -92,6 +93,12 @@ describe('Register', () => {
       response = await request(app).post('/api/auth/register').send(dummyUser);
       const decoded = jwt.decode(response.body.user.verificationToken);
       OTP = decoded.otp;
+      userId = response.body.user.id;
+      const userTokenPayload = {
+        id: userId,
+        role: 'user',
+      };
+      userToken = generateToken(userTokenPayload);
     } catch (err) {
       console.error(err);
     }
@@ -196,7 +203,25 @@ describe('Verify Email', () => {
     expect(response.status).toBe(404);
     expect(response.body.message).toBe('User not found.');
   });
+  it('should return an error for expired OTP', async () => {
+    generateEmailVerificationToken(OTP, dummyUser.email, '0s');
 
+    setTimeout(async () => {
+      let response;
+      try {
+        response = await request(app)
+          .post('/api/auth/verify-email')
+          .send({ otp: OTP, email: dummyUser.email });
+      } catch (err) {
+        console.error(err);
+      }
+
+      expect(response.status).toBe(400);
+      expect(response.body.message).toBe(
+        'Verification failed. OTP is expired.'
+      );
+    }, 100);
+  });
   it('should successfully verify email', async () => {
     let response;
     try {
@@ -276,6 +301,69 @@ describe('Resend Verification Email When User is Verified', () => {
     }
     expect(response.status).toBe(400);
     expect(response.body.message).toBe('Email already verified.');
+  });
+});
+
+describe('Change Password', () => {
+  it('should return an error for invalid current password', async () => {
+    let response;
+    try {
+      response = await request(app)
+        .put('/api/auth/change-password')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          currentPassword: CryptoJS.AES.encrypt(
+            'wrongpassword',
+            process.env.CRYPTOJS_SECRET
+          ).toString(),
+          newPassword: CryptoJS.AES.encrypt(
+            'newpassword',
+            process.env.CRYPTOJS_SECRET
+          ).toString(),
+        });
+    } catch (err) {
+      console.error(err);
+    }
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe('Current password is incorrect');
+  });
+  it('should return a joi error for invalid password length', async () => {
+    let response;
+    try {
+      response = await request(app)
+        .put('/api/auth/change-password')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          currentPassword: dummyUser.password,
+          newPassword: 'short',
+        });
+    } catch (err) {
+      console.error(err);
+    }
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(
+      'New password must be at least 8 characters long'
+    );
+  });
+  it('should successfully change password', async () => {
+    let response;
+    try {
+      response = await request(app)
+        .put('/api/auth/change-password')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          currentPassword: 'password123',
+          newPassword: CryptoJS.AES.encrypt(
+            'newPassword',
+            process.env.CRYPTOJS_SECRET
+          ).toString(),
+        });
+    } catch (err) {
+      console.error(err);
+    }
+
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe('Password changed successfully');
   });
 });
 
@@ -395,22 +483,25 @@ describe('Reset Password', () => {
 });
 
 describe('Admin Login', () => {
-  // it('should successfully log in an admin', async () => {
-  //   let response;
-  //   try {
-  //     response = await request(app).post('/api/auth/admin-login').send({
-  //       email: dummyAdmin.email,
-  //       password: dummyAdmin.password,
-  //     });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  //   console.log(response.body, '<<<<<<<<ADMINININI');
-  //   console.log(dummyAdmin.password);
-  //   expect(response.status).toBe(200);
-  //   expect(response.body).toHaveProperty('token');
-  //   expect(response.body.message).toBe('Successfully signed in!');
-  // });
+  it('should successfully log in an admin', async () => {
+    let response;
+    try {
+      response = await request(app)
+        .post('/api/auth/admin-login')
+        .send({
+          email: dummyAdmin.email,
+          password: CryptoJS.AES.encrypt(
+            'password123',
+            process.env.CRYPTOJS_SECRET
+          ).toString(),
+        });
+    } catch (err) {
+      console.error(err);
+    }
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('token');
+    expect(response.body.message).toBe('Successfully signed in!');
+  });
   it('should return an error for invalid credentials', async () => {
     let response;
     try {
@@ -432,10 +523,15 @@ describe('Admin Login', () => {
   it('should return a joi validation error', async () => {
     let response;
     try {
-      response = await request(app).post('/api/auth/admin-login').send({
-        email: 'invalidEmail',
-        password: dummyAdmin.password,
-      });
+      response = await request(app)
+        .post('/api/auth/admin-login')
+        .send({
+          email: 'invalidEmail',
+          password: CryptoJS.AES.encrypt(
+            'wrongpassword',
+            process.env.CRYPTOJS_SECRET
+          ).toString(),
+        });
     } catch (err) {
       console.error(err);
     }

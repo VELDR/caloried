@@ -56,7 +56,7 @@ const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems, intl: { f
   };
 
   return (
-    <div className={classes.page}>
+    <div className={classes.page} data-testid="food-search">
       <div className={classes.container}>
         <div className={classes.header}>
           <div className={classes.header__title}>

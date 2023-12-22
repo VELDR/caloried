@@ -7,7 +7,7 @@ import classes from './style.module.scss';
 const Hero = () => {
   const navigate = useNavigate();
   return (
-    <div className={classes.heroContainer}>
+    <div className={classes.heroContainer} data-testid="hero">
       <div className={classes.hero}>
         <div className={classes.heroTitle}>
           <FormattedMessage id="app_hero_title" />
@@ -18,7 +18,7 @@ const Hero = () => {
         <div className={classes.heroDescription}>
           <FormattedMessage id="app_hero_description" />
         </div>
-        <div className={classes.heroButton} onClick={() => navigate('/sign-up')}>
+        <div className={classes.heroButton} onClick={() => navigate('/sign-up')} data-testid="hero-button">
           <span>
             <FormattedMessage id="app_hero_button" />
           </span>

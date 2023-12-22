@@ -10,12 +10,16 @@ const {
   fetchNutritionixFoodDetailsApi,
 } = require('../../domain/api.js');
 const { generateToken } = require('../../utils/jwt.js');
+const Redis = require('ioredis');
 
 jest.mock('../../domain/api.js', () => ({
   ...jest.requireActual('../../domain/api.js'),
   fetchNutritionixFoodDetailsApi: jest.fn(),
   fetchNutritionixFoodsApi: jest.fn(),
 }));
+
+const redisClientMock = new Redis();
+jest.mock('ioredis', () => require('ioredis-mock'));
 
 const dummyUser = {
   username: 'testuser',
@@ -61,6 +65,9 @@ afterAll(async () => {
 });
 
 describe('Fetch Foods', () => {
+  beforeEach(async () => {
+    redisClientMock.flushall();
+  });
   it('should fetch food data correctly', async () => {
     fetchNutritionixFoodsApi.mockResolvedValue(mockFoodsData);
 
@@ -80,6 +87,9 @@ describe('Fetch Foods', () => {
 });
 
 describe('Fetch Foods Details', () => {
+  beforeEach(async () => {
+    redisClientMock.flushall();
+  });
   it('should fetch common food details correctly', async () => {
     fetchNutritionixFoodDetailsApi.mockResolvedValue(mockFoodDetails);
 
@@ -104,7 +114,6 @@ describe('Fetch Foods Details', () => {
     } catch (err) {
       console.error(err);
     }
-    console.log(response.body, '<<<<<BRANDED RESSDATA');
     expect(response.status).toBe(200);
   });
   it('should return an error for invalid food type', async () => {
@@ -116,7 +125,6 @@ describe('Fetch Foods Details', () => {
     } catch (err) {
       console.error(err);
     }
-    console.log(response.body, '<<<<<<<401?');
 
     expect(response.status).toBe(400);
     expect(response.body.message).toBe('Invalid food type specified.');

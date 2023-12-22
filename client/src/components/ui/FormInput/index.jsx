@@ -20,6 +20,7 @@ const FormInput = ({ label, type, name, icon, value, onChange }) => {
           name={name}
           value={value}
           onChange={onChange}
+          data-testid={`form-input-${type}`}
         />
         {type === 'password' && (
           <div onClick={handleTogglePasswordVisibility} className={classes.eyeIcon}>
