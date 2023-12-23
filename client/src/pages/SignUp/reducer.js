@@ -17,7 +17,7 @@ export const initialState = {
   account: {},
 };
 
-export const storedKey = ['goal', 'metrics', 'activityLevel', 'account'];
+export const storedKey = ['goal', 'metrics', 'activityLevel', 'account', 'currentStep'];
 
 const signUpReducer = (state = initialState, action) =>
   produce(state, (draft) => {
@@ -45,11 +45,7 @@ const signUpReducer = (state = initialState, action) =>
         draft.account = action.account;
         break;
       case RESET_FORM:
-        draft.goal = null;
-        draft.metrics = {};
-        draft.activityLevel = null;
-        draft.account = {};
-        break;
+        return initialState;
     }
   });
 

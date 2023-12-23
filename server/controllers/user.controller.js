@@ -93,6 +93,21 @@ exports.editProfile = async (req, res) => {
       return handleResponse(res, 404, { message: 'User not found' });
     }
 
+    const existingUser = await User.findOne({
+      where: {
+        [Op.and]: [
+          { id: { [Op.not]: userId } },
+          { [Op.or]: [{ username: username }, { email: email }] },
+        ],
+      },
+    });
+
+    if (existingUser) {
+      return handleResponse(res, 400, {
+        message: 'Username or email already exists',
+      });
+    }
+
     let avatarPath;
     if (req.file) {
       avatarPath = `/uploads/${req.file.filename}`;

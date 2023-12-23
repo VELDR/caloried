@@ -82,16 +82,3 @@ export const calculateDistributionPercentage = (distribution) => {
     value: total > 0 ? ((item.value / total) * 100).toFixed(1) : 0,
   }));
 };
-
-export const getTickValues = (data) => {
-  const values = data.map((d) => d.y);
-
-  const maxValue = Math.max(...values);
-  const minValue = Math.min(...values) - maxValue;
-
-  const tickValues = [];
-  for (let i = minValue; i <= maxValue; i++) {
-    tickValues.push(i);
-  }
-  return tickValues;
-};
