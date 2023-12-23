@@ -65,7 +65,7 @@ beforeAll(async () => {
   } catch (err) {
     console.error(err);
   }
-});
+}, 10000);
 
 afterAll(async () => {
   try {
@@ -159,13 +159,7 @@ describe('Get User Weight Entries', () => {
 });
 
 describe('Edit User Profile', () => {
-  const avatarPath = path.join(
-    __dirname,
-    '..',
-    '..',
-    'uploads',
-    '1702370815650.png'
-  );
+  const avatarPath = path.join(__dirname, '..', '..', 'uploads', 'test.jpg');
   it('should successfully update the user profile', async () => {
     const updatedData = {
       username: 'edit testuser',

@@ -2,7 +2,6 @@ const {
   handleResponse,
   handleServerError,
 } = require('../helpers/responseHandler');
-const { User, Admin } = require('../models');
 const { verifyToken } = require('../utils/jwt');
 
 exports.authenticate = async (req, res, next) => {
@@ -17,21 +16,7 @@ exports.authenticate = async (req, res, next) => {
     if (!decoded) {
       return handleResponse(res, 401, { message: 'You are not signed in' });
     }
-
-    const { id, role } = decoded;
-
-    let user;
-    if (role === 'admin') {
-      user = await Admin.findByPk(id);
-    } else if (role === 'user') {
-      user = await User.findByPk(id);
-    }
-
-    if (!user) {
-      return handleResponse(res, 401, { message: 'You are not signed in' });
-    }
-
-    req.user = user;
+    req.user = decoded;
     next();
   } catch (error) {
     handleServerError(res);
