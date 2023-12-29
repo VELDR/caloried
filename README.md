@@ -1,4 +1,4 @@
-# Caloried - Meal Planner & Nutrition Tracker App
+# Caloried - Nutrition & Diet Tracker App
 
 Caloried is a diet and nutrition tracker app designed to assist users in managing their daily food consumption. The app allows users to log their meals on any given date within a personalized diary, providing a convenient method for tracking their daily recommended calorie and macronutrient intake.
 
