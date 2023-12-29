@@ -2,79 +2,65 @@
 
 Caloried is a diet and nutrition tracker app designed to assist users in managing their daily food consumption. The app allows users to log their meals on any given date within a personalized diary, providing a convenient method for tracking their daily recommended calorie and macronutrient intake.
 
-## Key Tech Stack
+> **Note**
+>
+> This project is still in development.
 
-- React
-- Redux Saga
-- Express
-- Sequelize (MySQL)
-- Nivo
-- Redis
+![Caloried App Preview](./client/public/preview.png)
 
-## Environment Variables
+## Stack
+
+![Tech Stacks](./client/public/stack.png)
+
+### Frontend
+
+The frontend of Caloried is built using the following technologies:
+
+- **Framework:** React
+- **Build Tool:** Vite
+- **State Management:** Redux with react-redux
+- **Side Effects:** Redux Saga
+- **Styling:** Material UI, Sass
+- **Form Handling:** React Hook Form
+- **Charts & Analytics:** Nivo
+- **Notification:** React Hot Toast
+- **Internationalization:** React Intl
+- **Additional Libraries:** React Calendar, React Countdown, React Countup, React Circular Progress Bar, React OTP Input
+
+### Auth
+
+Authentication in Caloried is handled using the following technologies:
+
+- **JSON Web Token (JWT)**: For token-based authentication.
+- **Bcrypt**: Library for password hashing.
+- **CryptoJS**: Used for decryption and encryption
 
 ### Backend
 
-```
-PORT=8080
-SECRET_KEY=dUKG6*&kvD5%$v23r
-EMAIL_ADDRESS = melvernardell@gmail.com
-PASSWORD = unhe kkoy xgnz ktio
+The backend API of Caloried is implemented with the following technologies:
 
-BACKEND_BASE_URL = http://localhost:8080
-FRONTEND_BASE_URL = http://localhost:3000
+- **Framework:** Express
+- **Database:** MySQL
+- **ORM:** Sequelize
+- **Caching:** Redis (ioredis)
+- **Validation:** Joi
+- **Image Upload:** Multer
+- **Email Services:** Nodemailer
 
-CRYPTOJS_SECRET=O*&DSAiv7w6iaiVAW3
+### External Services
 
-NUTRITIONIX_BASE_URL = https://trackapi.nutritionix.com/v2
-NUTRITIONIX_APP_ID = e3fae816
-NUTRITIONIX_API_KEY = 3d36eee63f42f5c44a99e25b6b3c7ccb
-```
+- **Food Data:** [Nutritionix API](https://www.nutritionix.com/business/api)
 
-## Frontend Setup
+## API Endpoints
 
-1. Install dependencies:
+For detailed information about the API endpoints, setup and environment variables in Caloried, please refer to the [API Endpoints README](./server/README.md).
 
-```
-npm install
-```
+## Client Routes
 
-2. Start the application:
+For detailed information about the client routes and setup in Caloried, please refer to the [Client Routes README](./client/README.md).
 
-```
-npm run start
-```
+## System Architecture
 
-## Backend Setup
+**High-level architecture overview**
 
-1. Install dependencies:
-
-```
-npm install
-```
-
-2. Create the database:
-
-```
-npx sequelize-cli db:create
-```
-
-3. Migrate the database:
-
-```
-npx sequelize-cli db:migrate
-```
-
-4. Seed the database:
-
-```
-npx sequelize-cli db:seed:all
-```
-
-5. Start the development server:
-
-```
-npm run dev
-```
-
----
+![System Architecture Diagram](./client/public/architecture.png)
