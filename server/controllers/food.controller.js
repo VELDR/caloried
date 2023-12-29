@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const {
   fetchNutritionixFoodsApi,
   fetchNutritionixFoodDetailsApi,
@@ -7,7 +8,11 @@ const {
   handleServerError,
   handleResponse,
 } = require('../helpers/responseHandler');
+const fs = require('fs');
+const path = require('path');
+const { CustomFood, User } = require('../models');
 const redisClient = require('../utils/redisClient');
+const { createFoodValidator } = require('../validators/food.validator');
 
 exports.fetchFoods = async (req, res) => {
   try {
@@ -28,9 +33,18 @@ exports.fetchFoods = async (req, res) => {
         query: query,
         detailed: true,
       });
-      formattedResponse = mapFoods(nutritionixResponse);
+
+      const customFoods = await CustomFood.findAll({
+        where: {
+          name: {
+            [Op.like]: `%${query}%`,
+          },
+        },
+      });
+      formattedResponse = mapFoods(nutritionixResponse, customFoods);
 
       redisClient.set(cacheKey, JSON.stringify(formattedResponse), 'EX', 10800);
+      await redisClient.sadd('foodsCacheKeys', cacheKey);
     }
 
     const filteredResponse =
@@ -81,6 +95,28 @@ exports.fetchFoodDetails = async (req, res) => {
         foodDetails = formattedResponse.find(
           (food) => food.foodName.toLowerCase() === foodName.toLowerCase()
         );
+      } else if (foodType === 'custom') {
+        const customFood = await CustomFood.findOne({
+          where: {
+            name: foodName,
+          },
+          include: [
+            {
+              model: User,
+              as: 'user',
+              attributes: ['username'],
+            },
+          ],
+        });
+
+        if (customFood) {
+          const formattedCustomFood = mapFoods({}, [customFood]);
+          foodDetails = formattedCustomFood[0];
+        } else {
+          return handleResponse(res, 404, {
+            message: 'Custom food not found.',
+          });
+        }
       } else {
         return handleResponse(res, 400, {
           message: 'Invalid food type specified.',
@@ -91,6 +127,40 @@ exports.fetchFoodDetails = async (req, res) => {
     }
 
     return handleResponse(res, 200, foodDetails || null);
+  } catch (error) {
+    return handleServerError(res);
+  }
+};
+
+exports.createCustomFood = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const foodData = req.body;
+
+    const { error, value } = createFoodValidator.validate(foodData);
+    if (error) {
+      return handleResponse(res, 400, { message: error.details[0].message });
+    }
+
+    let imagePath;
+    if (req.file) {
+      imagePath = `/uploads/${req.file.filename}`;
+    }
+
+    const customFood = await CustomFood.create({
+      userId,
+      ...value,
+      image: imagePath,
+    });
+
+    const cacheKeys = await redisClient.smembers('foodsCacheKeys');
+    cacheKeys.forEach((key) => redisClient.del(key));
+    await redisClient.del('foodsCacheKeys');
+
+    return handleResponse(res, 201, {
+      message: 'Food created successfully!',
+      food: customFood,
+    });
   } catch (error) {
     return handleServerError(res);
   }

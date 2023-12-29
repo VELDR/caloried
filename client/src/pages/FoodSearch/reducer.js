@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { SET_CURRENT_PAGE, SET_FOODS } from './constants';
+import { CLEAR_FOODS, SET_CURRENT_PAGE, SET_FOODS } from './constants';
 
 export const initialState = {
   foods: null,
@@ -20,6 +20,8 @@ const foodSearchReducer = (state = initialState, action) =>
       case SET_CURRENT_PAGE:
         draft.currentPage = action.page;
         break;
+      case CLEAR_FOODS:
+        return initialState;
     }
   });
 

@@ -233,4 +233,22 @@ export default {
   app_actions: 'Tindakan',
   app_your_daily_nutritional_goals: 'Target Nutrisi Harian Anda',
   app_submit: 'Kirim',
+
+  app_no_food_description: 'Belum menemukan hidangan yang diinginkan?',
+  app_submit_food: 'Tambah makanan',
+  app_food_name: 'Nama makanan',
+  app_serving_unit: 'Satuan saji',
+  app_serving_size_tooltip:
+    "Tentukan jumlah makanan yang dipertimbangkan dalam gram. Misalnya, jika sajian umumnya adalah 100 gram, masukkan '100' sebagai ukuran saji.",
+  app_serving_unit_tooltip:
+    "Tunjukkan satuan pengukuran untuk ukuran saji. Misalnya, jika takaran saji adalah 100 gram, masukkan 'g' sebagai satuan saji.",
+  app_nutrient_info:
+    'Berikan informasi nutrisi yang akurat untuk melacak asupan nutrisi Anda dengan lebih baik. Periksa kembali nilai dari sumber yang dapat dipercaya atau kemasan makanan.',
+  app_foodname_is_required: 'Nama makanan diperlukan',
+  app_required_field: 'Sajian diperlukan',
+  app_calories_is_required: 'Kalori diperlukan',
+  app_protein_is_required: 'Protein diperlukan',
+  app_carbs_is_required: 'Karbohidrat diperlukan',
+  app_fat_is_required: 'Lemak diperlukan',
+  app_added_by: 'Ditambah oleh ',
 };

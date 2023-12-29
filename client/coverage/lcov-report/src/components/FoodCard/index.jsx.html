@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">58.82% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>10/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.25% </span>
+                <span class="strong">45.83% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/16</span>
+                <span class='fraction'>11/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">58.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>10/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -193,7 +193,32 @@
 <a name='L128'></a><a href='#L128'>128</a>
 <a name='L129'></a><a href='#L129'>129</a>
 <a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -209,10 +234,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,118 +374,141 @@ import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { injectIntl } from 'react-intl';
 import { Skeleton, Tooltip } from '@mui/material';
+import config from '@config/index';
 import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
+import foodIcon from '@static/images/food.svg';
 import { ChevronRight } from '@mui/icons-material';
 import { selectLoading } from '@containers/App/selectors';
 &nbsp;
 import classes from './style.module.scss';
 &nbsp;
-const FoodCard = ({ food, onClick, intl: { formatMessage }, loading }) =&gt; (
-  &lt;div className={classes.container} onClick={onClick} data-testid="food-card"&gt;
-    &lt;div className={classes.food}&gt;
-      &lt;div className={classes.imageWrap}&gt;
-        {loading ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >          &lt;Skeleton variant="rounded" className={classes.skeletonImage} /&gt;</span>
-        ) : (
-          &lt;&gt;
-            &lt;img src={food?.image} alt={food?.foodName} className={classes.image} /&gt;
+const FoodCard = ({ food, onClick, intl: { formatMessage }, loading }) =&gt; {
+  const determineTypeClass = () =&gt; {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (food?.type === 'common') {
+      return `${classes.type} ${classes.common}`;
+    }
+<span class="cstat-no" title="statement not covered" >    if (food?.type === 'branded') {</span>
+<span class="cstat-no" title="statement not covered" >      return `${classes.type} ${classes.branded}`;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    if (food?.type === 'custom') {</span>
+<span class="cstat-no" title="statement not covered" >      return `${classes.type} ${classes.custom}`;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return classes.type;</span>
+  };
 &nbsp;
-            &lt;span
-              className={
-                food?.type === 'common' ? `${classes.type} ${classes.common}` : <span class="branch-1 cbranch-no" title="branch not covered" >`${classes.type} ${classes.branded}`</span>
-              }
-            &gt;
-              {food?.type}
-            &lt;/span&gt;
-          &lt;/&gt;
-        )}
-      &lt;/div&gt;
-      &lt;div className={classes.food__content}&gt;
-        &lt;Tooltip title={food?.foodName}&gt;
-          &lt;div className={classes.name}&gt;{loading ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;Skeleton /&gt; </span>: food?.foodName}&lt;/div&gt;
-        &lt;/Tooltip&gt;
-        &lt;div className={classes.serving}&gt;
+  let imageUrl;
+&nbsp;
+  if (food?.image) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (food.image.startsWith('https://')) {
+<span class="cstat-no" title="statement not covered" >      imageUrl = food.image;</span>
+    } else {
+      imageUrl = `${config.api.base}${food.image}`;
+    }
+  } else <span class="missing-if-branch" title="else path not taken" >E</span>{
+<span class="cstat-no" title="statement not covered" >    imageUrl = foodIcon;</span>
+  }
+&nbsp;
+  return (
+    &lt;div className={classes.container} onClick={onClick} data-testid="food-card"&gt;
+      &lt;div className={classes.food}&gt;
+        &lt;div className={classes.imageWrap}&gt;
           {loading ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >            &lt;Skeleton width={150} /&gt;</span>
+<span class="branch-0 cbranch-no" title="branch not covered" >            &lt;Skeleton variant="rounded" className={classes.skeletonImage} /&gt;</span>
           ) : (
             &lt;&gt;
-              &lt;Tooltip title={`${food?.servingQty} ${food?.servingUnit}`}&gt;
-                &lt;span className={classes.serving__unit}&gt;
-                  {food?.servingQty} {food?.servingUnit}
-                &lt;/span&gt;
-              &lt;/Tooltip&gt;
-              {food?.servingWeight &amp;&amp; &lt;span className={classes.serving__weight}&gt;• {food?.servingWeight} g&lt;/span&gt;}
+              &lt;img src={imageUrl} alt={food?.foodName} className={classes.image} /&gt;
+&nbsp;
+              &lt;span className={determineTypeClass()}&gt;{food?.type}&lt;/span&gt;
             &lt;/&gt;
           )}
         &lt;/div&gt;
-        {loading ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >          &lt;Skeleton className={classes.skeletonNutrient} /&gt;</span>
-        ) : (
-          &lt;div className={classes.nutrient}&gt;
-            &lt;div className={classes.nutrient__item}&gt;
-              &lt;img src={caloriesIcon} alt="" className={classes.icon} /&gt;
-              {food?.nutrients?.calories?.value}
-            &lt;/div&gt;
-            &lt;div className={classes.nutrient__item}&gt;
-              &lt;img src={proteinIcon} alt="" className={classes.icon} /&gt;
-              {food?.nutrients?.protein?.value}
-            &lt;/div&gt;
-            &lt;div className={classes.nutrient__item}&gt;
-              &lt;img src={carbsIcon} alt="" className={classes.icon} /&gt;
-              {food?.nutrients?.carbs?.value}
-            &lt;/div&gt;
-            &lt;div className={classes.nutrient__item}&gt;
-              &lt;img src={fatIcon} alt="" className={classes.icon} /&gt;
-              {food?.nutrients?.fat?.value}
-            &lt;/div&gt;
+        &lt;div className={classes.food__content}&gt;
+          &lt;Tooltip title={food?.foodName}&gt;
+            &lt;div className={classes.name}&gt;{loading ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;Skeleton /&gt; </span>: food?.foodName}&lt;/div&gt;
+          &lt;/Tooltip&gt;
+          &lt;div className={classes.serving}&gt;
+            {loading ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >              &lt;Skeleton width={150} /&gt;</span>
+            ) : (
+              &lt;&gt;
+                &lt;Tooltip title={`${food?.servingQty} ${food?.servingUnit}`}&gt;
+                  &lt;span className={classes.serving__unit}&gt;
+                    {food?.servingQty} {food?.servingUnit}
+                  &lt;/span&gt;
+                &lt;/Tooltip&gt;
+                {food?.servingWeight &amp;&amp; &lt;span className={classes.serving__weight}&gt;• {food?.servingWeight} g&lt;/span&gt;}
+              &lt;/&gt;
+            )}
           &lt;/div&gt;
-        )}
-      &lt;/div&gt;
-    &lt;/div&gt;
-&nbsp;
-    &lt;div className={classes.right}&gt;
-      &lt;div className={classes.nutrientBig}&gt;
-        {loading ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >          &lt;Skeleton width={250} height={50} /&gt;</span>
-        ) : (
-          &lt;&gt;
-            &lt;Tooltip title={formatMessage({ id: 'app_protein' })}&gt;
-              &lt;div className={classes.nutrientBig__item}&gt;
+          {loading ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >            &lt;Skeleton className={classes.skeletonNutrient} /&gt;</span>
+          ) : (
+            &lt;div className={classes.nutrient}&gt;
+              &lt;div className={classes.nutrient__item}&gt;
+                &lt;img src={caloriesIcon} alt="" className={classes.icon} /&gt;
+                {food?.nutrients?.calories?.value}
+              &lt;/div&gt;
+              &lt;div className={classes.nutrient__item}&gt;
                 &lt;img src={proteinIcon} alt="" className={classes.icon} /&gt;
-                {food?.nutrients?.protein?.value} g
+                {food?.nutrients?.protein?.value}
               &lt;/div&gt;
-            &lt;/Tooltip&gt;
-            &lt;Tooltip title={formatMessage({ id: 'app_carbs' })}&gt;
-              &lt;div className={classes.nutrientBig__item}&gt;
+              &lt;div className={classes.nutrient__item}&gt;
                 &lt;img src={carbsIcon} alt="" className={classes.icon} /&gt;
-                {food?.nutrients?.carbs?.value} g
+                {food?.nutrients?.carbs?.value}
               &lt;/div&gt;
-            &lt;/Tooltip&gt;
-            &lt;Tooltip title={formatMessage({ id: 'app_fat' })}&gt;
-              &lt;div className={classes.nutrientBig__item}&gt;
+              &lt;div className={classes.nutrient__item}&gt;
                 &lt;img src={fatIcon} alt="" className={classes.icon} /&gt;
-                {food?.nutrients?.fat?.value} g
+                {food?.nutrients?.fat?.value}
               &lt;/div&gt;
-            &lt;/Tooltip&gt;
-          &lt;/&gt;
-        )}
+            &lt;/div&gt;
+          )}
+        &lt;/div&gt;
       &lt;/div&gt;
-      &lt;div className={classes.rightMost}&gt;
-        {loading ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >          &lt;Skeleton className={classes.skeletonCalories} /&gt;</span>
-        ) : (
-          &lt;div className={classes.calories}&gt;
-            &lt;span className={classes.calories__value}&gt;{food?.nutrients?.calories?.value}&lt;/span&gt; kcal
-          &lt;/div&gt;
-        )}
-        &lt;ChevronRight className={classes.chevronRight} /&gt;
+&nbsp;
+      &lt;div className={classes.right}&gt;
+        &lt;div className={classes.nutrientBig}&gt;
+          {loading ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >            &lt;Skeleton width={250} height={50} /&gt;</span>
+          ) : (
+            &lt;&gt;
+              &lt;Tooltip title={formatMessage({ id: 'app_protein' })}&gt;
+                &lt;div className={classes.nutrientBig__item}&gt;
+                  &lt;img src={proteinIcon} alt="" className={classes.icon} /&gt;
+                  {food?.nutrients?.protein?.value} g
+                &lt;/div&gt;
+              &lt;/Tooltip&gt;
+              &lt;Tooltip title={formatMessage({ id: 'app_carbs' })}&gt;
+                &lt;div className={classes.nutrientBig__item}&gt;
+                  &lt;img src={carbsIcon} alt="" className={classes.icon} /&gt;
+                  {food?.nutrients?.carbs?.value} g
+                &lt;/div&gt;
+              &lt;/Tooltip&gt;
+              &lt;Tooltip title={formatMessage({ id: 'app_fat' })}&gt;
+                &lt;div className={classes.nutrientBig__item}&gt;
+                  &lt;img src={fatIcon} alt="" className={classes.icon} /&gt;
+                  {food?.nutrients?.fat?.value} g
+                &lt;/div&gt;
+              &lt;/Tooltip&gt;
+            &lt;/&gt;
+          )}
+        &lt;/div&gt;
+        &lt;div className={classes.rightMost}&gt;
+          {loading ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >            &lt;Skeleton className={classes.skeletonCalories} /&gt;</span>
+          ) : (
+            &lt;div className={classes.calories}&gt;
+              &lt;span className={classes.calories__value}&gt;{food?.nutrients?.calories?.value}&lt;/span&gt; kcal
+            &lt;/div&gt;
+          )}
+          &lt;ChevronRight className={classes.chevronRight} /&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
-);
+  );
+};
 &nbsp;
 FoodCard.propTypes = {
   food: PropTypes.object,
@@ -460,7 +529,7 @@ export default injectIntl(connect(mapStateToProps)(FoodCard));
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-23T01:33:34.110Z
+                at 2023-12-29T03:25:37.630Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -9,7 +9,9 @@ import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
+import foodIcon from '@static/images/food.svg';
 import { COLORS } from '@constants';
+import config from '@config/index';
 
 import { selectToken } from '@containers/Client/selectors';
 import PieChart from '@components/charts/PieChart';
@@ -64,11 +66,23 @@ const EditFoodModal = ({
     onClose();
   };
 
+  let imageUrl;
+
+  if (foodDetails?.image) {
+    if (foodDetails?.image.startsWith('https://')) {
+      imageUrl = foodDetails?.image;
+    } else {
+      imageUrl = `${config.api.base}${foodDetails?.image}`;
+    }
+  } else {
+    imageUrl = foodIcon;
+  }
+
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth data-testid="edit-food-modal">
       <DialogContent className={classes.dialog}>
         <div className={classes.dialog__header}>
-          <img src={foodDetails?.image} alt={foodDetails?.foodName} className={classes.image} />
+          <img src={imageUrl} alt={foodDetails?.foodName} className={classes.image} />
           <div className={classes.food}>
             <div className={classes.food__name}>{foodDetails?.foodName}</div>
             <div className={classes.food__serving}>

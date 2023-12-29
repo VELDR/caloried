@@ -13,7 +13,7 @@ const endpoints = {
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
   const defaultHeader = {
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    'Content-Type': 'application/json; charset=UTF-8',
   };
 
   const headers = merge(defaultHeader, header);
@@ -48,7 +48,13 @@ export const forgotPasswordApi = (data) => callAPI(`${endpoints.auth}/forgot-pas
 // USER
 export const getUserByIdApi = (token) => callAPI(`${endpoints.user}`, 'GET', { Authorization: `Bearer ${token}` });
 export const editProfileApi = (data, token) =>
-  callAPI(`${endpoints.user}/profile`, 'PUT', { Authorization: `Bearer ${token}` }, {}, data);
+  callAPI(
+    `${endpoints.user}/profile`,
+    'PUT',
+    { Authorization: `Bearer ${token}`, 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+    {},
+    data
+  );
 export const getAllUsersPaginatedApi = (page, pageSize, token, sort, order) =>
   callAPI(`${endpoints.user}/all?page=${page}&pageSize=${pageSize}&sort=${sort}&order=${order}`, 'GET', {
     Authorization: `Bearer ${token}`,
@@ -73,6 +79,17 @@ export const getFoodsApi = (query, page, pageSize, token, category) =>
   );
 export const getFoodDetailsApi = (foodType, foodName, token) =>
   callAPI(`${endpoints.food}/${foodType}/${foodName}`, 'GET', { Authorization: `Bearer ${token}` });
+export const createCustomFoodApi = (data, token) =>
+  callAPI(
+    `${endpoints.food}/create`,
+    'POST',
+    {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    },
+    {},
+    data
+  );
 
 // DIARY
 export const getMealsByDateApi = (date, token) =>

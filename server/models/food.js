@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       servingSize: DataTypes.INTEGER,
       servingUnit: DataTypes.STRING,
-      isAdminAdded: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
       image: DataTypes.STRING,
       calories: DataTypes.FLOAT,
       fat: DataTypes.FLOAT,

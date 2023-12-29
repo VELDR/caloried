@@ -101,4 +101,20 @@
       }
     }
   }
+  .addCustom {
+    @include flex-center-column(0.5rem);
+    margin-bottom: 1rem;
+    img {
+      @include box(13rem);
+    }
+    &__description {
+      text-align: center;
+    }
+    &__button {
+      @include flex-items-center;
+      svg {
+        font-size: $font-size-large;
+      }
+    }
+  }
 }

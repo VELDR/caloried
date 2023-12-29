@@ -11,6 +11,7 @@ import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
+import foodIcon from '@static/images/food.svg';
 
 import { calculateAdjustedNutrients, calculateNutrientPercentage } from '@utils/calculateUtils';
 import { useServingForm } from '@utils/hookHelper';
@@ -19,6 +20,7 @@ import PieChart from '@components/charts/PieChart';
 import MacronutrientTooltip from '@components/charts/MacronutrientTooltip';
 import { COLORS } from '@constants';
 import { isRoleMatch } from '@utils/authUtils';
+import config from '@config/index';
 
 import { selectToken } from '@containers/Client/selectors';
 import { selectLoading } from '@containers/App/selectors';
@@ -93,6 +95,31 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate, intl:
 
   const getNutrientValue = (nutrient) => (nutrient?.value ? roundValue(nutrient.value * nutrientFactor) : 0);
 
+  let imageUrl;
+
+  if (foodDetails?.image) {
+    if (foodDetails?.image?.startsWith('https://')) {
+      imageUrl = foodDetails?.image;
+    } else {
+      imageUrl = `${config.api.base}${foodDetails?.image}`;
+    }
+  } else {
+    imageUrl = foodIcon;
+  }
+
+  const determineTypeClass = () => {
+    if (foodType === 'common') {
+      return `${classes.type} ${classes.common}`;
+    }
+    if (foodType === 'branded') {
+      return `${classes.type} ${classes.branded}`;
+    }
+    if (foodType === 'custom') {
+      return `${classes.type} ${classes.custom}`;
+    }
+    return classes.type;
+  };
+
   return (
     <div className={classes.page}>
       <div className={classes.container}>
@@ -101,10 +128,16 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate, intl:
         ) : (
           <div className={classes.header}>
             <div className={classes.header__left}>
-              <img src={foodDetails?.image} alt={foodDetails?.foodName} />
+              <img src={imageUrl} alt={foodDetails?.foodName} />
               <div className={classes.details}>
                 <div className={classes.foodName}>{foodDetails?.foodName}</div>
                 <div className={classes.brand}>{foodDetails?.brandName}</div>
+                {foodDetails?.username && (
+                  <div className={classes.brand}>
+                    <FormattedMessage id="app_added_by" />
+                    {foodDetails?.username}
+                  </div>
+                )}
                 <div className={classes.serving}>
                   {servingCount} × {selectedServingSize || foodDetails?.servingWeight}g (
                   {selectedServingQty || foodDetails?.servingQty} {selectedServingUnit || foodDetails?.servingUnit})
@@ -112,13 +145,7 @@ const FoodDetails = ({ foodDetails, token, selectedMealType, selectedDate, intl:
               </div>
             </div>
 
-            <div
-              className={
-                foodType === 'common' ? `${classes.type} ${classes.common}` : `${classes.type} ${classes.branded}`
-              }
-            >
-              {foodType}
-            </div>
+            <div className={determineTypeClass()}>{foodType}</div>
           </div>
         )}
         {loading ? (

@@ -50,6 +50,15 @@ exports[`FoodSearch Page should match with snapshot 1`] = `
                   Branded
                 </div>
               </div>
+              <div
+                class="categoryWrapper"
+              >
+                <div
+                  class="category__item"
+                >
+                  Custom
+                </div>
+              </div>
             </div>
           </div>
           <div
@@ -112,6 +121,36 @@ exports[`FoodSearch Page should match with snapshot 1`] = `
             </li>
           </ul>
         </nav>
+        <div
+          class="addCustom"
+        >
+          <img
+            alt=""
+          />
+          <div
+            class="addCustom__description"
+          >
+            Belum menemukan hidangan yang diinginkan?
+          </div>
+          <button
+            class="button addCustom__button"
+            data-testid="primary-button"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="UploadIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 20h14v-2H5v2zm0-10h4v6h6v-6h4l-7-7-7 7z"
+              />
+            </svg>
+            Tambah makanan
+          </button>
+        </div>
       </div>
     </div>
   </body>,
@@ -159,6 +198,15 @@ exports[`FoodSearch Page should match with snapshot 1`] = `
                 class="category__item"
               >
                 Branded
+              </div>
+            </div>
+            <div
+              class="categoryWrapper"
+            >
+              <div
+                class="category__item"
+              >
+                Custom
               </div>
             </div>
           </div>
@@ -223,6 +271,36 @@ exports[`FoodSearch Page should match with snapshot 1`] = `
           </li>
         </ul>
       </nav>
+      <div
+        class="addCustom"
+      >
+        <img
+          alt=""
+        />
+        <div
+          class="addCustom__description"
+        >
+          Belum menemukan hidangan yang diinginkan?
+        </div>
+        <button
+          class="button addCustom__button"
+          data-testid="primary-button"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="UploadIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M5 20h14v-2H5v2zm0-10h4v6h6v-6h4l-7-7-7 7z"
+            />
+          </svg>
+          Tambah makanan
+        </button>
+      </div>
     </div>
   </div>,
   "debug": [Function],

@@ -12,7 +12,7 @@ exports[`FoodCard Component should match with snapshot 1`] = `
           <div>
             <img
               alt="Test Food"
-              src="test-image.jpg"
+              src="http://localhost:8080test-image.jpg"
             />
             <span
               class="undefined undefined"
@@ -145,7 +145,7 @@ exports[`FoodCard Component should match with snapshot 1`] = `
         <div>
           <img
             alt="Test Food"
-            src="test-image.jpg"
+            src="http://localhost:8080test-image.jpg"
           />
           <span
             class="undefined undefined"

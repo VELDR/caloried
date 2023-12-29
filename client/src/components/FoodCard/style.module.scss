@@ -47,6 +47,9 @@
       .branded {
         background-color: var(--color-accent);
       }
+      .custom {
+        background-color: var(--color-text-primary);
+      }
     }
     &__content {
       @include flex-column;

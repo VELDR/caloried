@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomFoodForm Component should match with snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body
+    style="padding-right: 1024px; overflow: hidden;"
+  >
+    <div
+      aria-hidden="true"
+    />
+    <div
+      class="MuiDialog-root MuiModal-root css-zw3mfo-MuiModal-root-MuiDialog-root"
+      data-testid="custom-food-modal"
+      role="presentation"
+    >
+      <div
+        aria-hidden="true"
+        class="MuiBackdrop-root MuiModal-backdrop css-yiavyu-MuiBackdrop-root-MuiDialog-backdrop"
+        style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      />
+      <div
+        data-testid="sentinelStart"
+        tabindex="0"
+      />
+      <div
+        class="MuiDialog-container MuiDialog-scrollPaper css-hz1bth-MuiDialog-container"
+        role="presentation"
+        style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+        tabindex="-1"
+      >
+        <div
+          aria-labelledby=":r3:"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthXs MuiDialog-paperFullWidth css-twia2z-MuiPaper-root-MuiDialog-paper"
+          role="dialog"
+        >
+          <h2
+            class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-bdhsul-MuiTypography-root-MuiDialogTitle-root"
+            id=":r3:"
+          >
+            Tambah makanan
+          </h2>
+          <div
+            class="MuiDialogContent-root css-ypiqx9-MuiDialogContent-root"
+          >
+            <form>
+              <div>
+                <div>
+                  <div
+                    class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-2s90m6-MuiAvatar-root"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="AddPhotoAlternateIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <input
+                  accept="image/*"
+                  style="display: none;"
+                  type="file"
+                />
+                <div>
+                  <div>
+                    <label
+                      for="name"
+                    >
+                      Nama makanan
+                      <input
+                        class=""
+                        id="name"
+                        name="name"
+                        type="text"
+                      />
+                    </label>
+                  </div>
+                  <div>
+                    <div>
+                      <label
+                        for="servingSize"
+                      >
+                        <div>
+                          Takaran Saji
+                          <svg
+                            aria-hidden="true"
+                            aria-label="Tentukan jumlah makanan yang dipertimbangkan dalam gram. Misalnya, jika sajian umumnya adalah 100 gram, masukkan '100' sebagai ukuran saji."
+                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                            data-mui-internal-clone-element="true"
+                            data-testid="InfoIcon"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                            />
+                          </svg>
+                        </div>
+                        <input
+                          class=""
+                          id="servingSize"
+                          name="servingSize"
+                          type="number"
+                        />
+                      </label>
+                    </div>
+                    <div>
+                      <label
+                        for="servingUnit"
+                      >
+                        <div>
+                          Satuan saji
+                          <svg
+                            aria-hidden="true"
+                            aria-label="Tunjukkan satuan pengukuran untuk ukuran saji. Misalnya, jika takaran saji adalah 100 gram, masukkan 'g' sebagai satuan saji."
+                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                            data-mui-internal-clone-element="true"
+                            data-testid="InfoIcon"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                            />
+                          </svg>
+                        </div>
+                        <input
+                          class=""
+                          id="servingUnit"
+                          name="servingUnit"
+                          type="text"
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  Berikan informasi nutrisi yang akurat untuk melacak asupan nutrisi Anda dengan lebih baik. Periksa kembali nilai dari sumber yang dapat dipercaya atau kemasan makanan.
+                </div>
+                <div>
+                  <label
+                    for="calories"
+                  >
+                    Kalori
+                    <div>
+                      <img
+                        alt=""
+                      />
+                      <input
+                        class=""
+                        id="calories"
+                        name="calories"
+                        type="number"
+                      />
+                      <div>
+                        kcal
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <div>
+                  <div>
+                    <label
+                      for="protein"
+                    >
+                      Protein
+                      <img
+                        alt=""
+                        src="path/to/calories.png"
+                      />
+                      <input
+                        class=""
+                        id="protein"
+                        name="protein"
+                        type="number"
+                      />
+                      <div>
+                        g
+                      </div>
+                    </label>
+                  </div>
+                  <div>
+                    <label
+                      for="carbs"
+                    >
+                      <img
+                        alt=""
+                        src="path/to/calories.png"
+                      />
+                      Karbohidrat
+                      <input
+                        class=""
+                        id="carbs"
+                        name="carbs"
+                        type="number"
+                      />
+                      <div>
+                        g
+                      </div>
+                    </label>
+                  </div>
+                  <div>
+                    <label
+                      for="fat"
+                    >
+                      <img
+                        alt=""
+                        src="path/to/calories.png"
+                      />
+                      Lemak
+                      <input
+                        class=""
+                        id="fat"
+                        name="fat"
+                        type="number"
+                      />
+                      <div>
+                        g
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button
+                  class="undefined undefined"
+                  data-testid="secondary-button"
+                  type="button"
+                >
+                  Batal
+                </button>
+                <button
+                  class="undefined undefined"
+                  data-testid="primary-button"
+                  type="submit"
+                >
+                  <div>
+                    Kirim
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid="sentinelEnd"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

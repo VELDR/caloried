@@ -234,4 +234,22 @@ export default {
   app_actions: 'Actions',
   app_your_daily_nutritional_goals: 'Your Daily Nutritional Goals',
   app_submit: 'Submit',
+
+  app_no_food_description: "Couldn't find the food you're looking for?",
+  app_submit_food: 'Submit a Food',
+  app_food_name: 'Food name',
+  app_serving_unit: 'Serving unit',
+  app_serving_size_tooltip:
+    "Specify the amount of the food considered in grams. For example, if a typical serving is 100 grams, enter '100' as the serving size.",
+  app_serving_unit_tooltip:
+    "Indicate the unit of measurement for the serving size. For example, if the serving size is 100 grams, enter 'g' as the serving unit.",
+  app_nutrient_info:
+    'Provide accurate nutrient information for better tracking of your nutritional intake. Double-check values from reliable sources or food packaging.',
+  app_foodname_is_required: 'Food name is required',
+  app_required_field: 'Required field',
+  app_calories_is_required: 'Calories is required',
+  app_protein_is_required: 'Protein is required',
+  app_carbs_is_required: 'Carbs is required',
+  app_fat_is_required: 'Fat is required',
+  app_added_by: 'Added by ',
 };

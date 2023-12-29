@@ -1,8 +1,8 @@
 import { setLoading, showPopup } from '@containers/App/actions';
-import { getFoodsApi } from '@domain/api';
+import { createCustomFoodApi, getFoodsApi } from '@domain/api';
 import toast from 'react-hot-toast';
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { GET_FOODS } from './constants';
+import { CREATE_CUSTOM_FOOD, GET_FOODS } from './constants';
 import { setFoods } from './actions';
 
 function* doGetFoods({ query, page, pageSize, token, category }) {
@@ -21,6 +21,24 @@ function* doGetFoods({ query, page, pageSize, token, category }) {
   }
 }
 
+function* doCreateCustomFood({ data, token, callback }) {
+  yield put(setLoading(true));
+  try {
+    const response = yield call(createCustomFoodApi, data, token);
+    toast.success(response.message);
+    yield call(callback);
+  } catch (error) {
+    if (error.response && error.response.data) {
+      toast.error(error.response.data.message);
+    } else {
+      yield put(showPopup());
+    }
+  } finally {
+    yield put(setLoading(false));
+  }
+}
+
 export default function* foodSearchSaga() {
   yield takeLatest(GET_FOODS, doGetFoods);
+  yield takeLatest(CREATE_CUSTOM_FOOD, doCreateCustomFood);
 }

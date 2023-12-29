@@ -324,7 +324,6 @@ exports.getUserCaloriesConsumed = async (req, res) => {
     }
     return handleResponse(res, 200, formattedData);
   } catch (error) {
-    console.log(error);
     return handleServerError(res);
   }
 };

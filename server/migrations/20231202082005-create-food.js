@@ -19,10 +19,6 @@ module.exports = {
       servingUnit: {
         type: Sequelize.STRING,
       },
-      isAdminAdded: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-      },
       image: {
         type: Sequelize.STRING,
       },

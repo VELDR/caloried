@@ -1,0 +1,169 @@
+@import '@styles/base';
+
+.dialog {
+  .form {
+    @include flex-column(1rem);
+
+    &__top {
+      @include flex-items-center(2rem);
+      .image {
+        cursor: pointer;
+        @include box(5rem);
+        &:hover {
+          opacity: 0.5;
+        }
+        svg {
+          font-size: $font-size-huge;
+        }
+      }
+
+      .food {
+        @include flex-column(0.5rem);
+        .name {
+          .label {
+            @include flex-column;
+            font-size: $font-size-small;
+            input {
+              @include input;
+              box-sizing: border-box;
+              outline: none;
+            }
+            .inputError {
+              border-color: $color-error;
+              color: $color-error;
+            }
+          }
+        }
+        .serving {
+          @include flex-row(1rem);
+
+          .label {
+            @include flex-column;
+            font-size: $font-size-small;
+            &__item {
+              @include flex-items-center(0.25rem);
+              svg {
+                cursor: pointer;
+                @include box(0.75rem);
+              }
+            }
+            input {
+              @include input;
+              box-sizing: border-box;
+              outline: none;
+              width: 100%;
+            }
+            .inputError {
+              border-color: $color-error;
+              color: $color-error;
+            }
+          }
+        }
+      }
+    }
+    &__bottom {
+      @include flex-column(1rem);
+      border-top: 1px solid var(--color-text-primary);
+      padding: 0.5rem 0 1rem;
+      .info {
+        @include flex-items-center(0.25rem);
+        font-size: $font-size-tiny;
+        svg {
+          font-size: $font-size-regular;
+        }
+      }
+      .calories {
+        @include flex-center-column;
+        .label {
+          @include flex-column;
+          font-size: $font-size-small;
+          width: 35%;
+
+          .inputContainer {
+            position: relative;
+            width: 100%;
+
+            img {
+              @include box(1rem);
+              position: absolute;
+              top: 50%;
+              left: 8px;
+              transform: translateY(-50%);
+            }
+            input {
+              @include input;
+              box-sizing: border-box;
+              padding-left: 1.75rem;
+              padding-right: 1rem;
+              outline: none;
+              width: 100%;
+            }
+            .inputError {
+              border-color: $color-error;
+              color: $color-error;
+            }
+            .adornment {
+              position: absolute;
+              top: 50%;
+              right: 8px;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+      .macro {
+        @include flex-row(1rem);
+        &__nutrient {
+          .label {
+            @include flex-column;
+            font-size: $font-size-small;
+            position: relative;
+            img {
+              @include box(1rem);
+              position: absolute;
+              top: 67%;
+              left: 8px;
+              transform: translateY(-50%);
+            }
+            input {
+              @include input;
+              box-sizing: border-box;
+              padding-left: 1.75rem;
+              padding-right: 1rem;
+              outline: none;
+              width: 100%;
+            }
+            .inputError {
+              border-color: $color-error;
+              color: $color-error;
+            }
+            .adornment {
+              position: absolute;
+              top: 67%;
+              right: 8px;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+    .buttons {
+      @include flex-row(1rem);
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      align-self: flex-end;
+      .button {
+        @include flex-items-center(0.25rem);
+      }
+    }
+  }
+}
+
+.inputError {
+  border-color: $color-error;
+  color: $color-error;
+}
+.error {
+  font-size: $font-size-smaller;
+  color: $color-error;
+}

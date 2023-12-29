@@ -14,7 +14,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <PersistGate persistor={persistor}>
       <Language>
         <BrowserRouter>
-          <Toaster reverseOrder={false} toastOptions={{ style: { fontSize: '0.75rem' } }} />
+          <Toaster
+            reverseOrder={false}
+            toastOptions={{
+              style: {
+                fontSize: '0.75rem',
+                backgroundColor: 'var(--color-text-primary)',
+                color: 'var(--color-bg-primary)',
+              },
+            }}
+          />
           <App />
         </BrowserRouter>
       </Language>

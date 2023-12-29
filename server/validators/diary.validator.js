@@ -4,7 +4,7 @@ const addFoodToDiaryValidator = Joi.object({
   name: Joi.string().trim().required(),
   servingSize: Joi.number().positive().required(),
   servingUnit: Joi.string().trim().required(),
-  image: Joi.string().trim().required(),
+  image: Joi.string().trim().allow(null),
   calories: Joi.number().positive().required(),
   fat: Joi.number().required(),
   carbs: Joi.number().required(),

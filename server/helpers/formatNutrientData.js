@@ -74,7 +74,7 @@ const mapNutrients = (nutrients) => {
   return mappedNutrients;
 };
 
-const mapFoods = (items) => {
+const mapFoods = (items, customFoods = []) => {
   const mappedFoods = [];
 
   const mapFoodItem = (item, isBranded = false) => ({
@@ -95,7 +95,33 @@ const mapFoods = (items) => {
   const brandedFoods =
     items.branded?.map((item) => mapFoodItem(item, true)) || [];
 
-  mappedFoods.push(...commonFoods, ...brandedFoods);
+  const formattedCustomFoods = customFoods.map((customFood) => {
+    const customFoodNutrients = {
+      carbs: Math.round(customFood.carbs) || 0,
+      fat: Math.round(customFood.fat) || 0,
+      protein: Math.round(customFood.protein) || 0,
+      calories: Math.round(customFood.calories) || 0,
+    };
+
+    const customFoodMappedNutrients = {};
+
+    Object.entries(customFoodNutrients).forEach(([nutrientName, value]) => {
+      const dv = calculateDV(nutrientName, value);
+      customFoodMappedNutrients[nutrientName] = { value, dv };
+    });
+
+    return {
+      username: customFood?.user?.username,
+      foodName: customFood.name,
+      image: customFood.image,
+      servingQty: 1,
+      servingUnit: customFood.servingUnit,
+      servingWeight: customFood.servingSize,
+      type: 'custom',
+      nutrients: customFoodMappedNutrients,
+    };
+  });
+  mappedFoods.push(...commonFoods, ...brandedFoods, ...formattedCustomFoods);
 
   return mappedFoods;
 };

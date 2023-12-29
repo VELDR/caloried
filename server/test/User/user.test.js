@@ -3,6 +3,7 @@ const CryptoJS = require('crypto-js');
 const app = require('../../index');
 const { Admin, sequelize } = require('../../models');
 const { generateToken } = require('../../utils/jwt');
+const fs = require('fs');
 const path = require('path');
 const { queryInterface } = sequelize;
 
@@ -159,6 +160,7 @@ describe('Get User Weight Entries', () => {
 });
 
 describe('Edit User Profile', () => {
+  let createdAvatarPath;
   const avatarPath = path.join(__dirname, '..', '..', 'uploads', 'test.jpg');
   it('should successfully update the user profile', async () => {
     const updatedData = {
@@ -192,6 +194,12 @@ describe('Edit User Profile', () => {
     expect(response.status).toBe(200);
     expect(response.body.message).toBe('Profile updated successfully!');
     expect(response.body.user).toHaveProperty('id', userId);
+    createdAvatarPath = path.join(
+      __dirname,
+      '..',
+      '..',
+      response.body.user.avatar
+    );
   });
 
   it('should return a validation error for invalid data', async () => {
@@ -216,6 +224,15 @@ describe('Edit User Profile', () => {
     }
     expect(response.status).toBe(400);
     expect(response.body.message).toBe('Please select a your sex');
+  });
+  afterAll(() => {
+    if (createdAvatarPath) {
+      try {
+        fs.unlinkSync(createdAvatarPath);
+      } catch (error) {
+        console.error('Error deleting file:', error);
+      }
+    }
   });
 });
 

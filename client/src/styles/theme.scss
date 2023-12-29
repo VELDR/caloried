@@ -2,7 +2,6 @@
 
 @mixin light-theme {
   --color-bg-primary: #f8fcf3;
-  // --color-bg-secondary: #d7fde0;
   --color-bg-secondary: #f1fae9;
   --color-bg-tertiary: #dce2d8;
   --color-text-primary: #070c03;
@@ -17,7 +16,6 @@
 
 @mixin dark-theme {
   --color-bg-primary: #080c03;
-  // --color-bg-secondary: #062d0f;
   --color-bg-secondary: #121b07;
   --color-bg-tertiary: #40413f;
   --color-text-primary: #f7fcf3;

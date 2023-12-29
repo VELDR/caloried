@@ -5,6 +5,8 @@ const { sequelize, User } = require('../../models');
 const mockFoodsData = require('./mockFoodsData.json');
 const mockFoodDetails = require('./mockFoodDetails.json');
 const { queryInterface } = sequelize;
+const fs = require('fs');
+const path = require('path');
 const {
   fetchNutritionixFoodsApi,
   fetchNutritionixFoodDetailsApi,
@@ -36,6 +38,32 @@ const dummyUser = {
   activityLevel: 3,
 };
 
+const dummyCustomFood = {
+  foodName: 'banana',
+  servingQty: 1,
+  servingUnit: 'piece',
+  servingWeight: 50,
+  image: null,
+  nutrients: {
+    carbs: {
+      value: 2,
+      dv: '1',
+    },
+    fat: {
+      value: 3,
+      dv: '4',
+    },
+    protein: {
+      value: 5,
+      dv: null,
+    },
+    calories: {
+      value: 55,
+      dv: null,
+    },
+  },
+};
+
 let userToken;
 let userId;
 
@@ -64,6 +92,59 @@ afterAll(async () => {
   }
 });
 
+describe('Create Custom Food', () => {
+  let createdImagePath;
+  const imagePath = path.join(__dirname, '..', '..', 'uploads', 'test.jpg');
+
+  it('should return a validation error for invalid data', async () => {
+    const response = await request(app)
+      .post('/api/food/create')
+      .set('Authorization', `Bearer ${userToken}`)
+      .field('name', '')
+      .field('servingUnit', 'piece')
+      .field('servingSize', '50')
+      .field('calories', '66')
+      .field('protein', '3')
+      .field('carbs', '2')
+      .field('fat', '1');
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('message', 'Food name is required');
+  });
+  it('should create a custom food successfully', async () => {
+    const response = await request(app)
+      .post('/api/food/create')
+      .set('Authorization', `Bearer ${userToken}`)
+      .field('name', 'TestFood')
+      .field('servingUnit', 'piece')
+      .field('servingSize', '50')
+      .field('calories', '66')
+      .field('protein', '3')
+      .field('carbs', '2')
+      .field('fat', '1')
+      .attach('image', imagePath);
+    expect(response.status).toBe(201);
+    expect(response.body).toHaveProperty(
+      'message',
+      'Food created successfully!'
+    );
+    createdImagePath = path.join(
+      __dirname,
+      '..',
+      '..',
+      response.body.food.image
+    );
+  });
+  afterAll(() => {
+    if (createdImagePath) {
+      try {
+        fs.unlinkSync(createdImagePath);
+      } catch (error) {
+        console.error('Error deleting file:', error);
+      }
+    }
+  });
+});
+
 describe('Fetch Foods', () => {
   beforeEach(async () => {
     redisClientMock.flushall();
@@ -83,6 +164,23 @@ describe('Fetch Foods', () => {
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('totalItems');
     expect(response.body).toHaveProperty('items');
+  });
+  it('should fetch only specified categories of food data correctly', async () => {
+    fetchNutritionixFoodsApi.mockResolvedValue(mockFoodsData);
+
+    let response;
+    try {
+      response = await request(app)
+        .post('/api/food/search')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({ query: 'banana', category: 'Branded', page: 1, pageSize: 5 });
+    } catch (err) {
+      console.error(err);
+    }
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('totalItems');
+    expect(response.body).toHaveProperty('items');
+    expect(response.body.items[0].type).toBe('branded');
   });
 });
 
@@ -115,6 +213,29 @@ describe('Fetch Foods Details', () => {
       console.error(err);
     }
     expect(response.status).toBe(200);
+  });
+  it('should fetch custom food details correctly', async () => {
+    let response;
+    try {
+      response = await request(app)
+        .get('/api/food/custom/TestFood')
+        .set('Authorization', `Bearer ${userToken}`);
+    } catch (err) {
+      console.error(err);
+    }
+    expect(response.status).toBe(200);
+  });
+  it('should fetch custom food details correctly', async () => {
+    let response;
+    try {
+      response = await request(app)
+        .get('/api/food/custom/nonexistingfood')
+        .set('Authorization', `Bearer ${userToken}`);
+    } catch (err) {
+      console.error(err);
+    }
+    expect(response.status).toBe(404);
+    expect(response.body).toHaveProperty('message', 'Custom food not found.');
   });
   it('should return an error for invalid food type', async () => {
     let response;

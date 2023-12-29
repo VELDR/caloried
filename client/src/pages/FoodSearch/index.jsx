@@ -6,13 +6,17 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { Pagination } from '@mui/material';
 import noResults from '@static/images/no-result.svg';
+import noFood from '@static/images/no-food.svg';
 import { isRoleMatch } from '@utils/authUtils';
+import { Upload } from '@mui/icons-material';
 
+import CustomFoodForm from '@components/CustomFoodForm';
 import FoodCard from '@components/FoodCard';
+import PrimaryButton from '@components/ui/PrimaryButton';
 
 import { selectToken } from '@containers/Client/selectors';
 import { selectCurrentPage, selectFoods, selectPageSize, selectTotalItems } from './selectors';
-import { getFoods, setCurrentPage } from './actions';
+import { clearFoods, getFoods, setCurrentPage } from './actions';
 
 import classes from './style.module.scss';
 
@@ -26,11 +30,23 @@ const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems, intl: { f
   const size = searchParams.get('pageSize') || pageSize;
   const totalPages = Math.ceil(totalItems / pageSize);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     if (query) {
       if (isRoleMatch(token, 'user')) {
         dispatch(getFoods(query, page, size, selectedCategory, token));
       }
+    } else {
+      dispatch(clearFoods());
     }
   }, [dispatch, query, page, size, selectedCategory, token]);
 
@@ -65,7 +81,7 @@ const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems, intl: { f
               : formatMessage({ id: 'app_type_to_search' })}
           </div>
           <div className={classes.category}>
-            {['All', 'Common', 'Branded'].map((category) => (
+            {['All', 'Common', 'Branded', 'Custom'].map((category) => (
               <div className={classes.categoryWrapper} key={category}>
                 <div
                   className={
@@ -96,6 +112,25 @@ const FoodSearch = ({ token, foods, currentPage, pageSize, totalItems, intl: { f
         page={currentPage}
         onChange={handlePageChange}
         shape="rounded"
+      />
+      <div className={classes.addCustom}>
+        <img src={noFood} alt="" />
+        <div className={classes.addCustom__description}>
+          <FormattedMessage id="app_no_food_description" />
+        </div>
+        <PrimaryButton isSubmit={false} className={classes.addCustom__button} onClick={handleOpenClick}>
+          <Upload />
+          <FormattedMessage id="app_submit_food" />
+        </PrimaryButton>
+      </div>
+      <CustomFoodForm
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        token={token}
+        query={query}
+        page={page}
+        size={size}
+        selectedCategory={selectedCategory}
       />
     </div>
   );

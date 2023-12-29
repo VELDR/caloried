@@ -72,6 +72,9 @@
       .branded {
         background-color: var(--color-accent);
       }
+      .custom {
+        background-color: var(--color-text-primary);
+      }
     }
     .skeletonBody {
       @include box(100%, 27rem);
