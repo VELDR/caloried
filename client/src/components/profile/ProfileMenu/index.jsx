@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Avatar, Menu, MenuItem } from '@mui/material';
-import { AutoStories, Dashboard, Fastfood, Logout, Person } from '@mui/icons-material';
+import { AutoStories, Dashboard, Fastfood, Logout, Person, Restaurant } from '@mui/icons-material';
 import { logoutUser } from '@containers/Client/actions';
 import config from '@config/index';
 
@@ -82,6 +82,12 @@ const ProfileMenu = ({ user }) => {
           <Fastfood className={classes.dropdownIcon} />
           <div className={classes.dropdownText}>
             <FormattedMessage id="app_food" />
+          </div>
+        </MenuItem>
+        <MenuItem onClick={() => navigate('/my-foods')} className={classes.dropdownAvatar__item}>
+          <Restaurant className={classes.dropdownIcon} />
+          <div className={classes.dropdownText}>
+            <FormattedMessage id="app_my_foods" />
           </div>
         </MenuItem>
         <MenuItem onClick={handleLogout} className={classes.dropdownAvatar__item} data-testid="profile-logout">

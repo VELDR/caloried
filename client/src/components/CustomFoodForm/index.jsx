@@ -1,32 +1,53 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { Controller, useForm } from 'react-hook-form';
 import { Avatar, Dialog, DialogContent, DialogTitle, Tooltip } from '@mui/material';
 import { AddPhotoAlternate, Info } from '@mui/icons-material';
-
-import PrimaryButton from '@components/ui/PrimaryButton';
-import SecondaryButton from '@components/ui/SecondaryButton';
-import { Controller, useForm } from 'react-hook-form';
+import config from '@config/index';
 import proteinIcon from '@static/images/protein.png';
 import fatIcon from '@static/images/fat.png';
 import carbsIcon from '@static/images/carbs.png';
 import caloriesIcon from '@static/images/calories.svg';
+
+import { deleteCustomFood, editCustomFood } from '@pages/MyFoods/actions';
+import PrimaryButton from '@components/ui/PrimaryButton';
+import SecondaryButton from '@components/ui/SecondaryButton';
 import { createCustomFood, getFoods } from '@pages/FoodSearch/actions';
 
 import classes from './style.module.scss';
 
-const CustomFoodForm = ({ open, onClose, token, intl: { formatMessage }, query, page, size, selectedCategory }) => {
+const CustomFoodForm = ({
+  open,
+  onClose,
+  token,
+  intl: { formatMessage },
+  query,
+  page,
+  size,
+  selectedCategory,
+  food,
+}) => {
   const dispatch = useDispatch();
   const {
     control,
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
   const imageInputRef = useRef();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(food?.image);
+
+  useEffect(() => {
+    if (food) {
+      Object.entries(food).forEach(([key, value]) => {
+        setValue(key, value);
+      });
+    }
+  }, [food, setValue]);
 
   const handleImageClick = () => {
     imageInputRef?.current?.click();
@@ -42,30 +63,51 @@ const CustomFoodForm = ({ open, onClose, token, intl: { formatMessage }, query, 
 
   const onSubmit = (data) => {
     const formData = new FormData();
-
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, value);
     });
+    if (food) {
+      dispatch(
+        editCustomFood(food?.id, formData, token, () => {
+          onClose();
+        })
+      );
+    } else {
+      dispatch(
+        createCustomFood(formData, token, () => {
+          onClose();
+          if (query && query !== '') {
+            dispatch(getFoods(query, page, size, selectedCategory, token));
+          }
 
-    dispatch(
-      createCustomFood(formData, token, () => {
-        onClose();
-        dispatch(getFoods(query, page, size, selectedCategory, token));
-        reset();
-      })
-    );
+          setImage(null);
+          reset();
+        })
+      );
+    }
+  };
+
+  const onDelete = () => {
+    if (food) {
+      dispatch(deleteCustomFood(food?.id, token));
+      onClose();
+    }
   };
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth data-testid="custom-food-modal">
       <DialogTitle>
-        <FormattedMessage id="app_submit_food" />
+        {food ? <FormattedMessage id="app_edit_food" /> : <FormattedMessage id="app_submit_food" />}
       </DialogTitle>
       <DialogContent className={classes.dialog}>
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.form__top}>
             <div className={classes.imageContainer}>
-              <Avatar src={image} className={classes.image} onClick={handleImageClick}>
+              <Avatar
+                src={image?.startsWith('blob') ? image : `${config.api.base}${image}`}
+                className={classes.image}
+                onClick={handleImageClick}
+              >
                 <AddPhotoAlternate />
               </Avatar>
             </div>
@@ -226,9 +268,20 @@ const CustomFoodForm = ({ open, onClose, token, intl: { formatMessage }, query, 
             <SecondaryButton className={classes.button} onClick={onClose}>
               <FormattedMessage id="app_cancel" />
             </SecondaryButton>
+            {food && (
+              <PrimaryButton
+                className={`${classes.button} ${classes.deleteButton}`}
+                onClick={onDelete}
+                isSubmit={false}
+              >
+                <div className={classes.text}>
+                  <FormattedMessage id="app_delete" />
+                </div>
+              </PrimaryButton>
+            )}
             <PrimaryButton className={classes.button}>
               <div className={classes.text}>
-                <FormattedMessage id="app_submit" />
+                {food ? <FormattedMessage id="app_save" /> : <FormattedMessage id="app_submit" />}
               </div>
             </PrimaryButton>
           </div>
@@ -247,6 +300,7 @@ CustomFoodForm.propTypes = {
   page: PropTypes.number,
   size: PropTypes.number,
   selectedCategory: PropTypes.string,
+  food: PropTypes.object,
 };
 
 export default injectIntl(CustomFoodForm);

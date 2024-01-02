@@ -10,6 +10,17 @@ const invalidateUserCache = async () => {
   }
 };
 
+const invalidateFoodsCache = async () => {
+  try {
+    const keys = await redisClient.smembers('foodsCacheKeys');
+    keys.forEach((key) => redisClient.del(key));
+    await redisClient.del('foodsCacheKeys');
+  } catch (error) {
+    console.error('Error invalidating food cache:', error);
+  }
+};
+
 module.exports = {
   invalidateUserCache,
+  invalidateFoodsCache,
 };

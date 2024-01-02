@@ -11,6 +11,27 @@
     font-size: $font-size-larger;
     font-weight: 700;
   }
+  .filter {
+    @include flex-row;
+    border: 1px solid var(--color-text-primary);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    justify-content: right;
+    width: fit-content;
+    &__item {
+      cursor: pointer;
+      padding: 0 0.5rem;
+      font-size: $font-size-regular;
+      font-weight: 500;
+      &:last-child {
+        border-left: 1px solid var(--color-text-primary);
+      }
+    }
+    .active {
+      background-color: var(--color-primary);
+      color: var(--color-bg-primary);
+    }
+  }
   .analytics {
     &__title {
       font-size: $font-size-large;
@@ -48,6 +69,10 @@
       .avatar {
         @include box(2rem);
       }
+    }
+    .food {
+      @include flex-items-center(0.5rem);
+      text-transform: capitalize;
     }
     .verified {
       text-align: center;

@@ -9,6 +9,7 @@ import foodSearchReducer from '@pages/FoodSearch/reducer';
 import foodDetailsReducer from '@pages/FoodDetails/reducer';
 import dashboardReducer from '@pages/Dashboard/reducer';
 import adminReducer from '@pages/Admin/reducer';
+import myFoodsReducer from '@pages/MyFoods/reducer';
 
 import { mapWithPersistor } from './persistence';
 
@@ -25,6 +26,7 @@ const temporaryReducers = {
   foodDetails: foodDetailsReducer,
   dashboard: dashboardReducer,
   admin: adminReducer,
+  myFoods: myFoodsReducer,
 };
 
 const createReducer = () => {

@@ -150,7 +150,7 @@ export default {
   app_maintaining_weight: 'Maintaining Weight',
   app_losing_weight: 'Losing Weight',
   app_day: 'day',
-  app_are_you_sure_delete: 'Are you sure you want to delete this user?',
+  app_are_you_sure_delete: 'Are you sure you want to delete this?',
   app_welcome: 'Welcome',
   app_your_personalized_plan: 'Your Personalized Nutrition Plan',
   app_to: 'To',
@@ -252,4 +252,12 @@ export default {
   app_carbs_is_required: 'Carbs is required',
   app_fat_is_required: 'Fat is required',
   app_added_by: 'Added by ',
+
+  app_my_foods: 'My Foods',
+  app_edit_food: 'Edit food',
+  app_no_custom_foods:
+    "You haven't created any custom foods yet. Get started by adding your favorite recipes or personalized meals!",
+  app_created_by: 'Created By',
+  app_foods: 'Foods',
+  app_users: 'Users',
 };

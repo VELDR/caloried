@@ -1,0 +1,45 @@
+@import '@styles/base';
+
+.page {
+  @include flex-center-column(2rem);
+  margin: 2rem 0;
+
+  .container {
+    @include flex-center-column(1rem);
+    width: 100%;
+    @include apply-at-md-size {
+      max-width: 40rem;
+    }
+    .header {
+      font-weight: 700;
+      font-size: $font-size-large;
+    }
+    .myFoods {
+      width: 100%;
+      border: 1px solid var(--color-text-secondary);
+      border-bottom: none;
+      .noResults {
+        @include flex-center-column;
+        padding: 2rem;
+        text-align: center;
+        font-size: $font-size-regular;
+        border-bottom: 1px solid var(--color-text-secondary);
+        @include apply-at-md-size {
+          font-size: $font-size-medium;
+        }
+        img {
+          @include box(75%);
+          @include apply-at-md-size {
+            @include box(20rem);
+          }
+        }
+      }
+    }
+  }
+  .button {
+    @include flex-items-center;
+    svg {
+      font-size: $font-size-large;
+    }
+  }
+}

@@ -177,6 +177,13 @@ exports.deleteUserById = async (req, res) => {
       return handleResponse(res, 404, { message: 'User not found.' });
     }
 
+    if (user.image) {
+      const avatarPath = path.join(__dirname, '..', user.avatar);
+      fs.unlink(avatarPath, (err) => {
+        if (err) console.error('Failed to delete avatar file:', err);
+      });
+    }
+
     await user.destroy();
 
     await invalidateUserCache();

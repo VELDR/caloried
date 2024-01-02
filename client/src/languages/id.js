@@ -149,7 +149,7 @@ export default {
   app_maintaining_weight: 'Mempertahankan Berat Badan',
   app_losing_weight: 'Menurunkan Berat Badan',
   app_day: 'hari',
-  app_are_you_sure_delete: 'Apakah Anda yakin ingin menghapus user ini?',
+  app_are_you_sure_delete: 'Apakah Anda yakin ingin menghapus ini?',
   app_welcome: 'Selamat Datang',
   app_your_personalized_plan: 'Rencana Nutrisi Pribadi Anda',
   app_to: 'Untuk',
@@ -251,4 +251,12 @@ export default {
   app_carbs_is_required: 'Karbohidrat diperlukan',
   app_fat_is_required: 'Lemak diperlukan',
   app_added_by: 'Ditambah oleh ',
+
+  app_my_foods: 'Makananku',
+  app_edit_food: 'Edit makanan',
+  app_no_custom_foods:
+    'Anda belum membuat makanan kustom apa pun. Mulailah dengan menambahkan resep favorit Anda atau makanan yang dipersonalisasi!',
+  app_created_by: 'Dibuat Oleh',
+  app_foods: 'Makanan',
+  app_users: 'User',
 };

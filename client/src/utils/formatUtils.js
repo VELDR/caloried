@@ -54,3 +54,16 @@ export const formatLineChartLabel = (data) =>
     const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     return { ...item, x: formattedDate };
   });
+
+export const formatCustomFoodForm = (food) => ({
+  id: food.id,
+  name: food.foodName,
+  servingQty: food.servingQty,
+  servingUnit: food.servingUnit,
+  servingSize: food.servingWeight,
+  calories: food.nutrients.calories.value,
+  protein: food.nutrients.protein.value,
+  carbs: food.nutrients.carbs.value,
+  fat: food.nutrients.fat.value,
+  image: food.image,
+});

@@ -23,6 +23,6 @@ const createFoodValidator = Joi.object({
   protein: Joi.number().required().messages({
     'string.empty': 'Protein is required',
   }),
-});
+}).unknown(true);
 
 module.exports = { createFoodValidator };

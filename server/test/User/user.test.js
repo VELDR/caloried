@@ -56,7 +56,6 @@ beforeAll(async () => {
       email: dummyAdmin.email,
       password: dummyAdmin.password,
     });
-    console.log(adminUser);
     adminId = adminUser.id;
     const adminTokenPayload = {
       id: adminId,

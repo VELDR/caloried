@@ -2,6 +2,7 @@ import { setLoading, showPopup } from '@containers/App/actions';
 import { createCustomFoodApi, getFoodsApi } from '@domain/api';
 import toast from 'react-hot-toast';
 import { takeLatest, call, put } from 'redux-saga/effects';
+import { getMyFoods } from '@pages/MyFoods/actions';
 import { CREATE_CUSTOM_FOOD, GET_FOODS } from './constants';
 import { setFoods } from './actions';
 
@@ -26,6 +27,7 @@ function* doCreateCustomFood({ data, token, callback }) {
   try {
     const response = yield call(createCustomFoodApi, data, token);
     toast.success(response.message);
+    yield put(getMyFoods(token));
     yield call(callback);
   } catch (error) {
     if (error.response && error.response.data) {

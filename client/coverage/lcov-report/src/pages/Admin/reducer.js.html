@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/15</span>
+                <span class='fraction'>5/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.71% </span>
+                <span class="strong">27.77% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/14</span>
+                <span class='fraction'>5/18</span>
             </div>
         
             
@@ -95,21 +95,45 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">320x</span>
-<span class="cline-any cline-yes">320x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">329x</span>
+<span class="cline-any cline-yes">329x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -122,17 +146,32 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { produce } from 'immer';
-import { DELETE_USER_SUCCESS, SET_ALL_USERS, SET_USER_DEMOGRAPHICS, SET_USER_SEX_DISTRIBUTION } from './constants';
+import {
+  DELETE_CUSTOM_FOOD_SUCCESS,
+  DELETE_USER_SUCCESS,
+  SET_ALL_CUSTOM_FOODS,
+  SET_ALL_USERS,
+  SET_USER_DEMOGRAPHICS,
+  SET_USER_SEX_DISTRIBUTION,
+} from './constants';
 &nbsp;
 export const initialState = {
   users: [],
-  total: 0,
+  totalUsers: 0,
+  customFoods: [],
+  totalCustomFoods: 0,
   demographics: null,
   sexDistribution: null,
 };
@@ -144,7 +183,7 @@ const adminReducer = (state = initialState, action) =&gt;
     switch (action.type) {
       case SET_ALL_USERS:
 <span class="cstat-no" title="statement not covered" >        draft.users = action.users;</span>
-<span class="cstat-no" title="statement not covered" >        draft.total = action.total;</span>
+<span class="cstat-no" title="statement not covered" >        draft.totalUsers = action.totalUsers;</span>
 <span class="cstat-no" title="statement not covered" >        break;</span>
       case DELETE_USER_SUCCESS:
 <span class="cstat-no" title="statement not covered" >        draft.users = draft.users.filter(<span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; <span class="cstat-no" title="statement not covered" >user.id !== action.userId)</span>;</span>
@@ -155,6 +194,12 @@ const adminReducer = (state = initialState, action) =&gt;
       case SET_USER_SEX_DISTRIBUTION:
 <span class="cstat-no" title="statement not covered" >        draft.sexDistribution = action.sexDistribution;</span>
 <span class="cstat-no" title="statement not covered" >        break;</span>
+      case SET_ALL_CUSTOM_FOODS:
+<span class="cstat-no" title="statement not covered" >        draft.customFoods = action.customFoods;</span>
+<span class="cstat-no" title="statement not covered" >        draft.totalCustomFoods = action.totalCustomFoods;</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+      case DELETE_CUSTOM_FOOD_SUCCESS:
+<span class="cstat-no" title="statement not covered" >        draft.customFoods = draft.customFoods.filter(<span class="fstat-no" title="function not covered" >(f</span>ood) =&gt; <span class="cstat-no" title="statement not covered" >food.id !== action.customFoodId)</span>;</span>
     }
   });
 &nbsp;
@@ -166,7 +211,7 @@ export default adminReducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-12-29T03:25:37.630Z
+                at 2024-01-02T01:34:13.142Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

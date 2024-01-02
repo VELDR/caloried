@@ -14,6 +14,7 @@ import Admin from '@pages/Admin';
 import ResetPassword from '@pages/ResetPassword';
 import LandingPage from '@pages/LandingPage';
 import LandingPageLayout from '@layouts/LandingPageLayout';
+import MyFoods from '@pages/MyFoods';
 
 const routes = [
   {
@@ -54,6 +55,14 @@ const routes = [
     protected: true,
     isAdmin: false,
     component: FoodSearch,
+    layout: MainLayout,
+  },
+  {
+    path: '/my-foods',
+    name: 'MyFoods',
+    protected: true,
+    isAdmin: false,
+    component: MyFoods,
     layout: MainLayout,
   },
   {

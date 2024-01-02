@@ -203,6 +203,7 @@ exports.deleteFoodFromDiary = async (req, res) => {
     }
 
     const foodId = foodLog.foodId;
+    const mealId = foodLog.mealId;
     await foodLog.destroy();
 
     const isFoodAssociated = await FoodLog.findOne({
@@ -211,6 +212,14 @@ exports.deleteFoodFromDiary = async (req, res) => {
 
     if (!isFoodAssociated) {
       await Food.destroy({ where: { id: foodId } });
+    }
+
+    const remainingFoodLogs = await FoodLog.count({
+      where: { mealId: mealId },
+    });
+
+    if (remainingFoodLogs === 0) {
+      await Meal.destroy({ where: { id: mealId } });
     }
 
     return handleResponse(res, 200, { message: 'Meal removed.' });

@@ -90,6 +90,27 @@ export const createCustomFoodApi = (data, token) =>
     {},
     data
   );
+export const getMyFoodsApi = (token) =>
+  callAPI(`${endpoints.food}/myFoods`, 'GET', { Authorization: `Bearer ${token}` });
+export const editCustomFoodApi = (customFoodId, data, token) =>
+  callAPI(
+    `${endpoints.food}/myFoods/${customFoodId}`,
+    'PUT',
+    {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    },
+    {},
+    data
+  );
+export const deleteCustomFoodApi = (customFoodId, token) =>
+  callAPI(`${endpoints.food}/myFoods/${customFoodId}`, 'DELETE', { Authorization: `Bearer ${token}` });
+export const getAllCustomFoodsPaginatedApi = (page, pageSize, token, sort, order) =>
+  callAPI(`${endpoints.food}/all?page=${page}&pageSize=${pageSize}&sort=${sort}&order=${order}`, 'GET', {
+    Authorization: `Bearer ${token}`,
+  });
+export const deleteCustomFoodByIdApi = (customFoodId, token) =>
+  callAPI(`${endpoints.food}/delete/${customFoodId}`, 'DELETE', { Authorization: `Bearer ${token}` });
 
 // DIARY
 export const getMealsByDateApi = (date, token) =>
